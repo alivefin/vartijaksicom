@@ -49,103 +49,294 @@ const jsonLd = [
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <Breadcrumbs items={breadcrumbs} />
 
-        <article class="prose prose-slate dark:prose-invert prose-lg max-w-none">
-            <header class="mb-8 md:mb-12 not-prose">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400">
-                        Työllistyminen
-                    </span>
-                    <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
-                        1.1.2026
-                    </time>
+        <article>
+            <!-- Header -->
+            <header class="mb-10 relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-500/10 to-transparent dark:from-amber-500/20 dark:to-transparent border border-slate-200 dark:border-surface-dark-lighter">
+                <div class="p-6 sm:p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                            Työllistyminen
+                        </span>
+                        <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
+                            1.1.2026
+                        </time>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-amber-600 to-slate-700 dark:from-white dark:via-amber-400 dark:to-slate-300 bg-clip-text text-transparent leading-tight">
+                        Kuinka nopeasti vartijaksi voi työllistyä koulutuksen jälkeen?
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                        Yksi yleisimmistä kysymyksistä vartijakoulutusta harkitsevilta on: kuinka nopeasti koulutuksen jälkeen voi päästä töihin? Vastaus on usein myönteinen.
+                    </p>
                 </div>
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent leading-tight">
-                    Kuinka nopeasti vartijaksi voi työllistyä koulutuksen jälkeen?
-                </h1>
-                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
-                    Yksi yleisimmistä kysymyksistä vartijakoulutusta harkitsevilta on: kuinka nopeasti koulutuksen jälkeen voi päästä töihin?
-                </p>
+                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl"></div>
             </header>
 
-            <p>
-                Vartiointiala on Suomessa jatkuvassa työvoimatarpeessa, ja monelle ala tarjoaa nopean väylän työelämään. Tässä artikkelissa käymme läpi, miten nopeasti vartijaksi voi työllistyä, mitkä tekijät vaikuttavat asiaan ja millaisiin tehtäviin vastavalmistunut yleensä pääsee.
-            </p>
+            <!-- Intro -->
+            <div class="mb-8 p-5 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300">
+                    Vartiointiala on Suomessa jatkuvassa työvoimatarpeessa, ja monelle ala tarjoaa nopean väylän työelämään. Tässä artikkelissa käymme läpi, miten nopeasti vartijaksi voi työllistyä, mitkä tekijät vaikuttavat asiaan ja millaisiin tehtäviin vastavalmistunut yleensä pääsee.
+                </p>
+            </div>
 
-            <h2>Työllistyykö vartijaksi nopeasti?</h2>
+            <!-- Työllistyykö vartijaksi nopeasti? -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </span>
+                    Työllistyykö vartijaksi nopeasti?
+                </h2>
 
-            <p>
-                <strong>Lyhyt vastaus: usein kyllä.</strong> Monet vartijat työllistyvät jo heti koulutuksen jälkeen, ja joissain tapauksissa työsopimus voi olla sovittuna valmiiksi ennen koulutuksen päättymistä.
-            </p>
+                <div class="mb-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 rounded-lg">
+                    <p class="font-semibold text-green-700 dark:text-green-400">
+                        Lyhyt vastaus: usein kyllä.
+                    </p>
+                </div>
 
-            <p>Vartiointialalla on jatkuva tarve uusille työntekijöille erityisesti:</p>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Monet vartijat työllistyvät jo heti koulutuksen jälkeen, ja joissain tapauksissa työsopimus voi olla sovittuna valmiiksi ennen koulutuksen päättymistä.
+                </p>
 
-            <ul>
-                <li>suurissa kaupungeissa</li>
-                <li>vuorotyöhön valmiille</li>
-                <li>osa-aikaisiin ja keikkaluonteisiin tehtäviin</li>
-            </ul>
+                <p class="text-slate-600 dark:text-text-dim mb-3">
+                    Vartiointialalla on jatkuva tarve uusille työntekijöille erityisesti:
+                </p>
 
-            <h2>Tyypillinen aikajana: koulutuksesta töihin</h2>
+                <ul class="space-y-2">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Suurissa kaupungeissa</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Vuorotyöhön valmiille</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Osa-aikaisiin ja keikkaluonteisiin tehtäviin</span>
+                    </li>
+                </ul>
+            </section>
 
-            <p>Vartijaksi työllistyminen etenee yleensä seuraavasti:</p>
+            <!-- Tyypillinen aikajana -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </span>
+                    Tyypillinen aikajana: koulutuksesta töihin
+                </h2>
 
-            <ol>
-                <li><strong>Vartijakoulutuksen suorittaminen</strong> – Koulutuksen kesto vaihtelee koulutusmuodosta riippuen.</li>
-                <li><strong>Hyväksynnät ja kortit</strong> – Koulutuksen jälkeen haetaan tarvittavat hyväksynnät, jotka ovat edellytys työn aloittamiselle.</li>
-                <li><strong>Työhön sijoittuminen</strong> – Moni aloittaa keikkatyössä, osa-aikaisena tai määräaikaisessa työsuhteessa.</li>
-            </ol>
+                <p class="text-slate-600 dark:text-text-dim mb-5">
+                    Vartijaksi työllistyminen etenee yleensä seuraavasti:
+                </p>
 
-            <p>
-                Koko prosessi koulutuksen aloituksesta ensimmäiseen työvuoroon voi parhaimmillaan olla vain muutamia viikkoja.
-            </p>
+                <div class="space-y-4">
+                    <!-- Step 1 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">
+                            1
+                        </div>
+                        <div class="flex-1 pb-4 border-b border-slate-200 dark:border-slate-700">
+                            <h3 class="font-semibold text-slate-900 dark:text-white mb-1">Vartijakoulutuksen suorittaminen</h3>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">Koulutuksen kesto vaihtelee koulutusmuodosta riippuen.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">
+                            2
+                        </div>
+                        <div class="flex-1 pb-4 border-b border-slate-200 dark:border-slate-700">
+                            <h3 class="font-semibold text-slate-900 dark:text-white mb-1">Hyväksynnät ja kortit</h3>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">Koulutuksen jälkeen haetaan tarvittavat hyväksynnät, jotka ovat edellytys työn aloittamiselle.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">
+                            3
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-slate-900 dark:text-white mb-1">Työhön sijoittuminen</h3>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">Moni aloittaa keikkatyössä, osa-aikaisena tai määräaikaisessa työsuhteessa.</p>
+                        </div>
+                    </div>
+                </div>
 
-            <h2>Mitkä tekijät vaikuttavat työllistymisen nopeuteen?</h2>
+                <div class="mt-5 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/30 rounded-lg">
+                    <p class="text-blue-700 dark:text-blue-300 text-sm font-medium">
+                        Koko prosessi koulutuksen aloituksesta ensimmäiseen työvuoroon voi parhaimmillaan olla vain muutamia viikkoja.
+                    </p>
+                </div>
+            </section>
 
-            <h3>Paikkakunta</h3>
+            <!-- Tekijät jotka vaikuttavat -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" x2="20" y1="21" y2="21"/>
+                            <line x1="4" x2="20" y1="12" y2="12"/>
+                            <line x1="4" x2="20" y1="3" y2="3"/>
+                            <line x1="12" x2="12" y1="3" y2="12"/>
+                        </svg>
+                    </span>
+                    Mitkä tekijät vaikuttavat työllistymisen nopeuteen?
+                </h2>
 
-            <p>
-                Suurilla paikkakunnilla vartijoille on enemmän tarjontaa ja kohteita. Pienemmillä paikkakunnilla työpaikkoja on vähemmän, mutta kilpailu voi olla vähäisempää.
-            </p>
+                <div class="grid gap-4 sm:grid-cols-3">
+                    <!-- Paikkakunta -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-5 h-5 text-purple-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <h3 class="font-semibold text-slate-900 dark:text-white">Paikkakunta</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">
+                            Suurilla paikkakunnilla vartijoille on enemmän tarjontaa ja kohteita. Pienemmillä paikkakunnilla työpaikkoja on vähemmän, mutta kilpailu voi olla vähäisempää.
+                        </p>
+                    </div>
+                    <!-- Työaikajoustot -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-5 h-5 text-purple-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 6v6l4 2"/>
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <h3 class="font-semibold text-slate-900 dark:text-white">Työaikajoustot</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">
+                            Valmius tehdä ilta-, yö- ja viikonlopputyötä nopeuttaa työllistymistä merkittävästi.
+                        </p>
+                    </div>
+                    <!-- Aiempi kokemus -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-5 h-5 text-purple-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <h3 class="font-semibold text-slate-900 dark:text-white">Aiempi kokemus</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">
+                            Vaikka aiempaa turvallisuusalan kokemusta ei vaadita, esimerkiksi asiakaspalvelu- tai järjestyksenvalvojakokemus voi olla etu.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-            <h3>Työaikajoustot</h3>
+            <!-- Millaisiin tehtäviin -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </span>
+                    Millaisiin tehtäviin vastavalmistunut vartija pääsee?
+                </h2>
 
-            <p>
-                Valmius tehdä ilta-, yö- ja viikonlopputyötä nopeuttaa työllistymistä merkittävästi.
-            </p>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Useimmiten ensimmäiset tehtävät ovat:
+                </p>
 
-            <h3>Aiempi kokemus</h3>
+                <div class="grid gap-3 sm:grid-cols-2">
+                    <div class="flex items-center gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-200 dark:border-amber-800/30">
+                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                            <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                            <path d="M2 7h20"/>
+                            <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Kauppakeskus- tai myymälävartiointia</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-200 dark:border-amber-800/30">
+                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M3 9h18"/>
+                            <path d="M9 21V9"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Aulapalvelu- ja valvomotyötä</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-200 dark:border-amber-800/30">
+                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.6-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A4 4 0 0 0 1 14v3c0 .6.4 1 1 1h2"/>
+                            <circle cx="7" cy="17" r="2"/>
+                            <circle cx="17" cy="17" r="2"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Piirivartiointia</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-200 dark:border-amber-800/30">
+                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Tapahtumien valvontaa</span>
+                    </div>
+                </div>
 
-            <p>
-                Vaikka aiempaa turvallisuusalan kokemusta ei vaadita, esimerkiksi asiakaspalvelu- tai järjestyksenvalvojakokemus voi olla etu.
-            </p>
+                <p class="mt-4 text-slate-600 dark:text-text-dim text-sm">
+                    Kokemuksen karttuessa on mahdollista siirtyä vaativampiin kohteisiin ja erikoistehtäviin.
+                </p>
+            </section>
 
-            <h2>Millaisiin tehtäviin vastavalmistunut vartija pääsee?</h2>
+            <!-- Yhteenveto -->
+            <section class="mb-8 bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-500/20 dark:to-orange-500/20 border border-amber-200 dark:border-amber-800/30 rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-amber-500 text-white">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </span>
+                    Yhteenveto
+                </h2>
 
-            <p>Useimmiten ensimmäiset tehtävät ovat:</p>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Vartijaksi voi työllistyä suhteellisen nopeasti koulutuksen jälkeen, erityisesti jos on valmis joustaviin työaikoihin. Ala tarjoaa hyvän mahdollisuuden päästä kiinni työelämään ja rakentaa uraa turvallisuusalalla.
+                </p>
+            </section>
 
-            <ul>
-                <li>kauppakeskus- tai myymälävartiointia</li>
-                <li>aulapalvelu- ja valvomotyötä</li>
-                <li>piirivartiointia</li>
-                <li>tapahtumien valvontaa</li>
-            </ul>
-
-            <p>Kokemuksen karttuessa on mahdollista siirtyä vaativampiin kohteisiin ja erikoistehtäviin.</p>
-
-            <h2>Yhteenveto</h2>
-
-            <p>
-                Vartijaksi voi työllistyä suhteellisen nopeasti koulutuksen jälkeen, erityisesti jos on valmis joustaviin työaikoihin. Ala tarjoaa hyvän mahdollisuuden päästä kiinni työelämään ja rakentaa uraa turvallisuusalalla.
-            </p>
-
-            <div class="not-prose my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
-                <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">Lue myös:</p>
+            <!-- CTA Box -->
+            <div class="my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">Lue myös:</p>
                 <ul class="space-y-2">
                     <li>
-                        <a href="/vartijakoulutus" class="text-primary font-semibold hover:underline">Vartijakoulutus – miten pääset alalle</a>
+                        <a href="/vartijakoulutus" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                            Vartijakoulutus – miten pääset alalle
+                        </a>
                     </li>
                     <li>
-                        <a href="/tyo-ja-palkka" class="text-primary font-semibold hover:underline">Vartijan työ ja palkka</a>
+                        <a href="/tyo-ja-palkka" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                            Vartijan työ ja palkka
+                        </a>
                     </li>
                 </ul>
             </div>
