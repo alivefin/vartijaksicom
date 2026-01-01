@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Tietosuojaseloste' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Tietosuojaseloste", "item": "https://vartijaksi.com/tietosuoja" }
+        ]
+    }
+];
+---
+
+<BaseLayout
+    title="Tietosuojaseloste | Vartijaksi.com"
+    description="Vartijaksi.com-sivuston tietosuojaseloste. Lue, miten käsittelemme henkilötietoja ja evästeitä."
+    canonical="https://vartijaksi.com/tietosuoja"
+    type="website"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <article class="prose prose-slate dark:prose-invert max-w-none">
+            <header class="mb-8 md:mb-12 not-prose">
+                <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary mb-4">
+                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Päivitetty 1.1.2026
+                </div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent">
+                    Tietosuojaseloste
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                    Tämä tietosuojaseloste kuvaa, miten Vartijaksi.com kerää, käyttää ja suojaa sivuston kävijöiden tietoja.
+                </p>
+            </header>
+
+            <section class="mb-8">
+                <h2>Rekisterinpitäjä</h2>
+                <p>
+                    Vartijaksi.com<br>
+                    Sähköposti: info@vartijaksi.com
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2>Mitä tietoja keräämme?</h2>
+                <p>Vartijaksi.com on informatiivinen sivusto, joka ei vaadi käyttäjiltä rekisteröitymistä. Keräämme ainoastaan:</p>
+
+                <h3>Analytiikkatiedot</h3>
+                <p>Käytämme Google Analytics -palvelua sivuston käytön analysointiin. Tämä sisältää:</p>
+                <ul>
+                    <li>Sivujen katselukerrat ja vierailujen kesto</li>
+                    <li>Käytetty laite ja selain</li>
+                    <li>Maantieteellinen sijainti (maa/kaupunki)</li>
+                    <li>Liikenteen lähteet (mistä kävijä saapui)</li>
+                </ul>
+                <p>Nämä tiedot kerätään anonyymisti, eikä niitä yhdistetä yksittäisiin henkilöihin.</p>
+
+                <h3>Tekniset tiedot</h3>
+                <p>Palvelimemme tallentaa automaattisesti:</p>
+                <ul>
+                    <li>IP-osoitteen (anonymisoitu)</li>
+                    <li>Selaimen tyypin ja version</li>
+                    <li>Käyttöjärjestelmän</li>
+                    <li>Vierailun ajankohdan</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2>Evästeet</h2>
+                <p>Sivusto käyttää evästeitä (cookies) toiminnan ja analytiikan mahdollistamiseksi.</p>
+
+                <h3>Välttämättömät evästeet</h3>
+                <ul>
+                    <li><strong>cookie_consent</strong> – Tallentaa evästeasetuksesi (hyväksytty/hylätty)</li>
+                    <li><strong>theme</strong> – Tallentaa valitsemasi teeman (tumma/vaalea)</li>
+                </ul>
+
+                <h3>Analytiikkaevästeet (vaativat suostumuksen)</h3>
+                <ul>
+                    <li><strong>_ga, _ga_*</strong> – Google Analytics -evästeet sivuston käytön analysointiin</li>
+                </ul>
+
+                <p>Voit hallita evästeasetuksiasi selaimen asetuksista tai hylkäämällä evästeet sivuston evästebannerin kautta.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2>Google Consent Mode</h2>
+                <p>
+                    Käytämme Google Consent Mode v2 -tekniikkaa, joka noudattaa valitsemiasi evästeasetuksia.
+                    Jos hylkäät evästeet:
+                </p>
+                <ul>
+                    <li>Google Analytics ei tallenna evästeitä laitteeseesi</li>
+                    <li>Tietoja ei käytetä mainontaan tai personointiin</li>
+                    <li>Keräämme vain anonymisoitua, aggregoitua dataa</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2>Tietojen käyttötarkoitus</h2>
+                <p>Kerättyjä tietoja käytetään ainoastaan:</p>
+                <ul>
+                    <li>Sivuston toiminnan ja käyttökokemuksen parantamiseen</li>
+                    <li>Kävijämäärien ja suositun sisällön analysointiin</li>
+                    <li>Teknisten ongelmien tunnistamiseen ja korjaamiseen</li>
+                </ul>
+                <p>Emme myy, vuokraa tai luovuta tietoja kolmansille osapuolille markkinointitarkoituksiin.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2>Tietojen säilytys</h2>
+                <ul>
+                    <li>Analytiikkatiedot: 14 kuukautta (Googlen oletusasetus)</li>
+                    <li>Palvelimen lokitiedot: 30 päivää</li>
+                    <li>Evästeasetukset: kunnes poistat ne selaimestasi</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2>Tietojen siirto EU:n ulkopuolelle</h2>
+                <p>
+                    Google Analytics saattaa siirtää tietoja EU:n ulkopuolelle. Google noudattaa EU:n ja
+                    Yhdysvaltojen välistä Data Privacy Framework -sopimusta, joka takaa riittävän tietosuojan tason.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2>Oikeutesi</h2>
+                <p>EU:n yleisen tietosuoja-asetuksen (GDPR) mukaan sinulla on oikeus:</p>
+                <ul>
+                    <li><strong>Pääsy tietoihisi</strong> – Voit pyytää tietoa sinusta kerätyistä tiedoista</li>
+                    <li><strong>Tietojen oikaisu</strong> – Voit pyytää virheellisten tietojen korjaamista</li>
+                    <li><strong>Tietojen poisto</strong> – Voit pyytää tietojesi poistamista</li>
+                    <li><strong>Käsittelyn rajoittaminen</strong> – Voit rajoittaa tietojesi käsittelyä</li>
+                    <li><strong>Vastustamisoikeus</strong> – Voit vastustaa tietojesi käsittelyä</li>
+                </ul>
+                <p>Voit käyttää oikeuksiasi ottamalla yhteyttä osoitteeseen info@vartijaksi.com.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2>Valitusoikeus</h2>
+                <p>
+                    Jos katsot, että henkilötietojesi käsittelyssä rikotaan tietosuojasäännöksiä, sinulla on oikeus
+                    tehdä valitus valvontaviranomaiselle:
+                </p>
+                <p>
+                    <strong>Tietosuojavaltuutetun toimisto</strong><br>
+                    Lintulahdenkuja 4, 00530 Helsinki<br>
+                    tietosuoja.fi
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2>Muutokset tietosuojaselosteeseen</h2>
+                <p>
+                    Pidätämme oikeuden päivittää tätä tietosuojaselostetta. Merkittävistä muutoksista
+                    ilmoitetaan sivustolla. Suosittelemme tarkistamaan tämän sivun säännöllisesti.
+                </p>
+                <p><strong>Viimeisin päivitys:</strong> 1.1.2026</p>
+            </section>
+
+            <section>
+                <h2>Yhteystiedot</h2>
+                <p>
+                    Jos sinulla on kysyttävää tietosuojasta tai tietojesi käsittelystä, ota yhteyttä:<br>
+                    Sähköposti: info@vartijaksi.com
+                </p>
+            </section>
+        </article>
+    </div>
+</BaseLayout>
