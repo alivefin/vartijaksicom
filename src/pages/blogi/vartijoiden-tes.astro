@@ -49,154 +49,265 @@ const jsonLd = [
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <Breadcrumbs items={breadcrumbs} />
 
-        <article class="prose prose-slate dark:prose-invert prose-lg max-w-none">
-            <header class="mb-8 md:mb-12 not-prose">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                        TES & Palkkaus
-                    </span>
-                    <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
-                        1.1.2026
-                    </time>
+        <article>
+            <!-- Header -->
+            <header class="mb-10 relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500/10 to-transparent dark:from-emerald-500/20 dark:to-transparent border border-slate-200 dark:border-surface-dark-lighter">
+                <div class="p-6 md:p-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="inline-flex items-center rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                            TES & Palkkaus
+                        </span>
+                        <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
+                            1.1.2026
+                        </time>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 leading-tight">
+                        Vartijoiden TES – mitä vartiointialan työehtosopimus tarkoittaa työntekijälle?
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl leading-relaxed">
+                        Vartijan työehdoista sovitaan vartiointialan työehtosopimuksessa (TES), joka määrittelee muun muassa palkan, työajat, lisät ja työntekijän oikeudet.
+                    </p>
                 </div>
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent leading-tight">
-                    Vartijoiden TES – mitä vartiointialan työehtosopimus tarkoittaa työntekijälle?
-                </h1>
-                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
-                    Vartijan työehdoista sovitaan vartiointialan työehtosopimuksessa (TES), joka määrittelee muun muassa palkan, työajat, lisät ja työntekijän oikeudet.
-                </p>
             </header>
 
-            <p>
-                TES on yksi tärkeimmistä tekijöistä, kun harkitsee vartijan ammattia tai vertailee alan työpaikkoja. Tässä artikkelissa käymme läpi, mitä vartijoiden TES sisältää, miksi se on tärkeä ja millaisia muutoksia työehtosopimuksiin on viime aikoina tehty.
-            </p>
+            <!-- Intro -->
+            <div class="mb-10 text-slate-600 dark:text-text-dim leading-relaxed">
+                <p>
+                    TES on yksi tärkeimmistä tekijöistä, kun harkitsee vartijan ammattia tai vertailee alan työpaikkoja. Tässä artikkelissa käymme läpi, mitä vartijoiden TES sisältää, miksi se on tärkeä ja millaisia muutoksia työehtosopimuksiin on viime aikoina tehty.
+                </p>
+            </div>
 
-            <h2>Mikä on vartiointialan työehtosopimus?</h2>
+            <!-- Section 1: Mikä on TES -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+                    </span>
+                    Mikä on vartiointialan työehtosopimus?
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Vartiointialan työehtosopimus on työnantaja- ja työntekijäliittojen välinen sopimus, joka koskee yksityisellä sektorilla työskenteleviä vartijoita. Sopimus määrittelee vähimmäisehdot, joita työnantajan on noudatettava.
+                </p>
+                <p class="text-slate-600 dark:text-text-dim mb-4">Työehtosopimus koskee esimerkiksi:</p>
+                <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                    <div class="flex items-center gap-3 bg-slate-50 dark:bg-background-dark rounded-lg p-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                        </div>
+                        <span class="text-sm">Paikallisvartijoita</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-50 dark:bg-background-dark rounded-lg p-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        </div>
+                        <span class="text-sm">Piirivartijoita</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-50 dark:bg-background-dark rounded-lg p-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+                        </div>
+                        <span class="text-sm">Valvomotyöntekijöitä</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-50 dark:bg-background-dark rounded-lg p-3">
+                        <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+                        </div>
+                        <span class="text-sm">Liikkuvaa vartiointia</span>
+                    </div>
+                </div>
+                <div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-lg p-4">
+                    <p class="text-sm text-emerald-800 dark:text-emerald-200">
+                        <strong>Tärkeää:</strong> TES:n noudattaminen on pakollista alan työnantajille, vaikka työntekijä ei kuuluisi ammattiliittoon.
+                    </p>
+                </div>
+            </section>
 
-            <p>
-                Vartiointialan työehtosopimus on työnantaja- ja työntekijäliittojen välinen sopimus, joka koskee yksityisellä sektorilla työskenteleviä vartijoita. Sopimus määrittelee vähimmäisehdot, joita työnantajan on noudatettava.
-            </p>
+            <!-- Section 2: Mitä TES määrittelee -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    </span>
+                    Mitä vartijoiden TES määrittelee?
+                </h2>
 
-            <p>Työehtosopimus koskee esimerkiksi:</p>
+                <!-- Palkka -->
+                <div class="mb-6 pb-6 border-b border-slate-200 dark:border-surface-dark-lighter">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+                        Palkka ja palkkaryhmät
+                    </h3>
+                    <p class="text-slate-600 dark:text-text-dim mb-3">
+                        Vartijoiden palkka määräytyy TES:ssä määriteltyjen palkkaryhmien mukaan. Palkkaan vaikuttavat:
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="text-slate-600 dark:text-text-dim">Työtehtävän vaativuus</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="text-slate-600 dark:text-text-dim">Kohteen luonne</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="text-slate-600 dark:text-text-dim">Työntekijän kokemus</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <ul>
-                <li>paikallisvartijoita</li>
-                <li>piirivartijoita</li>
-                <li>aulapalvelu- ja valvomotyötä tekeviä vartijoita</li>
-                <li>liikkuvaa vartiointia</li>
-            </ul>
+                <!-- Työajat -->
+                <div class="mb-6 pb-6 border-b border-slate-200 dark:border-surface-dark-lighter">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        Työajat ja vuorotyö
+                    </h3>
+                    <p class="text-slate-600 dark:text-text-dim mb-3">
+                        Vartijan työ on usein vuorotyötä, ja TES ottaa tämän huomioon. Sopimuksessa säädellään:
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-2">
+                        <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-3 text-sm text-slate-600 dark:text-text-dim">Säännöllinen työaika</div>
+                        <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-3 text-sm text-slate-600 dark:text-text-dim">Ylityö</div>
+                        <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-3 text-sm text-slate-600 dark:text-text-dim">Lepoajat</div>
+                        <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-3 text-sm text-slate-600 dark:text-text-dim">Työvuorosuunnittelu</div>
+                    </div>
+                </div>
 
-            <p>
-                TES:n noudattaminen on pakollista alan työnantajille, vaikka työntekijä ei kuuluisi ammattiliittoon.
-            </p>
+                <!-- Lisät -->
+                <div class="mb-6 pb-6 border-b border-slate-200 dark:border-surface-dark-lighter">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Lisät ja korvaukset
+                    </h3>
+                    <p class="text-slate-600 dark:text-text-dim mb-3">TES:ssa määritellään erilaiset lisät:</p>
+                    <div class="grid sm:grid-cols-3 gap-3">
+                        <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-4 text-center border border-amber-200 dark:border-amber-800/50">
+                            <p class="text-sm font-medium text-amber-800 dark:text-amber-200">Ilta- ja yötyölisät</p>
+                        </div>
+                        <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-4 text-center border border-amber-200 dark:border-amber-800/50">
+                            <p class="text-sm font-medium text-amber-800 dark:text-amber-200">Sunnuntaikorvaukset</p>
+                        </div>
+                        <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-4 text-center border border-amber-200 dark:border-amber-800/50">
+                            <p class="text-sm font-medium text-amber-800 dark:text-amber-200">Ylityökorvaukset</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500 dark:text-text-dim mt-3 italic">
+                        Lisät voivat muodostaa merkittävän osan vartijan kokonaisansiosta.
+                    </p>
+                </div>
 
-            <h2>Mitä vartijoiden TES määrittelee?</h2>
+                <!-- Lomat -->
+                <div>
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                        Sairauspoissaolot ja vuosilomat
+                    </h3>
+                    <p class="text-slate-600 dark:text-text-dim mb-3">
+                        Työehtosopimus turvaa työntekijän asemaa myös sairauden aikana:
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="text-slate-600 dark:text-text-dim">Palkanmaksu sairausajalta</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="text-slate-600 dark:text-text-dim">Lomapäivien kertyminen</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span class="text-slate-600 dark:text-text-dim">Lomakorvaukset</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
 
-            <h3>Palkka ja palkkaryhmät</h3>
+            <!-- Section 3: Muutokset -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                    </span>
+                    Mitä muutoksia TES:iin on tullut viime vuosina?
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Viimeisimmissä työehtosopimuskausissa painopiste on ollut erityisesti työntekijöiden jaksamisessa ja työelämän ennakoitavuudessa.
+                </p>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <div class="flex items-start gap-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800/50">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                        <span class="text-sm text-purple-800 dark:text-purple-200">Palkkojen asteittainen tarkistaminen</span>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800/50">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                        <span class="text-sm text-purple-800 dark:text-purple-200">Työvuorosuunnittelun selkeyttäminen</span>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800/50">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+                        <span class="text-sm text-purple-800 dark:text-purple-200">Lisien ja korvausten täsmennykset</span>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800/50">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        <span class="text-sm text-purple-800 dark:text-purple-200">Parempi huomio vuorotyön kuormittavuuteen</span>
+                    </div>
+                </div>
+            </section>
 
-            <p>
-                Vartijoiden palkka määräytyy TES:ssä määriteltyjen palkkaryhmien mukaan. Palkkaan vaikuttavat muun muassa:
-            </p>
-
-            <ul>
-                <li>työtehtävän vaativuus</li>
-                <li>kohteen luonne</li>
-                <li>työntekijän kokemus</li>
-            </ul>
-
-            <p>TES määrittelee vähimmäispalkan, mutta työnantaja voi maksaa enemmän.</p>
-
-            <h3>Työajat ja vuorotyö</h3>
-
-            <p>
-                Vartijan työ on usein vuorotyötä, ja TES ottaa tämän huomioon. Sopimuksessa säädellään esimerkiksi:
-            </p>
-
-            <ul>
-                <li>säännöllinen työaika</li>
-                <li>ylityö</li>
-                <li>lepoajat</li>
-                <li>työvuorosuunnittelu</li>
-            </ul>
-
-            <p>Työaikojen ennakoitavuus ja riittävät lepoajat ovat viime vuosina korostuneet entistä enemmän.</p>
-
-            <h3>Lisät ja korvaukset</h3>
-
-            <p>TES:ssa määritellään erilaiset lisät, kuten:</p>
-
-            <ul>
-                <li>ilta- ja yötyölisät</li>
-                <li>sunnuntai- ja pyhäkorvaukset</li>
-                <li>ylityökorvaukset</li>
-            </ul>
-
-            <p>Lisät voivat muodostaa merkittävän osan vartijan kokonaisansiosta.</p>
-
-            <h3>Sairauspoissaolot ja vuosilomat</h3>
-
-            <p>Työehtosopimus turvaa työntekijän asemaa myös sairauden aikana. TES määrittelee:</p>
-
-            <ul>
-                <li>palkanmaksun sairausajalta</li>
-                <li>lomapäivien kertymisen</li>
-                <li>lomakorvaukset</li>
-            </ul>
-
-            <h2>Mitä muutoksia vartijoiden TES:iin on tullut viime vuosina?</h2>
-
-            <p>
-                Viimeisimmissä työehtosopimuskausissa painopiste on ollut erityisesti työntekijöiden jaksamisessa ja työelämän ennakoitavuudessa. Muutokset eivät ole koskeneet vain palkkaa, vaan koko työn rakennetta.
-            </p>
-
-            <p>Keskeisiä kehityssuuntia ovat olleet:</p>
-
-            <ul>
-                <li>palkkojen asteittainen tarkistaminen</li>
-                <li>työvuorosuunnittelun selkeyttäminen</li>
-                <li>lisien ja korvausten täsmennykset</li>
-                <li>parempi huomio vuorotyön kuormittavuuteen</li>
-            </ul>
-
-            <p>Tavoitteena on ollut tehdä vartijan työstä pitkäjänteisempi ja houkuttelevampi ammatti.</p>
-
-            <h2>Miksi TES on tärkeä vartijaksi aikovalle?</h2>
-
-            <p>
-                Vartiointialalla työehtosopimus tuo turvaa erityisesti alalle tuleville. TES varmistaa, että:
-            </p>
-
-            <ul>
-                <li>palkka ei jää kohtuuttoman alhaiseksi</li>
-                <li>työajat pysyvät lain ja sopimuksen rajoissa</li>
-                <li>lisät maksetaan oikein</li>
-                <li>työntekijällä on selkeät oikeudet</li>
-            </ul>
-
-            <p>
-                Kun harkitset vartijan uraa, työehtosopimuksen ymmärtäminen auttaa arvioimaan, millaisia työpaikkoja ja työvuoroja haluat hakea.
-            </p>
-
-            <h2>Yhteenveto</h2>
-
-            <p>
-                Vartijoiden TES on keskeinen osa vartiointialaa ja vaikuttaa suoraan työn arkeen, ansioihin ja jaksamiseen. Viime vuosien muutokset osoittavat, että alaa kehitetään jatkuvasti ammattimaisempaan ja työntekijäystävällisempään suuntaan.
-            </p>
-
-            <p>
-                Jos suunnittelet vartijan uraa tai olet jo alalla, työehtosopimuksen perusasiat kannattaa tuntea.
-            </p>
-
-            <div class="not-prose my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
-                <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">Lue myös:</p>
-                <ul class="space-y-2">
-                    <li>
-                        <a href="/tyo-ja-palkka" class="text-primary font-semibold hover:underline">Millainen on vartijan työ ja palkka?</a>
+            <!-- Section 4: Miksi tärkeä -->
+            <section class="mb-8 bg-gradient-to-r from-primary/5 to-transparent dark:from-primary/10 dark:to-transparent border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/20 text-primary">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                    </span>
+                    Miksi TES on tärkeä vartijaksi aikovalle?
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Vartiointialalla työehtosopimus tuo turvaa erityisesti alalle tuleville. TES varmistaa, että:
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3 bg-white dark:bg-surface-dark rounded-lg p-3 border border-slate-200 dark:border-surface-dark-lighter">
+                        <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="text-slate-600 dark:text-text-dim">Palkka ei jää kohtuuttoman alhaiseksi</span>
                     </li>
-                    <li>
-                        <a href="/vartijakoulutus" class="text-primary font-semibold hover:underline">Vartijakoulutus – vaatimukset ja eteneminen alalle</a>
+                    <li class="flex items-start gap-3 bg-white dark:bg-surface-dark rounded-lg p-3 border border-slate-200 dark:border-surface-dark-lighter">
+                        <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="text-slate-600 dark:text-text-dim">Työajat pysyvät lain ja sopimuksen rajoissa</span>
+                    </li>
+                    <li class="flex items-start gap-3 bg-white dark:bg-surface-dark rounded-lg p-3 border border-slate-200 dark:border-surface-dark-lighter">
+                        <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="text-slate-600 dark:text-text-dim">Lisät maksetaan oikein</span>
+                    </li>
+                    <li class="flex items-start gap-3 bg-white dark:bg-surface-dark rounded-lg p-3 border border-slate-200 dark:border-surface-dark-lighter">
+                        <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="text-slate-600 dark:text-text-dim">Työntekijällä on selkeät oikeudet</span>
                     </li>
                 </ul>
+            </section>
+
+            <!-- Yhteenveto -->
+            <section class="mb-10 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4">Yhteenveto</h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Vartijoiden TES on keskeinen osa vartiointialaa ja vaikuttaa suoraan työn arkeen, ansioihin ja jaksamiseen. Viime vuosien muutokset osoittavat, että alaa kehitetään jatkuvasti ammattimaisempaan ja työntekijäystävällisempään suuntaan.
+                </p>
+                <p class="text-slate-600 dark:text-text-dim">
+                    Jos suunnittelet vartijan uraa tai olet jo alalla, työehtosopimuksen perusasiat kannattaa tuntea.
+                </p>
+            </section>
+
+            <!-- CTA Box -->
+            <div class="mb-10 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">Lue myös:</p>
+                <div class="space-y-2">
+                    <a href="/tyo-ja-palkka" class="flex items-center gap-2 text-primary font-semibold hover:underline">
+                        Millainen on vartijan työ ja palkka?
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <a href="/vartijakoulutus" class="flex items-center gap-2 text-primary font-semibold hover:underline">
+                        Vartijakoulutus – vaatimukset ja eteneminen alalle
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
             </div>
         </article>
 

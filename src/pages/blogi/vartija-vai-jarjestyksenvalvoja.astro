@@ -49,138 +49,457 @@ const jsonLd = [
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <Breadcrumbs items={breadcrumbs} />
 
-        <article class="prose prose-slate dark:prose-invert prose-lg max-w-none">
-            <header class="mb-8 md:mb-12 not-prose">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-600 dark:text-purple-400">
-                        Vertailu
-                    </span>
-                    <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
-                        1.1.2026
-                    </time>
+        <article>
+            <!-- Header -->
+            <header class="mb-10 relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-500/10 to-primary/10 dark:from-purple-500/20 dark:to-primary/20 border border-slate-200 dark:border-surface-dark-lighter">
+                <div class="p-6 sm:p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                            Vertailu
+                        </span>
+                        <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
+                            1.1.2026
+                        </time>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-purple-600 to-slate-700 dark:from-white dark:via-purple-400 dark:to-slate-300 bg-clip-text text-transparent leading-tight">
+                        Vartija vai järjestyksenvalvoja – kumpi sopii sinulle paremmin?
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                        Turvallisuusalaa harkitseva pohtii usein, kannattaako kouluttautua vartijaksi vai järjestyksenvalvojaksi. Molemmat tehtävät liittyvät järjestyksen ja turvallisuuden ylläpitämiseen, mutta työnkuvissa on selkeitä eroja.
+                    </p>
                 </div>
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent leading-tight">
-                    Vartija vai järjestyksenvalvoja – kumpi sopii sinulle paremmin?
-                </h1>
-                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
-                    Turvallisuusalaa harkitseva pohtii usein, kannattaako kouluttautua vartijaksi vai järjestyksenvalvojaksi. Molemmat tehtävät liittyvät järjestyksen ja turvallisuuden ylläpitämiseen, mutta työnkuvissa on selkeitä eroja.
-                </p>
+                <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl"></div>
             </header>
 
-            <p>
-                Tässä artikkelissa vertailemme vartijan ja järjestyksenvalvojan työtä, jotta löydät itsellesi sopivamman vaihtoehdon.
-            </p>
-
-            <h2>Mitä vartija tekee?</h2>
-
-            <p>Vartija työskentelee tyypillisesti:</p>
-
-            <ul>
-                <li>yritys- ja toimistokohteissa</li>
-                <li>kauppakeskuksissa</li>
-                <li>teollisuusalueilla</li>
-                <li>valvomoissa ja aulapalveluissa</li>
-            </ul>
-
-            <p>Vartijan työ on usein pitkäkestoista kohdekohtaista työtä, jossa korostuvat:</p>
-
-            <ul>
-                <li>ennaltaehkäisy</li>
-                <li>asiakaspalvelu</li>
-                <li>raportointi</li>
-                <li>turvallisuusriskien hallinta</li>
-            </ul>
-
-            <h2>Mitä järjestyksenvalvoja tekee?</h2>
-
-            <p>Järjestyksenvalvoja toimii useimmiten:</p>
-
-            <ul>
-                <li>ravintoloissa</li>
-                <li>tapahtumissa</li>
-                <li>festivaaleilla</li>
-                <li>yleisötilaisuuksissa</li>
-            </ul>
-
-            <p>Järjestyksenvalvojan työ on usein:</p>
-
-            <ul>
-                <li>lyhytkestoista ja keikkaluonteista</li>
-                <li>ilta- ja yötyöpainotteista</li>
-                <li>nopeatempoista</li>
-            </ul>
-
-            <p>Työssä korostuvat tilanteiden hallinta ja yleisen järjestyksen ylläpito.</p>
-
-            <h2>Erot koulutuksessa</h2>
-
-            <p>Vartijan ja järjestyksenvalvojan koulutukset ovat erillisiä:</p>
-
-            <ul>
-                <li>vartijaksi vaaditaan vartijakoulutus</li>
-                <li>järjestyksenvalvojaksi vaaditaan JV-koulutus</li>
-            </ul>
-
-            <p>Moni suorittaa uransa aikana molemmat, mikä lisää työmahdollisuuksia.</p>
-
-            <h2>Työajat ja ansiot</h2>
-
-            <div class="not-prose my-6 grid sm:grid-cols-2 gap-4">
-                <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
-                    <h3 class="font-bold mb-3 text-primary">Vartija</h3>
-                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
-                        <li>Säännöllisemmät vuorot</li>
-                        <li>Pidemmät työjaksot</li>
-                        <li>Usein vakituisempi työsuhde</li>
-                    </ul>
-                </div>
-                <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
-                    <h3 class="font-bold mb-3 text-purple-600 dark:text-purple-400">Järjestyksenvalvoja</h3>
-                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
-                        <li>Epäsäännöllisemmät työajat</li>
-                        <li>Keikkaluonteisuus</li>
-                        <li>Paljon ilta- ja viikonlopputyötä</li>
-                    </ul>
-                </div>
+            <!-- Intro -->
+            <div class="mb-8 p-5 bg-purple-50 dark:bg-purple-900/10 border border-purple-200 dark:border-purple-800/30 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300">
+                    Tässä artikkelissa vertailemme vartijan ja järjestyksenvalvojan työtä, jotta löydät itsellesi sopivamman vaihtoehdon.
+                </p>
             </div>
 
-            <p>Palkka muodostuu molemmissa tehtävissä peruspalkasta ja erilaisista lisistä.</p>
+            <!-- Mitä vartija tekee? -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                        </svg>
+                    </span>
+                    Mitä vartija tekee?
+                </h2>
 
-            <h2>Kumpi sopii sinulle?</h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Vartija työskentelee tyypillisesti:
+                </p>
 
-            <div class="not-prose my-6 grid sm:grid-cols-2 gap-4">
-                <div class="bg-primary/5 dark:bg-primary/10 rounded-xl p-5 border border-primary/20">
-                    <h3 class="font-bold mb-3">Valitse vartija, jos:</h3>
-                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
-                        <li>arvostat vakautta ja säännöllisiä työvuoroja</li>
-                        <li>pidät rauhallisemmasta työympäristöstä</li>
-                        <li>haluat rakentaa pitkäjänteistä uraa</li>
-                    </ul>
+                <div class="grid gap-2 sm:grid-cols-2 mb-5">
+                    <div class="flex items-center gap-3 p-3 bg-primary/5 dark:bg-primary/10 rounded-lg border border-primary/20">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
+                            <path d="M9 22v-4h6v4"/>
+                            <path d="M8 6h.01"/>
+                            <path d="M16 6h.01"/>
+                            <path d="M12 6h.01"/>
+                            <path d="M12 10h.01"/>
+                            <path d="M12 14h.01"/>
+                            <path d="M16 10h.01"/>
+                            <path d="M16 14h.01"/>
+                            <path d="M8 10h.01"/>
+                            <path d="M8 14h.01"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Yritys- ja toimistokohteissa</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-primary/5 dark:bg-primary/10 rounded-lg border border-primary/20">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                            <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                            <path d="M2 7h20"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Kauppakeskuksissa</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-primary/5 dark:bg-primary/10 rounded-lg border border-primary/20">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                            <path d="M17 18h1"/>
+                            <path d="M12 18h1"/>
+                            <path d="M7 18h1"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Teollisuusalueilla</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-primary/5 dark:bg-primary/10 rounded-lg border border-primary/20">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M3 9h18"/>
+                            <path d="M9 21V9"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Valvomoissa ja aulapalveluissa</span>
+                    </div>
                 </div>
-                <div class="bg-purple-500/5 dark:bg-purple-500/10 rounded-xl p-5 border border-purple-500/20">
-                    <h3 class="font-bold mb-3">Valitse järjestyksenvalvoja, jos:</h3>
-                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
-                        <li>nautit nopeatempoisista tilanteista</li>
-                        <li>haluat tehdä keikkatyötä</li>
-                        <li>pidät tapahtuma- ja ravintolaympäristöistä</li>
-                    </ul>
+
+                <p class="text-slate-600 dark:text-text-dim mb-3">
+                    Vartijan työ on usein pitkäkestoista kohdekohtaista työtä, jossa korostuvat:
+                </p>
+
+                <ul class="space-y-2">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Ennaltaehkäisy</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Asiakaspalvelu</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Raportointi</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Turvallisuusriskien hallinta</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Mitä järjestyksenvalvoja tekee? -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </span>
+                    Mitä järjestyksenvalvoja tekee?
+                </h2>
+
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Järjestyksenvalvoja toimii useimmiten:
+                </p>
+
+                <div class="grid gap-2 sm:grid-cols-2 mb-5">
+                    <div class="flex items-center gap-3 p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-800/30">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 11h1a3 3 0 0 1 0 6h-1"/>
+                            <path d="M9 12v6"/>
+                            <path d="M13 12v6"/>
+                            <path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.72.5-2.5.5a2.5 2.5 0 0 1 0-5c.78 0 1.57.5 2.5.5S9.44 2 11 2s2 1.5 3 1.5 1.72-.5 2.5-.5a2.5 2.5 0 0 1 0 5c-.78 0-1.5-.5-2.5-.5Z"/>
+                            <path d="M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Ravintoloissa</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-800/30">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 10s3-3 3-8"/>
+                            <path d="M22 10s-3-3-3-8"/>
+                            <path d="M10 2c0 4.4-3.6 8-8 8"/>
+                            <path d="M14 2c0 4.4 3.6 8 8 8"/>
+                            <path d="M2 10s2 2 2 5"/>
+                            <path d="M22 10s-2 2-2 5"/>
+                            <path d="M8 15h8"/>
+                            <path d="M2 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/>
+                            <path d="M14 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Tapahtumissa</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-800/30">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Festivaaleilla</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-800/30">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Yleisötilaisuuksissa</span>
+                    </div>
                 </div>
-            </div>
 
-            <h2>Yhteenveto</h2>
+                <p class="text-slate-600 dark:text-text-dim mb-3">
+                    Järjestyksenvalvojan työ on usein:
+                </p>
 
-            <p>
-                Vartija ja järjestyksenvalvoja eivät ole parempi–huonompi -asetelmassa, vaan ne sopivat erilaisille ihmisille ja elämäntilanteille. Molemmat tarjoavat mahdollisuuden työskennellä turvallisuusalalla ja kartuttaa arvokasta kokemusta.
-            </p>
+                <ul class="space-y-2">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Lyhytkestoista ja keikkaluonteista</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Ilta- ja yötyöpainotteista</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                        </svg>
+                        <span class="text-slate-600 dark:text-text-dim">Nopeatempoista</span>
+                    </li>
+                </ul>
 
-            <div class="not-prose my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
-                <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">Tutustu myös:</p>
+                <p class="mt-4 text-slate-600 dark:text-text-dim text-sm">
+                    Työssä korostuvat tilanteiden hallinta ja yleisen järjestyksen ylläpito.
+                </p>
+            </section>
+
+            <!-- Erot koulutuksessa -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </span>
+                    Erot koulutuksessa
+                </h2>
+
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Vartijan ja järjestyksenvalvojan koulutukset ovat erillisiä:
+                </p>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="p-4 bg-primary/5 dark:bg-primary/10 rounded-lg border border-primary/20">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                            </svg>
+                            <span class="font-semibold text-slate-900 dark:text-white">Vartija</span>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">Vartijaksi vaaditaan vartijakoulutus</p>
+                    </div>
+                    <div class="p-4 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-800/30">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <span class="font-semibold text-slate-900 dark:text-white">Järjestyksenvalvoja</span>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">Järjestyksenvalvojaksi vaaditaan JV-koulutus</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/30 rounded-lg">
+                    <p class="text-blue-700 dark:text-blue-300 text-sm font-medium">
+                        Moni suorittaa uransa aikana molemmat, mikä lisää työmahdollisuuksia.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Työajat ja ansiot -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </span>
+                    Työajat ja ansiot
+                </h2>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="bg-primary/5 dark:bg-primary/10 rounded-xl p-5 border border-primary/20">
+                        <h3 class="font-bold mb-4 text-primary flex items-center gap-2">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                            </svg>
+                            Vartija
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Säännöllisemmät vuorot
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Pidemmät työjaksot
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Usein vakituisempi työsuhde
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-purple-500/5 dark:bg-purple-500/10 rounded-xl p-5 border border-purple-500/20">
+                        <h3 class="font-bold mb-4 text-purple-600 dark:text-purple-400 flex items-center gap-2">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            Järjestyksenvalvoja
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Epäsäännöllisemmät työajat
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Keikkaluonteisuus
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Paljon ilta- ja viikonlopputyötä
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-slate-600 dark:text-text-dim text-sm">
+                    Palkka muodostuu molemmissa tehtävissä peruspalkasta ja erilaisista lisistä.
+                </p>
+            </section>
+
+            <!-- Kumpi sopii sinulle? -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <path d="M12 17h.01"/>
+                        </svg>
+                    </span>
+                    Kumpi sopii sinulle?
+                </h2>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="bg-primary/5 dark:bg-primary/10 rounded-xl p-5 border border-primary/20">
+                        <h3 class="font-bold mb-3 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                            </svg>
+                            Valitse vartija, jos:
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Arvostat vakautta ja säännöllisiä työvuoroja
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Pidät rauhallisemmasta työympäristöstä
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Haluat rakentaa pitkäjänteistä uraa
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-purple-500/5 dark:bg-purple-500/10 rounded-xl p-5 border border-purple-500/20">
+                        <h3 class="font-bold mb-3 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            Valitse järjestyksenvalvoja, jos:
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Nautit nopeatempoisista tilanteista
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Haluat tehdä keikkatyötä
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                <svg class="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5"/>
+                                </svg>
+                                Pidät tapahtuma- ja ravintolaympäristöistä
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Yhteenveto -->
+            <section class="mb-8 bg-gradient-to-r from-purple-500/10 to-primary/10 dark:from-purple-500/20 dark:to-primary/20 border border-purple-200 dark:border-purple-800/30 rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-500 text-white">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </span>
+                    Yhteenveto
+                </h2>
+
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Vartija ja järjestyksenvalvoja eivät ole parempi–huonompi -asetelmassa, vaan ne sopivat erilaisille ihmisille ja elämäntilanteille. Molemmat tarjoavat mahdollisuuden työskennellä turvallisuusalalla ja kartuttaa arvokasta kokemusta.
+                </p>
+            </section>
+
+            <!-- CTA Box -->
+            <div class="my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">Tutustu myös:</p>
                 <ul class="space-y-2">
                     <li>
-                        <a href="/vartijakoulutus" class="text-primary font-semibold hover:underline">Vartijakoulutus – vaatimukset ja eteneminen</a>
+                        <a href="/vartijakoulutus" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                            Vartijakoulutus – vaatimukset ja eteneminen
+                        </a>
                     </li>
                     <li>
-                        <a href="/tyo-ja-palkka" class="text-primary font-semibold hover:underline">Työ ja palkka vartiointialalla</a>
+                        <a href="/tyo-ja-palkka" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                            Työ ja palkka vartiointialalla
+                        </a>
                     </li>
                 </ul>
             </div>
