@@ -34,6 +34,14 @@ const jsonLd = [
 
 const articles = [
     {
+        slug: "vartijoiden-tes",
+        title: "Vartijoiden TES – mitä vartiointialan työehtosopimus tarkoittaa työntekijälle?",
+        description: "Kattava opas vartiointialan työehtosopimukseen. Lue, mitä TES määrittelee palkasta, työajoista ja lisistä.",
+        category: "TES & Palkkaus",
+        date: "2026-01-01",
+        dateFormatted: "1.1.2026"
+    },
+    {
         slug: "turvallisuusala-muutoksessa",
         title: "Turvallisuusala muutoksessa – miten vartijan työ on muuttunut viime vuosina?",
         description: "Vartijan työ on muuttunut merkittävästi. Tarkastelemme, miten asiakaspalvelu, teknologia ja koulutus ovat muokanneet alaa.",
@@ -95,12 +103,5 @@ const articles = [
             ))}
         </div>
 
-        {articles.length === 1 && (
-            <div class="mt-12 text-center">
-                <p class="text-slate-600 dark:text-text-dim">
-                    Lisää artikkeleita tulossa pian!
-                </p>
-            </div>
-        )}
     </div>
 </BaseLayout>
