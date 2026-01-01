@@ -1,0 +1,306 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TOC from '../components/TOC.astro';
+import FAQ from '../components/FAQ.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Vartijakoulutus', href: '/vartijakoulutus' },
+    { label: 'Vartijan peruskoulutus' }
+];
+
+const tocItems = [
+    { id: 'intro', label: 'Johdanto' },
+    { id: 'mika-on', label: 'Mikä on peruskoulutus?' },
+    { id: 'koulutus', label: 'Koulutuksen sisältö' },
+    { id: 'kesto-hinta', label: 'Kesto ja hinta' },
+    { id: 'vartijakortti', label: 'Vartijakortin hakeminen' },
+    { id: 'faq', label: 'Usein kysytyt kysymykset' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Vartijakoulutus", "item": "https://vartijaksi.com/vartijakoulutus" },
+            { "@type": "ListItem", "position": 3, "name": "Vartijan peruskoulutus", "item": "https://vartijaksi.com/vartijan-peruskoulutus" }
+        ]
+    },
+    {
+        "@type": "Article",
+        "@id": "https://vartijaksi.com/vartijan-peruskoulutus#article",
+        "headline": "Vartijan peruskoulutus (80h) - Täysi vartijakortti",
+        "description": "Kattava opas vartijan peruskoulutukseen. 80 tunnin jatkokoulutus, joka yhdessä 40h koulutuksen kanssa oikeuttaa 5 vuoden vartijakorttiin.",
+        "datePublished": "2024-01-15",
+        "dateModified": "2026-01-01",
+        "author": {"@id": "https://vartijaksi.com/#organization"},
+        "inLanguage": "fi"
+    },
+    {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Kuinka kauan vartijan peruskoulutus kestää?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Vartijan peruskoulutus kestää 80 tuntia. Yhdessä väliaikaisen vartijan koulutuksen (40h) kanssa kokonaiskoulutus on 120 tuntia."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Voiko peruskoulutuksen suorittaa ilman 40h koulutusta?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ei voi. Väliaikaisen vartijan koulutus (40h) on edellytys peruskoulutukseen (80h) osallistumiselle."
+                }
+            }
+        ]
+    }
+];
+
+const faqItems = [
+    {
+        question: "Kuinka kauan vartijan peruskoulutus kestää?",
+        answer: "Vartijan peruskoulutus kestää 80 tuntia, joka vastaa noin 2-3 viikkoa opiskelua. Yhdessä <a href='/valiaikainen-vartija' class='text-primary hover:underline'>väliaikaisen vartijan koulutuksen (40h)</a> kanssa kokonaiskoulutus on 120 tuntia."
+    },
+    {
+        question: "Voiko peruskoulutuksen suorittaa ilman 40h koulutusta?",
+        answer: "Ei voi. Väliaikaisen vartijan koulutus (40h) on pakollinen edellytys peruskoulutukseen (80h) osallistumiselle. Koulutukset täydentävät toisiaan."
+    },
+    {
+        question: "Kuinka pitkään vartijakortti on voimassa?",
+        answer: "120h koulutuksen (40h + 80h) jälkeen saat vartijakortin, joka on voimassa 5 vuotta. Kortin uusiminen edellyttää kertauskoulutusta."
+    },
+    {
+        question: "Mitä lisäkoulutuksia voin suorittaa?",
+        answer: "Peruskoulutuksen jälkeen voit suorittaa voimankäyttökoulutuksen, järjestyksenvalvojakoulutuksen, turvatarkastajan koulutuksen tai erikoistua tietyille toimialoille."
+    }
+];
+
+const courseContent = [
+    "Syventävä lainsäädäntö ja oikeuskäytäntö",
+    "Vartijan toimivaltuudet käytännössä",
+    "Voimankäytön perusteet (teoria)",
+    "Uhkatilanteiden hallinta ja ennaltaehkäisy",
+    "Asiakaspalvelun syventävät taidot",
+    "Paloturvallisuus ja pelastustoiminta",
+    "Ensiapu EA1-tasoinen",
+    "Rikostorjunta ja havainnointi",
+    "Tekninen turvallisuus ja valvontajärjestelmät",
+    "Raportointi ja juridinen dokumentointi"
+];
+---
+
+<BaseLayout
+    title="Vartijan peruskoulutus (80h) - Täysi vartijakortti | Vartijaksi.com"
+    description="Kattava opas vartijan peruskoulutukseen. 80 tunnin jatkokoulutus oikeuttaa 5 vuoden vartijakorttiin. Kesto, hinta, sisältö ja vartijakortin hakeminen."
+    canonical="https://vartijaksi.com/vartijan-peruskoulutus"
+    type="article"
+    publishedTime="2024-01-15"
+    modifiedTime="2026-01-01"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <TOC items={tocItems} />
+
+            <article class="flex-1 min-w-0">
+                <header class="mb-8 md:mb-12">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary mb-4">
+                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        Päivitetty 1.1.2026
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent">
+                        Vartijan peruskoulutus (80h)
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                        Jatkokoulutus vakinaiseen työskentelyyn. Yhdessä 40h koulutuksen kanssa saat 5 vuoden vartijakortin.
+                    </p>
+                </header>
+
+                <section id="intro" class="mb-10 md:mb-14 scroll-mt-24">
+                    <div class="grid sm:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="text-3xl font-black text-primary mb-2">80h</div>
+                            <div class="text-sm font-medium">Koulutuksen kesto</div>
+                            <div class="text-xs text-slate-500 dark:text-text-dim mt-1">n. 2-3 viikkoa</div>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="text-3xl font-black text-primary mb-2">120h</div>
+                            <div class="text-sm font-medium">Yhteensä (40h+80h)</div>
+                            <div class="text-xs text-slate-500 dark:text-text-dim mt-1">täysi koulutus</div>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="text-3xl font-black text-primary mb-2">5v</div>
+                            <div class="text-sm font-medium">Kortin voimassaolo</div>
+                            <div class="text-xs text-slate-500 dark:text-text-dim mt-1">vartijakortti</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mika-on" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Mikä on vartijan peruskoulutus?</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed mb-4">
+                            Vartijan peruskoulutus (80h) on jatkokoulutus väliaikaisen vartijan koulutukselle. Se syventää osaamista ja antaa valmiudet vakinaiseen työskentelyyn turvallisuusalalla ilman aikarajoituksia.
+                        </p>
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Kun olet suorittanut sekä 40h että 80h koulutuksen (yhteensä 120h), voit hakea vartijakorttia, joka on voimassa 5 vuotta. Tämä on yleisin väylä vakinaiseksi vartijaksi.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="koulutus" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Koulutuksen sisältö</h2>
+                    <p class="text-slate-600 dark:text-text-dim mb-6">
+                        80 tunnin koulutus syventää 40h koulutuksessa opittuja taitoja ja lisää uusia osaamisalueita.
+                    </p>
+
+                    <div class="bg-white dark:bg-surface-dark rounded-xl p-6 border border-slate-200 dark:border-surface-dark-lighter">
+                        <h3 class="font-bold mb-4">Koulutuksessa käsiteltävät aiheet:</h3>
+                        <ul class="grid sm:grid-cols-2 gap-3">
+                            {courseContent.map((item) => (
+                                <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                    <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="kesto-hinta" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Kesto ja hinta</h2>
+
+                    <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <h3 class="font-bold mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                                Koulutuksen kesto
+                            </h3>
+                            <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                                <li><strong>80 tuntia</strong> lisäkoulutusta</li>
+                                <li>Tyypillisesti 2-3 viikkoa</li>
+                                <li>Voi suorittaa työn ohessa</li>
+                                <li>Ilta- ja viikonloppukursseja</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <h3 class="font-bold mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                                Koulutuksen hinta
+                            </h3>
+                            <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                                <li><strong>400-600 €</strong> yksityisiltä kouluttajilta</li>
+                                <li>Usein <strong>ilmainen</strong> työnantajan kautta</li>
+                                <li>Oppisopimuksella palkallinen</li>
+                                <li>TE-toimiston tuki mahdollinen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="vartijakortti" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Vartijakortin hakeminen</h2>
+                    <p class="text-slate-600 dark:text-text-dim mb-6">
+                        Kun olet suorittanut 120h koulutuksen (40h + 80h), voit hakea vartijakorttia poliisilta.
+                    </p>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start gap-4 bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+                            <div>
+                                <h3 class="font-bold mb-1">Suorita koulutukset</h3>
+                                <p class="text-sm text-slate-600 dark:text-text-dim">Väliaikainen vartija (40h) + Vartijan peruskoulutus (80h) = 120h</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+                            <div>
+                                <h3 class="font-bold mb-1">Hae vartijakorttia</h3>
+                                <p class="text-sm text-slate-600 dark:text-text-dim">Täytä hakemus poliisin asiointipalvelussa ja maksa käsittelymaksu (n. 85 €)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+                            <div>
+                                <h3 class="font-bold mb-1">Turvallisuusselvitys</h3>
+                                <p class="text-sm text-slate-600 dark:text-text-dim">Poliisi tekee taustatarkistuksen. Käsittelyaika n. 2-4 viikkoa.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">4</div>
+                            <div>
+                                <h3 class="font-bold mb-1">Saat vartijakortin</h3>
+                                <p class="text-sm text-slate-600 dark:text-text-dim">Kortti on voimassa 5 vuotta. Voit aloittaa vakinaisen työskentelyn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="faq" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-6">Usein kysytyt kysymykset</h2>
+                    <div class="space-y-3">
+                        {faqItems.map((item) => (
+                            <FAQ question={item.question} answer={item.answer} />
+                        ))}
+                    </div>
+                </section>
+
+                <section class="mb-10 md:mb-14">
+                    <h2 class="text-lg font-bold mb-4">Lähteet</h2>
+                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <a href="https://www.finlex.fi/fi/laki/ajantasa/2015/20151085" target="_blank" rel="noopener" class="hover:text-primary transition-colors">
+                                Laki yksityisistä turvallisuuspalveluista (1085/2015) – Finlex
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <a href="https://poliisi.fi/vartijakortti" target="_blank" rel="noopener" class="hover:text-primary transition-colors">
+                                Poliisi – Vartijakortin hakeminen
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="grid sm:grid-cols-2 gap-4">
+                    <a href="/valiaikainen-vartija" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                        <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Väliaikainen vartija (40h)</h3>
+                        <p class="text-xs text-slate-600 dark:text-text-dim">Ensimmäinen askel – aloita tästä</p>
+                    </a>
+                    <a href="/tyo-ja-palkka" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                        <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Työ & Palkka</h3>
+                        <p class="text-xs text-slate-600 dark:text-text-dim">Palkkataulukot ja työehdot</p>
+                    </a>
+                </section>
+            </article>
+        </div>
+    </div>
+</BaseLayout>
