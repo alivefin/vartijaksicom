@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Blogi', href: '/blogi' },
+    { label: 'Vartija vai järjestyksenvalvoja' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blogi", "item": "https://vartijaksi.com/blogi" },
+            { "@type": "ListItem", "position": 3, "name": "Vartija vai järjestyksenvalvoja", "item": "https://vartijaksi.com/blogi/vartija-vai-jarjestyksenvalvoja" }
+        ]
+    },
+    {
+        "@type": "Article",
+        "@id": "https://vartijaksi.com/blogi/vartija-vai-jarjestyksenvalvoja#article",
+        "headline": "Vartija vai järjestyksenvalvoja – kumpi sopii sinulle paremmin?",
+        "description": "Vertaile vartijan ja järjestyksenvalvojan työtä: työympäristöt, koulutukset, työajat ja ansiot. Löydä itsellesi sopivampi vaihtoehto.",
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-01-01",
+        "author": {"@id": "https://vartijaksi.com/#organization"},
+        "publisher": {"@id": "https://vartijaksi.com/#organization"},
+        "inLanguage": "fi"
+    }
+];
+---
+
+<BaseLayout
+    title="Vartija vai järjestyksenvalvoja – kumpi sopii sinulle? | Vartijaksi.com"
+    description="Vertaile vartijan ja järjestyksenvalvojan työtä: työympäristöt, koulutukset, työajat ja ansiot. Löydä itsellesi sopivampi vaihtoehto turvallisuusalalla."
+    canonical="https://vartijaksi.com/blogi/vartija-vai-jarjestyksenvalvoja"
+    type="article"
+    publishedTime="2026-01-01"
+    modifiedTime="2026-01-01"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <article class="prose prose-slate dark:prose-invert prose-lg max-w-none">
+            <header class="mb-8 md:mb-12 not-prose">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-600 dark:text-purple-400">
+                        Vertailu
+                    </span>
+                    <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
+                        1.1.2026
+                    </time>
+                </div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent leading-tight">
+                    Vartija vai järjestyksenvalvoja – kumpi sopii sinulle paremmin?
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                    Turvallisuusalaa harkitseva pohtii usein, kannattaako kouluttautua vartijaksi vai järjestyksenvalvojaksi. Molemmat tehtävät liittyvät järjestyksen ja turvallisuuden ylläpitämiseen, mutta työnkuvissa on selkeitä eroja.
+                </p>
+            </header>
+
+            <p>
+                Tässä artikkelissa vertailemme vartijan ja järjestyksenvalvojan työtä, jotta löydät itsellesi sopivamman vaihtoehdon.
+            </p>
+
+            <h2>Mitä vartija tekee?</h2>
+
+            <p>Vartija työskentelee tyypillisesti:</p>
+
+            <ul>
+                <li>yritys- ja toimistokohteissa</li>
+                <li>kauppakeskuksissa</li>
+                <li>teollisuusalueilla</li>
+                <li>valvomoissa ja aulapalveluissa</li>
+            </ul>
+
+            <p>Vartijan työ on usein pitkäkestoista kohdekohtaista työtä, jossa korostuvat:</p>
+
+            <ul>
+                <li>ennaltaehkäisy</li>
+                <li>asiakaspalvelu</li>
+                <li>raportointi</li>
+                <li>turvallisuusriskien hallinta</li>
+            </ul>
+
+            <h2>Mitä järjestyksenvalvoja tekee?</h2>
+
+            <p>Järjestyksenvalvoja toimii useimmiten:</p>
+
+            <ul>
+                <li>ravintoloissa</li>
+                <li>tapahtumissa</li>
+                <li>festivaaleilla</li>
+                <li>yleisötilaisuuksissa</li>
+            </ul>
+
+            <p>Järjestyksenvalvojan työ on usein:</p>
+
+            <ul>
+                <li>lyhytkestoista ja keikkaluonteista</li>
+                <li>ilta- ja yötyöpainotteista</li>
+                <li>nopeatempoista</li>
+            </ul>
+
+            <p>Työssä korostuvat tilanteiden hallinta ja yleisen järjestyksen ylläpito.</p>
+
+            <h2>Erot koulutuksessa</h2>
+
+            <p>Vartijan ja järjestyksenvalvojan koulutukset ovat erillisiä:</p>
+
+            <ul>
+                <li>vartijaksi vaaditaan vartijakoulutus</li>
+                <li>järjestyksenvalvojaksi vaaditaan JV-koulutus</li>
+            </ul>
+
+            <p>Moni suorittaa uransa aikana molemmat, mikä lisää työmahdollisuuksia.</p>
+
+            <h2>Työajat ja ansiot</h2>
+
+            <div class="not-prose my-6 grid sm:grid-cols-2 gap-4">
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                    <h3 class="font-bold mb-3 text-primary">Vartija</h3>
+                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                        <li>Säännöllisemmät vuorot</li>
+                        <li>Pidemmät työjaksot</li>
+                        <li>Usein vakituisempi työsuhde</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                    <h3 class="font-bold mb-3 text-purple-600 dark:text-purple-400">Järjestyksenvalvoja</h3>
+                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                        <li>Epäsäännöllisemmät työajat</li>
+                        <li>Keikkaluonteisuus</li>
+                        <li>Paljon ilta- ja viikonlopputyötä</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Palkka muodostuu molemmissa tehtävissä peruspalkasta ja erilaisista lisistä.</p>
+
+            <h2>Kumpi sopii sinulle?</h2>
+
+            <div class="not-prose my-6 grid sm:grid-cols-2 gap-4">
+                <div class="bg-primary/5 dark:bg-primary/10 rounded-xl p-5 border border-primary/20">
+                    <h3 class="font-bold mb-3">Valitse vartija, jos:</h3>
+                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                        <li>arvostat vakautta ja säännöllisiä työvuoroja</li>
+                        <li>pidät rauhallisemmasta työympäristöstä</li>
+                        <li>haluat rakentaa pitkäjänteistä uraa</li>
+                    </ul>
+                </div>
+                <div class="bg-purple-500/5 dark:bg-purple-500/10 rounded-xl p-5 border border-purple-500/20">
+                    <h3 class="font-bold mb-3">Valitse järjestyksenvalvoja, jos:</h3>
+                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                        <li>nautit nopeatempoisista tilanteista</li>
+                        <li>haluat tehdä keikkatyötä</li>
+                        <li>pidät tapahtuma- ja ravintolaympäristöistä</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Yhteenveto</h2>
+
+            <p>
+                Vartija ja järjestyksenvalvoja eivät ole parempi–huonompi -asetelmassa, vaan ne sopivat erilaisille ihmisille ja elämäntilanteille. Molemmat tarjoavat mahdollisuuden työskennellä turvallisuusalalla ja kartuttaa arvokasta kokemusta.
+            </p>
+
+            <div class="not-prose my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">Tutustu myös:</p>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="/vartijakoulutus" class="text-primary font-semibold hover:underline">Vartijakoulutus – vaatimukset ja eteneminen</a>
+                    </li>
+                    <li>
+                        <a href="/tyo-ja-palkka" class="text-primary font-semibold hover:underline">Työ ja palkka vartiointialalla</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+            <h2 class="text-lg font-bold mb-4">Lue myös</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="/blogi/tyollistyminen-koulutuksen-jalkeen" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                    <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Työllistyminen koulutuksen jälkeen</h3>
+                    <p class="text-sm text-slate-600 dark:text-text-dim">Kuinka nopeasti pääset töihin?</p>
+                </a>
+                <a href="/vartijakoulutus" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                    <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Vartijakoulutus</h3>
+                    <p class="text-sm text-slate-600 dark:text-text-dim">Kaikki koulutuksesta</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</BaseLayout>

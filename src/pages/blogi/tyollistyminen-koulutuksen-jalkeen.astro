@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Blogi', href: '/blogi' },
+    { label: 'Työllistyminen koulutuksen jälkeen' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blogi", "item": "https://vartijaksi.com/blogi" },
+            { "@type": "ListItem", "position": 3, "name": "Työllistyminen koulutuksen jälkeen", "item": "https://vartijaksi.com/blogi/tyollistyminen-koulutuksen-jalkeen" }
+        ]
+    },
+    {
+        "@type": "Article",
+        "@id": "https://vartijaksi.com/blogi/tyollistyminen-koulutuksen-jalkeen#article",
+        "headline": "Kuinka nopeasti vartijaksi voi työllistyä koulutuksen jälkeen?",
+        "description": "Vartiointiala tarjoaa nopean väylän työelämään. Lue, miten nopeasti koulutuksen jälkeen voi päästä töihin ja mitkä tekijät vaikuttavat työllistymiseen.",
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-01-01",
+        "author": {"@id": "https://vartijaksi.com/#organization"},
+        "publisher": {"@id": "https://vartijaksi.com/#organization"},
+        "inLanguage": "fi"
+    }
+];
+---
+
+<BaseLayout
+    title="Kuinka nopeasti vartijaksi voi työllistyä koulutuksen jälkeen? | Vartijaksi.com"
+    description="Vartiointiala tarjoaa nopean väylän työelämään. Lue, miten nopeasti koulutuksen jälkeen voi päästä töihin ja millaisiin tehtäviin vastavalmistunut pääsee."
+    canonical="https://vartijaksi.com/blogi/tyollistyminen-koulutuksen-jalkeen"
+    type="article"
+    publishedTime="2026-01-01"
+    modifiedTime="2026-01-01"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <article class="prose prose-slate dark:prose-invert prose-lg max-w-none">
+            <header class="mb-8 md:mb-12 not-prose">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400">
+                        Työllistyminen
+                    </span>
+                    <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
+                        1.1.2026
+                    </time>
+                </div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent leading-tight">
+                    Kuinka nopeasti vartijaksi voi työllistyä koulutuksen jälkeen?
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                    Yksi yleisimmistä kysymyksistä vartijakoulutusta harkitsevilta on: kuinka nopeasti koulutuksen jälkeen voi päästä töihin?
+                </p>
+            </header>
+
+            <p>
+                Vartiointiala on Suomessa jatkuvassa työvoimatarpeessa, ja monelle ala tarjoaa nopean väylän työelämään. Tässä artikkelissa käymme läpi, miten nopeasti vartijaksi voi työllistyä, mitkä tekijät vaikuttavat asiaan ja millaisiin tehtäviin vastavalmistunut yleensä pääsee.
+            </p>
+
+            <h2>Työllistyykö vartijaksi nopeasti?</h2>
+
+            <p>
+                <strong>Lyhyt vastaus: usein kyllä.</strong> Monet vartijat työllistyvät jo heti koulutuksen jälkeen, ja joissain tapauksissa työsopimus voi olla sovittuna valmiiksi ennen koulutuksen päättymistä.
+            </p>
+
+            <p>Vartiointialalla on jatkuva tarve uusille työntekijöille erityisesti:</p>
+
+            <ul>
+                <li>suurissa kaupungeissa</li>
+                <li>vuorotyöhön valmiille</li>
+                <li>osa-aikaisiin ja keikkaluonteisiin tehtäviin</li>
+            </ul>
+
+            <h2>Tyypillinen aikajana: koulutuksesta töihin</h2>
+
+            <p>Vartijaksi työllistyminen etenee yleensä seuraavasti:</p>
+
+            <ol>
+                <li><strong>Vartijakoulutuksen suorittaminen</strong> – Koulutuksen kesto vaihtelee koulutusmuodosta riippuen.</li>
+                <li><strong>Hyväksynnät ja kortit</strong> – Koulutuksen jälkeen haetaan tarvittavat hyväksynnät, jotka ovat edellytys työn aloittamiselle.</li>
+                <li><strong>Työhön sijoittuminen</strong> – Moni aloittaa keikkatyössä, osa-aikaisena tai määräaikaisessa työsuhteessa.</li>
+            </ol>
+
+            <p>
+                Koko prosessi koulutuksen aloituksesta ensimmäiseen työvuoroon voi parhaimmillaan olla vain muutamia viikkoja.
+            </p>
+
+            <h2>Mitkä tekijät vaikuttavat työllistymisen nopeuteen?</h2>
+
+            <h3>Paikkakunta</h3>
+
+            <p>
+                Suurilla paikkakunnilla vartijoille on enemmän tarjontaa ja kohteita. Pienemmillä paikkakunnilla työpaikkoja on vähemmän, mutta kilpailu voi olla vähäisempää.
+            </p>
+
+            <h3>Työaikajoustot</h3>
+
+            <p>
+                Valmius tehdä ilta-, yö- ja viikonlopputyötä nopeuttaa työllistymistä merkittävästi.
+            </p>
+
+            <h3>Aiempi kokemus</h3>
+
+            <p>
+                Vaikka aiempaa turvallisuusalan kokemusta ei vaadita, esimerkiksi asiakaspalvelu- tai järjestyksenvalvojakokemus voi olla etu.
+            </p>
+
+            <h2>Millaisiin tehtäviin vastavalmistunut vartija pääsee?</h2>
+
+            <p>Useimmiten ensimmäiset tehtävät ovat:</p>
+
+            <ul>
+                <li>kauppakeskus- tai myymälävartiointia</li>
+                <li>aulapalvelu- ja valvomotyötä</li>
+                <li>piirivartiointia</li>
+                <li>tapahtumien valvontaa</li>
+            </ul>
+
+            <p>Kokemuksen karttuessa on mahdollista siirtyä vaativampiin kohteisiin ja erikoistehtäviin.</p>
+
+            <h2>Yhteenveto</h2>
+
+            <p>
+                Vartijaksi voi työllistyä suhteellisen nopeasti koulutuksen jälkeen, erityisesti jos on valmis joustaviin työaikoihin. Ala tarjoaa hyvän mahdollisuuden päästä kiinni työelämään ja rakentaa uraa turvallisuusalalla.
+            </p>
+
+            <div class="not-prose my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">Lue myös:</p>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="/vartijakoulutus" class="text-primary font-semibold hover:underline">Vartijakoulutus – miten pääset alalle</a>
+                    </li>
+                    <li>
+                        <a href="/tyo-ja-palkka" class="text-primary font-semibold hover:underline">Vartijan työ ja palkka</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+            <h2 class="text-lg font-bold mb-4">Lue myös</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="/tyopaikat" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                    <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Avoimet työpaikat</h3>
+                    <p class="text-sm text-slate-600 dark:text-text-dim">Löydä vartijan työpaikka</p>
+                </a>
+                <a href="/valiaikainen-vartija" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                    <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Väliaikainen vartija</h3>
+                    <p class="text-sm text-slate-600 dark:text-text-dim">Nopein tapa päästä töihin</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</BaseLayout>
