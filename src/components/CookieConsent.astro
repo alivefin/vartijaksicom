@@ -1,0 +1,147 @@
+---
+// Cookie consent banner for Google Consent Mode v2
+---
+
+<!-- Floating cookie settings button -->
+<button
+    id="cookie-settings-btn"
+    type="button"
+    class="fixed bottom-4 left-4 z-40 p-3 bg-white dark:bg-surface-dark rounded-full shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-200 opacity-0 invisible"
+    aria-label="Muuta evästeasetuksia"
+    title="Evästeasetukset"
+>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="text-slate-600 dark:text-text-dim"
+        aria-hidden="true"
+    >
+        <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+        <path d="M8.5 8.5v.01" />
+        <path d="M16 15.5v.01" />
+        <path d="M12 12v.01" />
+        <path d="M11 17v.01" />
+        <path d="M7 14v.01" />
+    </svg>
+</button>
+
+<div
+    id="cookie-consent"
+    class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300 ease-out"
+    role="dialog"
+    aria-labelledby="cookie-consent-title"
+    aria-describedby="cookie-consent-description"
+>
+    <div class="bg-white dark:bg-surface-dark border-t border-slate-200 dark:border-slate-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="flex-1">
+                    <h2 id="cookie-consent-title" class="sr-only">Evästeasetukset</h2>
+                    <p id="cookie-consent-description" class="text-sm text-slate-600 dark:text-text-dim">
+                        Käytämme evästeitä parantaaksemme sivuston käyttökokemusta ja analysoidaksemme liikennettä.
+                        <a href="/tietosuoja" class="text-primary hover:underline">Lue lisää</a>
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 flex-shrink-0">
+                    <button
+                        id="cookie-reject"
+                        type="button"
+                        class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-text-dim hover:text-slate-900 dark:hover:text-white transition-colors"
+                    >
+                        Hylkää
+                    </button>
+                    <button
+                        id="cookie-accept"
+                        type="button"
+                        class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors"
+                    >
+                        Hyväksy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+(function() {
+    const CONSENT_KEY = 'cookie_consent';
+    const banner = document.getElementById('cookie-consent');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const rejectBtn = document.getElementById('cookie-reject');
+    const settingsBtn = document.getElementById('cookie-settings-btn');
+
+    // Check if consent already given
+    const storedConsent = localStorage.getItem(CONSENT_KEY);
+
+    if (storedConsent === null) {
+        // Show banner after a short delay for smooth animation
+        setTimeout(function() {
+            showBanner();
+        }, 500);
+    } else {
+        // Consent already given, show the settings button
+        showSettingsBtn();
+        if (storedConsent === 'granted') {
+            updateConsent('granted');
+        }
+    }
+
+    function updateConsent(status) {
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'ad_storage': status,
+                'ad_user_data': status,
+                'ad_personalization': status,
+                'analytics_storage': status
+            });
+        }
+    }
+
+    function showBanner() {
+        hideSettingsBtn();
+        banner.classList.remove('translate-y-full');
+    }
+
+    function hideBanner() {
+        banner.classList.add('translate-y-full');
+        // Show settings button after banner animation completes
+        setTimeout(function() {
+            showSettingsBtn();
+        }, 300);
+    }
+
+    function showSettingsBtn() {
+        settingsBtn.classList.remove('opacity-0', 'invisible');
+        settingsBtn.classList.add('opacity-100', 'visible');
+    }
+
+    function hideSettingsBtn() {
+        settingsBtn.classList.remove('opacity-100', 'visible');
+        settingsBtn.classList.add('opacity-0', 'invisible');
+    }
+
+    settingsBtn.addEventListener('click', function() {
+        showBanner();
+    });
+
+    acceptBtn.addEventListener('click', function() {
+        localStorage.setItem(CONSENT_KEY, 'granted');
+        updateConsent('granted');
+        hideBanner();
+    });
+
+    rejectBtn.addEventListener('click', function() {
+        localStorage.setItem(CONSENT_KEY, 'denied');
+        updateConsent('denied');
+        hideBanner();
+    });
+})();
+</script>

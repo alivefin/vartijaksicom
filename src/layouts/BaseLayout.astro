@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import SkipLink from '../components/SkipLink.astro';
 import SEO from '../components/SEO.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -23,11 +24,37 @@ const currentPath = Astro.url.pathname;
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3XS7T34HP"></script>
+    <!-- Google Consent Mode v2 - must be before gtag -->
     <script is:inline>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+
+        // Set default consent to denied
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500
+        });
+
+        // Check for stored consent and apply immediately
+        (function() {
+            var consent = localStorage.getItem('cookie_consent');
+            if (consent === 'granted') {
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted',
+                    'analytics_storage': 'granted'
+                });
+            }
+        })();
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3XS7T34HP"></script>
+    <script is:inline>
         gtag('js', new Date());
         gtag('config', 'G-W3XS7T34HP');
     </script>
@@ -74,5 +101,6 @@ const currentPath = Astro.url.pathname;
     </main>
 
     <Footer />
+    <CookieConsent />
 </body>
 </html>
