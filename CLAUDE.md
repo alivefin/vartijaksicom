@@ -4,61 +4,82 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static HTML/CSS design mockup project for "Vartijaksi" (vartijaksi.com) - a Finnish-language website about security guard careers, training, and employment in Finland. The purpose of this project is to finally build a full WordPress-site with vartijaksicom-theme.
+This is an Astro-based static site for "Vartijaksi" (vartijaksi.com) - a Finnish-language website about security guard careers, training, and employment in Finland.
 
 ## Technology Stack
 
-- **Static HTML5** with embedded CSS and JavaScript
-- **Tailwind CSS** via CDN (`cdn.tailwindcss.com` with forms and container-queries plugins)
+- **Astro** (v5.x) - Static site generator
+- **Tailwind CSS** via `@astrojs/tailwind` integration (npm package, tree-shaking)
 - **Google Fonts**: Inter (weights: 400, 500, 600, 700, 900)
-- **Icons**: Lucide Icons
-- **No build system** - files are self-contained and viewable directly in browser
+- **Icons**: Inline SVG (Lucide-style)
+- **Sitemap**: Auto-generated via `@astrojs/sitemap`
+- **Output**: Static HTML, deployable anywhere
 
 ## Project Structure
 
 ```
-/                           # Production site (root level)
-├── index.html              # Homepage
-├── vartijakoulutus.html    # Training details page
-├── css/
-│   └── styles.css          # Shared stylesheet
-├── js/
-│   └── main.js             # JavaScript (theme, mobile menu, TOC)
-├── robots.txt              # SEO crawl directives
-├── sitemap.xml             # XML sitemap
-└── design/                 # Original design mockups (reference only)
-    └── stitch_vartijaksi_koulutus_ja_ty/
-        ├── vartijaksi_–_etusivu.../code.html
-        └── vartijakoulutus_.../code.html
+/
+├── src/
+│   ├── components/
+│   │   ├── Header.astro          # Nav with theme toggle + mobile trigger
+│   │   ├── Footer.astro          # 4-column footer
+│   │   ├── MobileMenu.astro      # Mobile nav with focus trap
+│   │   ├── ThemeToggle.astro     # Dark/light mode switcher
+│   │   ├── SkipLink.astro        # Accessibility skip link
+│   │   ├── SEO.astro             # Meta tags + JSON-LD
+│   │   ├── Breadcrumbs.astro     # Breadcrumb navigation
+│   │   ├── FAQ.astro             # Accordion (details/summary)
+│   │   └── TOC.astro             # Table of contents with scroll spy
+│   ├── layouts/
+│   │   ├── BaseLayout.astro      # HTML wrapper, head, header, footer
+│   │   └── ArticleLayout.astro   # Extends Base, adds TOC sidebar
+│   ├── pages/
+│   │   ├── index.astro           # Homepage → /
+│   │   └── vartijakoulutus.astro # Training page → /vartijakoulutus
+│   └── styles/
+│       └── global.css            # Tailwind directives + custom CSS
+├── public/
+│   └── robots.txt                # SEO crawl directives
+├── legacy/                       # Old static HTML (reference only)
+├── astro.config.mjs              # Astro configuration
+├── tailwind.config.mjs           # Tailwind configuration
+└── package.json
 ```
 
-## Running the Project
+## Commands
 
-Open `index.html` or `vartijakoulutus.html` directly in a web browser. No server or build process required.
+```bash
+npm install          # Install dependencies
+npm run dev          # Start dev server at localhost:4321
+npm run build        # Build to /dist
+npm run preview      # Preview production build
+```
 
 ## Design System
 
 ### Tailwind Configuration
 
+Located in `tailwind.config.mjs`:
+
 ```javascript
 colors: {
   "primary": "#136dec",
-  "background-light": "#f6f7f8",
-  "background-dark": "#101822" / "#111418",
-  "surface-dark": "#1e293b",
+  "primary-hover": "#0f5bbd",
+  "background-dark": "#111418",
+  "surface-dark": "#1c2027",
+  "surface-dark-lighter": "#282f39",
   "text-dim": "#9da8b9"
 }
 ```
 
 ### Key Patterns
 
-- Light/dark mode toggle (respects system preference, stores in localStorage)
-- Language is Finnish (`lang="fi"`)
+- Dark mode via `class` strategy (stored in localStorage)
+- Language: Finnish (`lang="fi"`)
 - Responsive breakpoints: sm (640px), md (768px), lg (1024px)
 - Sticky navigation with backdrop blur
 - Card-based layouts with hover transforms
 - FAQ sections use native `<details>` elements
-- Custom scrollbar styling for dark theme
 
 ## Accessibility (WCAG 2.1 AA)
 
@@ -77,4 +98,4 @@ colors: {
 - Semantic heading hierarchy (single h1 per page)
 - Descriptive link text (no "click here")
 - robots.txt allows all AI crawlers (GPTBot, Claude-Web, PerplexityBot, etc.)
-- XML sitemap at `/sitemap.xml`
+- Sitemap auto-generated at `/sitemap-index.xml`

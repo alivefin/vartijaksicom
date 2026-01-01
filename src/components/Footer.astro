@@ -1,0 +1,71 @@
+---
+// Footer component with 4-column layout
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-slate-200 dark:border-surface-dark-lighter bg-white dark:bg-background-dark">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+            <div class="col-span-2 md:col-span-1">
+                <a href="/" class="flex items-center gap-2 mb-4" aria-label="Vartijaksi.com etusivu">
+                    <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                    </svg>
+                    <span class="font-bold text-lg">Vartijaksi.com</span>
+                </a>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    Riippumaton tietolähde turvallisuusalan koulutuksesta ja työelämästä Suomessa.
+                </p>
+            </div>
+            <div>
+                <h3 class="mb-4 font-bold">Sivukartta</h3>
+                <nav aria-label="Alatunnisteen navigaatio">
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="/" class="hover:text-primary transition-colors">Etusivu</a></li>
+                        <li><a href="/vartijakoulutus" class="hover:text-primary transition-colors">Koulutus</a></li>
+                        <li><a href="/tyo-ja-palkka" class="hover:text-primary transition-colors">Työ &amp; Palkka</a></li>
+                        <li><a href="/tyopaikat" class="hover:text-primary transition-colors">Työpaikat</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Blogi</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <h3 class="mb-4 font-bold">Suosittuja aiheita</h3>
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <li><a href="/vartijakoulutus" class="hover:text-primary transition-colors">Vartijakortti</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Järjestyksenvalvoja</a></li>
+                    <li><a href="/tyo-ja-palkka#palkkataulukko" class="hover:text-primary transition-colors">Palkkataulukot</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors">Turvatarkastaja</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="mb-4 font-bold">Ota yhteyttä</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">info@vartijaksi.com</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-400 hover:text-primary transition-colors" aria-label="Facebook">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-primary transition-colors" aria-label="Instagram">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-primary transition-colors" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect width="4" height="12" x="2" y="9"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-10 sm:mt-12 border-t border-slate-200 dark:border-surface-dark-lighter pt-8 text-center text-sm text-slate-500">
+            <p>&copy; {currentYear} Vartijaksi.com. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TOC from '../components/TOC.astro';
+
+interface BreadcrumbItem {
+    label: string;
+    href?: string;
+}
+
+interface TocItem {
+    id: string;
+    label: string;
+}
+
+interface Props {
+    title: string;
+    description: string;
+    canonical: string;
+    publishedTime?: string;
+    modifiedTime?: string;
+    jsonLd?: object[];
+    breadcrumbs: BreadcrumbItem[];
+    tocItems: TocItem[];
+}
+
+const { title, description, canonical, publishedTime, modifiedTime, jsonLd, breadcrumbs, tocItems } = Astro.props;
+---
+
+<BaseLayout
+    title={title}
+    description={description}
+    canonical={canonical}
+    type="article"
+    publishedTime={publishedTime}
+    modifiedTime={modifiedTime}
+    jsonLd={jsonLd}
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="flex gap-12">
+            <!-- TOC Sidebar -->
+            <TOC items={tocItems} />
+
+            <!-- Main Content -->
+            <article class="flex-1 min-w-0">
+                <slot />
+            </article>
+        </div>
+    </div>
+</BaseLayout>

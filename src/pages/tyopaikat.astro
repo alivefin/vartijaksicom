@@ -1,0 +1,568 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TOC from '../components/TOC.astro';
+import FAQ from '../components/FAQ.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Tietoa alasta', href: '#' },
+    { label: 'Työpaikat' }
+];
+
+const tocItems = [
+    { id: 'intro', label: 'Johdanto' },
+    { id: 'tehtavat', label: 'Millaisia työpaikkoja?' },
+    { id: 'sijainnit', label: 'Missä työpaikkoja on?' },
+    { id: 'tyonantajat', label: 'Suurimmat työnantajat' },
+    { id: 'vaatimukset', label: 'Mitä vaaditaan?' },
+    { id: 'hakeminen', label: 'Näin haet töihin' },
+    { id: 'aloittelijat', label: 'Ilman kokemusta' },
+    { id: 'faq', label: 'Usein kysytyt kysymykset' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "WebSite",
+        "@id": "https://vartijaksi.com/#website",
+        "url": "https://vartijaksi.com",
+        "name": "Vartijaksi.com",
+        "publisher": {"@id": "https://vartijaksi.com/#organization"}
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Tietoa alasta", "item": "https://vartijaksi.com/tietoa-alasta" },
+            { "@type": "ListItem", "position": 3, "name": "Työpaikat", "item": "https://vartijaksi.com/tyopaikat" }
+        ]
+    },
+    {
+        "@type": "Article",
+        "@id": "https://vartijaksi.com/tyopaikat#article",
+        "isPartOf": {"@id": "https://vartijaksi.com/tyopaikat"},
+        "headline": "Vartijan työpaikat Suomessa - Avoimet paikat ja työnhaku",
+        "description": "Kattava opas vartijan työpaikkoihin Suomessa. Löydä avoimet työpaikat, tutustu työnantajiin ja opi miten haet vartijan töihin.",
+        "datePublished": "2024-01-15",
+        "dateModified": "2026-01-01",
+        "author": {"@id": "https://vartijaksi.com/#organization"},
+        "publisher": {"@id": "https://vartijaksi.com/#organization"},
+        "inLanguage": "fi"
+    },
+    {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Onko vartijan työpaikkoja helppo saada?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Useimmilla alueilla kyllä. Alan vaihtuvuus ja kasvava tarve takaavat jatkuvan kysynnän. Erityisesti pääkaupunkiseudulla ja suurissa kaupungeissa työpaikkoja on runsaasti."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Voiko vartija tehdä osa-aikatyötä?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kyllä. Osa-aikatyö ja keikkatyö ovat yleisiä vartiointialalla. Monet työnantajat tarjoavat joustavia työsuhteita opiskelijoille ja muuta työtä tekeville."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Tarvitaanko vartijan työpaikkaan ajokortti?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ei aina. Kiinteissä kohteissa ajokortti ei ole välttämätön. Piirivartioinnissa ja liikkuvassa työssä ajokortti on kuitenkin usein pakollinen."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Voiko vartijaksi päästä ilman kokemusta?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kyllä. Monet työnantajat kouluttavat uudet työntekijät itse. Erityisesti kesätyöt, tapahtumat ja väliaikaisen vartijan tehtävät sopivat aloittelijoille."
+                }
+            }
+        ]
+    }
+];
+
+const faqItems = [
+    {
+        question: "Onko vartijan työpaikkoja helppo saada?",
+        answer: "Useimmilla alueilla kyllä. Alan vaihtuvuus ja kasvava tarve takaavat jatkuvan kysynnän. Erityisesti pääkaupunkiseudulla ja suurissa kaupungeissa työpaikkoja on runsaasti tarjolla ympäri vuoden."
+    },
+    {
+        question: "Voiko vartija tehdä osa-aikatyötä?",
+        answer: "Kyllä. Osa-aikatyö ja keikkatyö ovat yleisiä vartiointialalla. Monet työnantajat tarjoavat joustavia työsuhteita opiskelijoille ja muuta työtä tekeville."
+    },
+    {
+        question: "Tarvitaanko vartijan työpaikkaan ajokortti?",
+        answer: "Ei aina. Kiinteissä kohteissa kuten kauppakeskuksissa ajokortti ei ole välttämätön. Piirivartioinnissa ja liikkuvassa työssä ajokortti on kuitenkin usein pakollinen vaatimus."
+    },
+    {
+        question: "Voiko vartijaksi päästä ilman kokemusta?",
+        answer: 'Kyllä. Monet työnantajat kouluttavat uudet työntekijät itse tai tukevat koulutuksen suorittamisessa. Erityisesti kesätyöt, tapahtumat ja <a href="/vartijakoulutus" class="text-primary hover:underline">väliaikaisen vartijan tehtävät</a> sopivat aloittelijoille.'
+    }
+];
+
+const jobTypes = [
+    { title: "Kauppakeskusvartija", description: "Asiakaspalvelua, hävikin ehkäisyä ja järjestyksenpitoa", icon: "store" },
+    { title: "Piirivartija", description: "Liikkuva vartiointi useissa kohteissa", icon: "car" },
+    { title: "Kiinteistövartija", description: "Toimistorakennusten ja asuinkiinteistöjen valvonta", icon: "building" },
+    { title: "Tapahtumavartija", description: "Festivaalit, konsertit ja urheilutapahtumat", icon: "ticket" },
+    { title: "Teollisuusvartija", description: "Tehtaat, logistiikkakeskukset ja varastot", icon: "factory" },
+    { title: "Julkinen sektori", description: "Sairaalat, oppilaitokset ja virastot", icon: "hospital" }
+];
+
+const employers = [
+    { name: "Securitas", description: "Pohjoismaiden suurin turvallisuusalan yritys", size: "Suuri" },
+    { name: "Avarn Security", description: "Kansainvälinen toimija, ent. G4S", size: "Suuri" },
+    { name: "Posti Palvelut", description: "Postin turvallisuuspalvelut", size: "Suuri" },
+    { name: "Prevent 360", description: "Suomalainen turvallisuusalan yritys", size: "Keskisuuri" },
+    { name: "Turvatiimi", description: "Kotimainen vartiointiliike", size: "Keskisuuri" },
+    { name: "Paikalliset toimijat", description: "Alueelliset vartiointiliikkeet", size: "Pieni" }
+];
+
+const requirements = [
+    { text: "Hyväksytty vartijakoulutus (40h tai 120h)", required: true },
+    { text: "Voimassa oleva vartijakortti", required: true },
+    { text: "Nuhteeton tausta (turvallisuusselvitys)", required: true },
+    { text: "Riittävä suomen kielen taito", required: true },
+    { text: "Valmius vuorotyöhön", required: true },
+    { text: "Ajokortti (piirivartiointi)", required: false },
+    { text: "Voimankäyttökoulutus (tietyt tehtävät)", required: false },
+    { text: "Hyvä fyysinen kunto", required: false }
+];
+
+const applicationSteps = [
+    { step: 1, title: "Etsi avoin työpaikka", description: "Selaa ilmoituksia rekrytointisivuilta ja yritysten sivuilta" },
+    { step: 2, title: "Lähetä hakemus ja CV", description: "Korosta motivaatiotasi ja sopivia ominaisuuksiasi" },
+    { step: 3, title: "Työhaastattelu", description: "Valmistaudu kertomaan itsestäsi ja kysymään työstä" },
+    { step: 4, title: "Taustojen tarkistus", description: "Työnantaja tekee turvallisuusselvityksen" },
+    { step: 5, title: "Työsopimus ja perehdytys", description: "Allekirjoita sopimus ja aloita perehdytysjakso" }
+];
+
+const cities = [
+    { name: "Helsinki", jobs: "Runsaasti", link: "#" },
+    { name: "Tampere", jobs: "Paljon", link: "#" },
+    { name: "Turku", jobs: "Paljon", link: "#" },
+    { name: "Oulu", jobs: "Kohtalaisesti", link: "#" }
+];
+---
+
+<BaseLayout
+    title="Vartijan työpaikat 2026 - Avoimet paikat ja työnhaku | Vartijaksi.com"
+    description="Löydä vartijan työpaikkoja Suomessa. Kattava opas työnhakuun: avoimet paikat, suurimmat työnantajat, vaatimukset ja hakuvinkit. Aloita urasi turvallisuusalalla."
+    canonical="https://vartijaksi.com/tyopaikat"
+    type="article"
+    publishedTime="2024-01-15"
+    modifiedTime="2026-01-01"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <!-- TOC Sidebar -->
+            <TOC items={tocItems} />
+
+            <!-- Main Content -->
+            <article class="flex-1 min-w-0">
+                <!-- Article Header -->
+                <header class="mb-8 md:mb-12">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-amber-100 dark:bg-amber-900/30 px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-400 mb-4">
+                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        Päivitetty 1.1.2026
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-amber-600 dark:from-white dark:via-primary dark:to-amber-400 bg-clip-text text-transparent">
+                        Vartijan työpaikat Suomessa
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                        Kattava opas vartijan työpaikkoihin. Löydä avoimet paikat, tutustu työnantajiin ja opi miten haet vartijan töihin.
+                    </p>
+                </header>
+
+                <!-- Intro Section -->
+                <section id="intro" class="mb-10 md:mb-14 scroll-mt-24">
+                    <div class="prose prose-slate dark:prose-invert prose-lg max-w-none">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed mb-4">
+                            Vartijoille on Suomessa jatkuvasti kysyntää. Työpaikkoja on tarjolla sekä suurissa turvallisuusalan yrityksissä että pienemmissä paikallisissa toimijoissa. Työtä löytyy eri elämäntilanteisiin: keikkaluontoisesti, osa-aikaisesti, kesätöinä tai vakituisena.
+                        </p>
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Tällä sivulla kerromme mistä vartijan työpaikkoja löytyy, millaisiin tehtäviin vartijoita haetaan, miten työnhaku käytännössä etenee ja mitä työnantajat yleensä edellyttävät.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 9v4M12 17h.01"/>
+                                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            </svg>
+                            <div class="text-sm text-amber-800 dark:text-amber-200">
+                                <strong>Huom:</strong> Työpaikkatiedot perustuvat julkisiin ilmoituksiin ja yritysten rekrytointisivuihin. Tarkista aina ajantasaiset tiedot suoraan työnantajalta.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Job Types Section -->
+                <section id="tehtavat" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Millaisia vartijan työpaikkoja on tarjolla?</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Vartijan työpaikat eroavat toisistaan merkittävästi kohteen ja tehtävän mukaan. Sama koulutus voi johtaa hyvin erilaisiin työtehtäviin. Monissa tehtävissä painottuu asiakaspalvelu, kun taas toisissa korostuvat valvonta ja hälytystehtävät.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {jobTypes.map((job) => (
+                            <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center mb-3">
+                                    {job.icon === "store" && (
+                                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                                            <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                                            <path d="M2 7h20"/>
+                                            <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/>
+                                        </svg>
+                                    )}
+                                    {job.icon === "car" && (
+                                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-2-5H8L6 10l-2.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2"/>
+                                            <circle cx="7" cy="17" r="2"/>
+                                            <circle cx="17" cy="17" r="2"/>
+                                        </svg>
+                                    )}
+                                    {job.icon === "building" && (
+                                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                                            <path d="M9 22v-4h6v4"/>
+                                            <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/>
+                                        </svg>
+                                    )}
+                                    {job.icon === "ticket" && (
+                                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                                            <path d="M13 5v2"/>
+                                            <path d="M13 17v2"/>
+                                            <path d="M13 11v2"/>
+                                        </svg>
+                                    )}
+                                    {job.icon === "factory" && (
+                                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                                            <path d="M17 18h1"/>
+                                            <path d="M12 18h1"/>
+                                            <path d="M7 18h1"/>
+                                        </svg>
+                                    )}
+                                    {job.icon === "hospital" && (
+                                        <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M12 6v4"/>
+                                            <path d="M14 14h-4"/>
+                                            <path d="M14 18h-4"/>
+                                            <path d="M14 8h-4"/>
+                                            <path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/>
+                                            <path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/>
+                                        </svg>
+                                    )}
+                                </div>
+                                <h3 class="font-bold mb-1">{job.title}</h3>
+                                <p class="text-sm text-slate-600 dark:text-text-dim">{job.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Locations Section -->
+                <section id="sijainnit" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Missä vartijan työpaikkoja on eniten?</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Työpaikkojen määrä vaihtelee alueittain. Eniten avoimia paikkoja on suurissa kaupungeissa ja kasvukeskuksissa, joissa on paljon liiketiloja, tapahtumia ja ympärivuorokautista toimintaa.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        {cities.map((city) => (
+                            <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-bold mb-1">{city.name}</h3>
+                                <p class="text-sm text-slate-600 dark:text-text-dim">{city.jobs}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                        <h3 class="font-bold mb-3">Tyypillisesti työpaikkoja on runsaasti:</h3>
+                        <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Pääkaupunkiseudulla (Helsinki, Espoo, Vantaa)</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Suurissa kaupungeissa (Tampere, Turku, Oulu)</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Teollisuus- ja logistiikkakeskittymissä</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Employers Section -->
+                <section id="tyonantajat" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Suurimmat vartiointialan työnantajat</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Suomessa vartijoita työllistävät sekä kansainväliset että kotimaiset turvallisuusalan yritykset. Suurilla yrityksillä on usein jatkuva rekrytointi, ja ne tarjoavat myös koulutusta uusille työntekijöille.
+                        </p>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-surface-dark-lighter">
+                        <table class="min-w-full divide-y divide-slate-200 dark:divide-surface-dark-lighter">
+                            <thead class="bg-slate-50 dark:bg-surface-dark">
+                                <tr>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-text-dim">Työnantaja</th>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-text-dim">Kuvaus</th>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-text-dim hidden sm:table-cell">Koko</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-surface-dark divide-y divide-slate-200 dark:divide-surface-dark-lighter">
+                                {employers.map((employer) => (
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                        <td class="px-4 sm:px-6 py-4 font-medium">{employer.name}</td>
+                                        <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim text-sm">{employer.description}</td>
+                                        <td class="px-4 sm:px-6 py-4 hidden sm:table-cell">
+                                            <span class:list={[
+                                                "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
+                                                employer.size === "Suuri" ? "bg-primary/10 text-primary" :
+                                                employer.size === "Keskisuuri" ? "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400" :
+                                                "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                                            ]}>
+                                                {employer.size}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Requirements Section -->
+                <section id="vaatimukset" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Mitä vartijan työpaikkaan vaaditaan?</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Työnantajien vaatimukset vaihtelevat tehtävän mukaan. Alla on listattu yleiset ja tehtäväkohtaiset vaatimukset.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <h3 class="font-bold mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Pakolliset vaatimukset
+                            </h3>
+                            <ul class="space-y-2">
+                                {requirements.filter(r => r.required).map((req) => (
+                                    <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span>{req.text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <h3 class="font-bold mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-amber-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 8v8"/>
+                                    <path d="M8 12h8"/>
+                                </svg>
+                                Tehtäväkohtaiset vaatimukset
+                            </h3>
+                            <ul class="space-y-2">
+                                {requirements.filter(r => !r.required).map((req) => (
+                                    <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-text-dim">
+                                        <svg class="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                                        <span>{req.text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Application Process Section -->
+                <section id="hakeminen" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Näin haet vartijan työpaikkaa</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Vartijan työpaikan hakeminen on usein suoraviivaista. Monet työnantajat arvostavat hakijan asennetta ja motivaatiota jopa enemmän kuin pitkää työkokemusta.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        {applicationSteps.map((step) => (
+                            <div class="flex items-start gap-4 bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">
+                                    {step.step}
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">{step.title}</h3>
+                                    <p class="text-sm text-slate-600 dark:text-text-dim">{step.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Beginners Section -->
+                <section id="aloittelijat" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Työpaikat ilman aiempaa kokemusta</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Alalle on mahdollista päästä myös ilman aiempaa vartijan työkokemusta. Usein työnantaja tarjoaa tarvittavan koulutuksen tai tukee sen suorittamisessa.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold mb-2">Kesätyöt</h3>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">Hyvä tapa aloittaa alalla kesälomakaudella</p>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold mb-2">Tapahtumat</h3>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">Festivaalit ja konsertit tarjoavat keikkatöitä</p>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold mb-2">Väliaikainen vartija</h3>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">40h koulutuksella max 4kk työskentely</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-5">
+                        <p class="text-sm text-slate-600 dark:text-text-dim">
+                            <strong class="text-slate-900 dark:text-white">Vinkki:</strong> Monet suuret vartiointiliikkeet järjestävät ilmaisia koulutuksia, jos sitoudut työskentelemään heille. Tämä on erinomainen tapa päästä alalle ilman omia koulutuskustannuksia.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section id="faq" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-6">Usein kysytyt kysymykset</h2>
+                    <div class="space-y-3">
+                        {faqItems.map((item) => (
+                            <FAQ question={item.question} answer={item.answer} />
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Sources Section -->
+                <section class="mb-10 md:mb-14">
+                    <h2 class="text-lg font-bold mb-4">Lähteet</h2>
+                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <span>Alan rekrytointisivustot ja yritysten verkkosivut</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <a href="https://poliisi.fi/vartijaksi" target="_blank" rel="noopener" class="hover:text-primary transition-colors">
+                                Poliisihallitus – Vartijaksi
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <a href="https://www.finlex.fi/fi/laki/ajantasa/2015/20151085" target="_blank" rel="noopener" class="hover:text-primary transition-colors">
+                                Laki yksityisistä turvallisuuspalveluista (1085/2015) – Finlex
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Next Steps -->
+                <section class="grid sm:grid-cols-2 gap-4">
+                    <a href="/vartijakoulutus" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Vartijakoulutus</h3>
+                        <p class="text-xs text-slate-600 dark:text-text-dim">Näin hankit vartijakortin</p>
+                    </a>
+                    <a href="/tyo-ja-palkka" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                                    <path d="M12 18V6"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Työ & Palkka</h3>
+                        <p class="text-xs text-slate-600 dark:text-text-dim">Palkkataulukot ja työehdot</p>
+                    </a>
+                </section>
+            </article>
+        </div>
+    </div>
+</BaseLayout>

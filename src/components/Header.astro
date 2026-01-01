@@ -1,0 +1,81 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+    currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navItems = [
+    { href: '/', label: 'Etusivu' },
+    { href: '/vartijakoulutus', label: 'Koulutus' },
+    { href: '/tyo-ja-palkka', label: 'Työ & Palkka' },
+    { href: '/tyopaikat', label: 'Työpaikat' },
+    { href: '#', label: 'Blogi' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-slate-200 dark:border-surface-dark-lighter bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo & Brand -->
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-3 group" aria-label="Vartijaksi.com etusivu">
+                    <div class="p-1.5 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-colors">
+                        <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                        </svg>
+                    </div>
+                    <span class="text-lg font-bold tracking-tight">Vartijaksi.com</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-6" aria-label="Päänavigaatio">
+                    {navItems.map(item => (
+                        <a
+                            href={item.href}
+                            class:list={[
+                                "text-sm font-medium hover:text-primary transition-colors",
+                                currentPath === item.href && "font-semibold text-primary"
+                            ]}
+                            aria-current={currentPath === item.href ? "page" : undefined}
+                        >
+                            {item.label}
+                        </a>
+                    ))}
+                </nav>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <!-- Search (desktop) -->
+                <div class="hidden sm:flex items-center bg-slate-100 dark:bg-surface-dark-lighter rounded-lg h-10 px-3 w-48 border border-transparent focus-within:border-primary/50 transition-colors">
+                    <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.3-4.3"/>
+                    </svg>
+                    <label for="search-input" class="sr-only">Etsi sivustolta</label>
+                    <input type="search" id="search-input" class="bg-transparent border-none text-sm placeholder-slate-400 focus:ring-0 w-full h-full" placeholder="Etsi sivustolta...">
+                </div>
+
+                <!-- Theme Toggle -->
+                <ThemeToggle />
+
+                <!-- CTA Button (desktop) -->
+                <a href="#" class="hidden sm:flex items-center justify-center bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors">
+                    Ota yhteyttä
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button type="button" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-surface-dark-lighter transition-colors" aria-label="Avaa valikko" aria-expanded="false" aria-controls="mobile-menu" id="mobile-menu-button">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="4" x2="20" y1="12" y2="12"/>
+                        <line x1="4" x2="20" y1="6" y2="6"/>
+                        <line x1="4" x2="20" y1="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>

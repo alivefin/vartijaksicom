@@ -8,5 +8,16 @@
 *.swp
 *.swo
 
-# Node (if added later)
+# Node
 node_modules/
+
+# Astro
+dist/
+.astro/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+npm-debug.log*

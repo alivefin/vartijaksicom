@@ -1,0 +1,570 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TOC from '../components/TOC.astro';
+import FAQ from '../components/FAQ.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Tietoa alasta', href: '#' },
+    { label: 'Työ & Palkka' }
+];
+
+const tocItems = [
+    { id: 'intro', label: 'Johdanto' },
+    { id: 'palkkaus', label: 'Palkkaus ja TES' },
+    { id: 'palkkataulukko', label: 'Palkkataulukko 2026' },
+    { id: 'lisat', label: 'Lisät ja korvaukset' },
+    { id: 'tyoajat', label: 'Työajat ja vuorot' },
+    { id: 'tyosuhteet', label: 'Työsuhdetyypit' },
+    { id: 'urakehitys', label: 'Urakehitys' },
+    { id: 'faq', label: 'Usein kysytyt kysymykset' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "WebSite",
+        "@id": "https://vartijaksi.com/#website",
+        "url": "https://vartijaksi.com",
+        "name": "Vartijaksi.com",
+        "publisher": {"@id": "https://vartijaksi.com/#organization"}
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Tietoa alasta", "item": "https://vartijaksi.com/tietoa-alasta" },
+            { "@type": "ListItem", "position": 3, "name": "Työ & Palkka", "item": "https://vartijaksi.com/tyo-ja-palkka" }
+        ]
+    },
+    {
+        "@type": "Article",
+        "@id": "https://vartijaksi.com/tyo-ja-palkka#article",
+        "isPartOf": {"@id": "https://vartijaksi.com/tyo-ja-palkka"},
+        "headline": "Vartijan työ ja palkka Suomessa - TES, lisät ja urakehitys",
+        "description": "Kattava opas vartijan palkkaukseen Suomessa. Palkkataulukot, työehtosopimus (TES), lisät ja korvaukset sekä urakehitysmahdollisuudet.",
+        "datePublished": "2024-01-15",
+        "dateModified": "2026-01-01",
+        "author": {"@id": "https://vartijaksi.com/#organization"},
+        "publisher": {"@id": "https://vartijaksi.com/#organization"},
+        "inLanguage": "fi"
+    },
+    {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Paljonko vartija tienaa kuukaudessa?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Vartijan kuukausipalkka vaihtelee tyypillisesti 2 200–2 800 euron välillä riippuen kokemustasosta ja lisistä. Vuorotyölisät (ilta, yö, viikonloppu) voivat nostaa kokonaisansiota merkittävästi."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Maksetaanko vartijoille ilta- ja yölisiä?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kyllä. Vartiointialan TES määrittelee lisät: iltalisä (klo 18-22), yölisä (klo 22-06), lauantailisä ja sunnuntailisä. Lisät muodostavat merkittävän osan vartijan kokonaisansiosta."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Voiko vartijana edetä uralla?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kyllä. Vartijasta voi edetä kohdevartijasta vuoroesimieheksi, kohde-esimieheksi ja aluepäälliköksi. Lisäkoulutuksilla voi erikoistua esim. turvatarkastajaksi tai siirtyä viranomaistehtäviin."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Onko vartijoilla vakituisia vai keikkatöitä?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Molempia on tarjolla. Suuret vartiointiliikkeet tarjoavat vakituisia työsuhteita, mutta alalla on myös paljon osa-aikaisia ja keikkaluonteisia sopimuksia. Kesätyöt ja tapahtumatyöt ovat usein määräaikaisia."
+                }
+            }
+        ]
+    }
+];
+
+const faqItems = [
+    {
+        question: "Paljonko vartija tienaa kuukaudessa?",
+        answer: "Vartijan kuukausipalkka vaihtelee tyypillisesti 2 200–2 800 euron välillä riippuen kokemustasosta ja lisistä. Vuorotyölisät (ilta, yö, viikonloppu) voivat nostaa kokonaisansiota merkittävästi. Aloittelevan vartijan palkka on noin 12–13 €/h, kun taas kokeneempi vartija voi ansaita 14–16 €/h."
+    },
+    {
+        question: "Maksetaanko vartijoille ilta- ja yölisiä?",
+        answer: 'Kyllä. <a href="https://finlex.fi/fi/viranomaiset/tyoehto/paatokset/2024/PAL2024-2" target="_blank" rel="noopener" class="text-primary hover:underline">Vartiointialan työehtosopimus (TES)</a> määrittelee lisät: iltalisä (klo 18-22), yölisä (klo 22-06), lauantailisä ja sunnuntailisä. Lisät muodostavat merkittävän osan vartijan kokonaisansiosta.'
+    },
+    {
+        question: "Voiko vartijana edetä uralla?",
+        answer: "Kyllä. Vartijasta voi edetä kohdevartijasta vuoroesimieheksi, kohde-esimieheksi ja aluepäälliköksi. Lisäkoulutuksilla voi erikoistua esim. turvatarkastajaksi, järjestyksenvalvojaksi tai siirtyä viranomaistehtäviin kuten poliisiksi tai rajavartijaksi."
+    },
+    {
+        question: "Onko vartijoilla vakituisia vai keikkatöitä?",
+        answer: "Molempia on tarjolla. Suuret vartiointiliikkeet kuten Securitas, Avarn ja Posti Palvelut tarjoavat vakituisia työsuhteita, mutta alalla on myös paljon osa-aikaisia ja keikkaluonteisia sopimuksia. Kesätyöt ja tapahtumatyöt ovat usein määräaikaisia."
+    }
+];
+
+const salaryLevels = [
+    { level: "Taso 1", title: "Aloitteleva vartija", hourly: "12,50 €", monthly: "~2 200 €", description: "Perustehtävät, alle 2v kokemus" },
+    { level: "Taso 2", title: "Kokenut vartija", hourly: "13,80 €", monthly: "~2 450 €", description: "2-5v kokemus, erityistehtävät" },
+    { level: "Taso 3", title: "Erikoistunut vartija", hourly: "15,20 €", monthly: "~2 700 €", description: "Vaativat tehtävät, esimiesvastuu" }
+];
+
+const supplements = [
+    { name: "Iltalisä", time: "klo 18:00–22:00", amount: "1,35 €/h" },
+    { name: "Yölisä", time: "klo 22:00–06:00", amount: "2,70 €/h" },
+    { name: "Lauantailisä", time: "la klo 06:00–24:00", amount: "2,10 €/h" },
+    { name: "Sunnuntailisä", time: "su & pyhät", amount: "100% korotus" },
+    { name: "Aattoilta", time: "pyhien aatot klo 18–24", amount: "100% korotus" }
+];
+
+const careerPaths = [
+    {
+        title: "Kohdevartija",
+        description: "Perustehtävät kiinteässä kohteessa",
+        icon: "shield"
+    },
+    {
+        title: "Piiripartio",
+        description: "Useiden kohteiden vartiointi",
+        icon: "car"
+    },
+    {
+        title: "Vuoroesimies",
+        description: "Tiimin ja vuoron johtaminen",
+        icon: "users"
+    },
+    {
+        title: "Kohde-esimies",
+        description: "Kohteen kokonaisvastuu",
+        icon: "building"
+    },
+    {
+        title: "Aluepäällikkö",
+        description: "Useiden kohteiden johtaminen",
+        icon: "map"
+    },
+    {
+        title: "Turvallisuuspäällikkö",
+        description: "Strateginen turvallisuusjohtaminen",
+        icon: "briefcase"
+    }
+];
+---
+
+<BaseLayout
+    title="Vartijan työ ja palkka 2026 - TES, lisät ja palkkataulukot | Vartijaksi.com"
+    description="Kattava opas vartijan palkkaukseen Suomessa. Palkkataulukot 2026, työehtosopimus (TES), ilta- ja yölisät sekä urakehitysmahdollisuudet turvallisuusalalla."
+    canonical="https://vartijaksi.com/tyo-ja-palkka"
+    type="article"
+    publishedTime="2024-01-15"
+    modifiedTime="2026-01-01"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <!-- TOC Sidebar -->
+            <TOC items={tocItems} />
+
+            <!-- Main Content -->
+            <article class="flex-1 min-w-0">
+                <!-- Article Header -->
+                <header class="mb-8 md:mb-12">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-emerald-100 dark:bg-emerald-900/30 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-4">
+                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        Päivitetty 1.1.2026
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-emerald-600 dark:from-white dark:via-primary dark:to-emerald-400 bg-clip-text text-transparent">
+                        Vartijan työ ja palkka Suomessa
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                        Kattava opas vartijan palkkaukseen, työehtosopimukseen ja urakehitykseen. Tietoa palkkatasoista, lisistä ja työsuhdemuodoista turvallisuusalalla.
+                    </p>
+                </header>
+
+                <!-- Intro Section -->
+                <section id="intro" class="mb-10 md:mb-14 scroll-mt-24">
+                    <div class="prose prose-slate dark:prose-invert prose-lg max-w-none">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed mb-4">
+                            Vartijan työ on monipuolista ja tarjoaa vakaita työllistymismahdollisuuksia. Turvallisuusala kasvaa Suomessa tasaisesti, ja ammattitaitoisille vartijoille on jatkuvaa kysyntää eri toimialoilla kauppakeskuksista teollisuuslaitoksiin.
+                        </p>
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Palkkaus määräytyy <a href="https://finlex.fi/fi/viranomaiset/tyoehto/paatokset/2024/PAL2024-2" target="_blank" rel="noopener" class="text-primary hover:underline">Vartiointialan työehtosopimuksen (TES)</a> mukaan. TES takaa minimipalkat, lisät ja muut työsuhteen ehdot kaikille alan työntekijöille.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Palkkaus Section -->
+                <section id="palkkaus" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Palkkaus ja työehtosopimus</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Vartijan palkka koostuu tuntipalkasta ja erilaisista lisistä. Palkkaus perustuu kolmeen tasoluokkaan, jotka määräytyvät tehtävän vaativuuden ja kokemuksen mukaan. Lisät voivat muodostaa jopa 20–30 % kokonaisansiosta.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-bold">Peruspalkka</h3>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">
+                                Tuntipalkka 12,50–15,20 €/h riippuen tasoluokasta ja tehtävän vaativuudesta.
+                            </p>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M12 8v8M8 12h8"/>
+                                        <circle cx="12" cy="12" r="10"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-bold">Lisät</h3>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-text-dim">
+                                Ilta-, yö-, lauantai- ja sunnuntailisät nostavat kokonaisansiota merkittävästi.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Palkkataulukko Section -->
+                <section id="palkkataulukko" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Palkkataulukko 2026</h2>
+                    <p class="text-slate-600 dark:text-text-dim mb-6">
+                        Alla olevat palkat ovat suuntaa-antavia ja perustuvat Vartiointialan TES:iin. Todelliset palkat voivat vaihdella työnantajan ja tehtävän mukaan.
+                    </p>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-surface-dark-lighter">
+                        <table class="min-w-full divide-y divide-slate-200 dark:divide-surface-dark-lighter">
+                            <thead class="bg-slate-50 dark:bg-surface-dark">
+                                <tr>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-text-dim">Taso</th>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-text-dim">Nimike</th>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-text-dim">Tuntipalkka</th>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-text-dim hidden md:table-cell">Kuukausipalkka*</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-surface-dark divide-y divide-slate-200 dark:divide-surface-dark-lighter">
+                                {salaryLevels.map((level) => (
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                        <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                                                {level.level}
+                                            </span>
+                                        </td>
+                                        <td class="px-4 sm:px-6 py-4">
+                                            <div class="font-medium">{level.title}</div>
+                                            <div class="text-xs text-slate-500 dark:text-text-dim">{level.description}</div>
+                                        </td>
+                                        <td class="px-4 sm:px-6 py-4 font-semibold text-emerald-600 dark:text-emerald-400">{level.hourly}</td>
+                                        <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim hidden md:table-cell">{level.monthly}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-500 dark:text-text-dim mt-3">
+                        * Kuukausipalkka laskettu 160h/kk ilman lisiä. Todellinen ansio on usein korkeampi vuorolisien ansiosta.
+                    </p>
+                </section>
+
+                <!-- Lisät Section -->
+                <section id="lisat" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Lisät ja korvaukset</h2>
+                    <p class="text-slate-600 dark:text-text-dim mb-6">
+                        Vuorotyölisät muodostavat merkittävän osan vartijan kokonaisansiosta. Erityisesti yö- ja viikonlopputyötä tekevät ansaitsevat huomattavasti enemmän kuin pelkän peruspalkan verran.
+                    </p>
+
+                    <div class="grid gap-3">
+                        {supplements.map((supplement) => (
+                            <div class="flex items-center justify-between bg-white dark:bg-surface-dark rounded-lg p-4 border border-slate-200 dark:border-surface-dark-lighter">
+                                <div>
+                                    <span class="font-semibold">{supplement.name}</span>
+                                    <span class="text-sm text-slate-500 dark:text-text-dim ml-2">({supplement.time})</span>
+                                </div>
+                                <span class="font-bold text-emerald-600 dark:text-emerald-400">{supplement.amount}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="mt-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 9v4M12 17h.01"/>
+                                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            </svg>
+                            <div class="text-sm text-amber-800 dark:text-amber-200">
+                                <strong>Huom:</strong> Lisät lasketaan peruspalkan päälle. Esimerkiksi yövuorossa (klo 22–06) saat sekä yölisän että mahdollisen viikonloppulisän.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Työajat Section -->
+                <section id="tyoajat" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Työajat ja vuorot</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Vartijoiden työajat vaihtelevat kohteen ja tehtävän mukaan. Tyypillisiä vuoroja ovat 8, 10 tai 12 tunnin vuorot. Monet kohteet vaativat ympärivuorokautista valvontaa, joten yö- ja viikonlopputyö on yleistä.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="text-3xl font-black text-primary mb-2">8h</div>
+                            <div class="text-sm font-medium">Perusvuoro</div>
+                            <div class="text-xs text-slate-500 dark:text-text-dim mt-1">Yleisin vuoropituus</div>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="text-3xl font-black text-primary mb-2">12h</div>
+                            <div class="text-sm font-medium">Pitkä vuoro</div>
+                            <div class="text-xs text-slate-500 dark:text-text-dim mt-1">Viikonloput, erikoiskohteet</div>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter text-center">
+                            <div class="text-3xl font-black text-primary mb-2">24/7</div>
+                            <div class="text-sm font-medium">Päivystys</div>
+                            <div class="text-xs text-slate-500 dark:text-text-dim mt-1">Kriittiset kohteet</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Työsuhdetyypit Section -->
+                <section id="tyosuhteet" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Työsuhdetyypit</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Turvallisuusalalla on tarjolla erilaisia työsuhdemuotoja. Vakituiset kokoaikaiset työsuhteet ovat yleisiä suurissa vartiointiliikkeissä, mutta myös osa-aikatyö ja keikkatyö tarjoavat joustavia mahdollisuuksia.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">Vakituinen kokoaikatyö</h3>
+                                    <p class="text-sm text-slate-600 dark:text-text-dim">
+                                        Täysi työaika (n. 160h/kk) kiinteässä kohteessa tai piiripartiona. Paras työsuhdeturva ja edut.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">Osa-aikatyö</h3>
+                                    <p class="text-sm text-slate-600 dark:text-text-dim">
+                                        Sopii opiskelijoille tai muun työn oheen. Tyypillisesti 20–80h/kk, joustavat työvuorot.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                        <line x1="4" y1="22" x2="4" y2="15"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">Keikkatyö ja tapahtumat</h3>
+                                    <p class="text-sm text-slate-600 dark:text-text-dim">
+                                        Yksittäiset toimeksiannot, festivaalit, konsertit ja urheilutapahtumat. Usein korkeampi tuntipalkka.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Urakehitys Section -->
+                <section id="urakehitys" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Urakehitys turvallisuusalalla</h2>
+                    <div class="prose prose-slate dark:prose-invert max-w-none mb-6">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Vartijan työ tarjoaa hyvät etenemismahdollisuudet. Kokemuksen ja lisäkoulutusten myötä voit edetä esimiestehtäviin tai erikoistua tietylle osa-alueelle. Monet käyttävät vartijan työtä myös ponnahduslautana viranomaistehtäviin.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        {careerPaths.map((path) => (
+                            <div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter">
+                                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                                    {path.icon === "shield" && (
+                                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        </svg>
+                                    )}
+                                    {path.icon === "car" && (
+                                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-2-5H8L6 10l-2.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2"/>
+                                            <circle cx="7" cy="17" r="2"/>
+                                            <circle cx="17" cy="17" r="2"/>
+                                        </svg>
+                                    )}
+                                    {path.icon === "users" && (
+                                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                    )}
+                                    {path.icon === "building" && (
+                                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                                            <path d="M9 22v-4h6v4"/>
+                                            <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/>
+                                        </svg>
+                                    )}
+                                    {path.icon === "map" && (
+                                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+                                            <line x1="8" y1="2" x2="8" y2="18"/>
+                                            <line x1="16" y1="6" x2="16" y2="22"/>
+                                        </svg>
+                                    )}
+                                    {path.icon === "briefcase" && (
+                                        <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                        </svg>
+                                    )}
+                                </div>
+                                <h3 class="font-bold mb-1">{path.title}</h3>
+                                <p class="text-sm text-slate-600 dark:text-text-dim">{path.description}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-5">
+                        <h3 class="font-bold mb-2">Erikoistumismahdollisuudet</h3>
+                        <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Turvatarkastaja</strong> – Lentokenttä- ja satamaturvallisuus</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Järjestyksenvalvoja</strong> – Tapahtumat ja ravintolat</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Arvokuljetusvartija</strong> – Rahan ja arvotavaroiden kuljetus</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Henkilösuojaus</strong> – VIP- ja executive protection</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section id="faq" class="mb-10 md:mb-14 scroll-mt-24">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-6">Usein kysytyt kysymykset</h2>
+                    <div class="space-y-3">
+                        {faqItems.map((item) => (
+                            <FAQ question={item.question} answer={item.answer} />
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Sources Section -->
+                <section class="mb-10 md:mb-14">
+                    <h2 class="text-lg font-bold mb-4">Lähteet</h2>
+                    <ul class="text-sm text-slate-600 dark:text-text-dim space-y-2">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <a href="https://finlex.fi/fi/viranomaiset/tyoehto/paatokset/2024/PAL2024-2" target="_blank" rel="noopener" class="hover:text-primary transition-colors">
+                                Vartiointialan työehtosopimus – Finlex
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <a href="https://www.finlex.fi/fi/laki/ajantasa/2015/20151085" target="_blank" rel="noopener" class="hover:text-primary transition-colors">
+                                Laki yksityisistä turvallisuuspalveluista (1085/2015) – Finlex
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            <a href="https://www.pam.fi/tyosuhde/palkat-ja-palkankorotukset/palkkataulukot/vartiointiala/" target="_blank" rel="noopener" class="hover:text-primary transition-colors">
+                                PAM – Vartiointialan palkkataulukot
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Next Steps -->
+                <section class="grid sm:grid-cols-2 gap-4">
+                    <a href="/vartijakoulutus" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Vartijakoulutus</h3>
+                        <p class="text-xs text-slate-600 dark:text-text-dim">Kaikki tiedot koulutuksen kestosta ja sisällöstä</p>
+                    </a>
+                    <a href="#" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Avoimet työpaikat</h3>
+                        <p class="text-xs text-slate-600 dark:text-text-dim">Selaa vartija-alan työpaikkailmoituksia</p>
+                    </a>
+                </section>
+            </article>
+        </div>
+    </div>
+</BaseLayout>
