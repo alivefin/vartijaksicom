@@ -1,0 +1,90 @@
+---
+// Cookie consent banner for Google Consent Mode v2
+---
+
+<div
+    id="cookie-consent"
+    class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300 ease-out"
+    role="dialog"
+    aria-labelledby="cookie-consent-title"
+    aria-describedby="cookie-consent-description"
+>
+    <div class="bg-white dark:bg-surface-dark border-t border-slate-200 dark:border-slate-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="flex-1">
+                    <h2 id="cookie-consent-title" class="sr-only">Evästeasetukset</h2>
+                    <p id="cookie-consent-description" class="text-sm text-slate-600 dark:text-text-dim">
+                        Käytämme evästeitä parantaaksemme sivuston käyttökokemusta ja analysoidaksemme liikennettä.
+                        <a href="/tietosuoja" class="text-primary hover:underline">Lue lisää</a>
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 flex-shrink-0">
+                    <button
+                        id="cookie-reject"
+                        type="button"
+                        class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-text-dim hover:text-slate-900 dark:hover:text-white transition-colors"
+                    >
+                        Hylkää
+                    </button>
+                    <button
+                        id="cookie-accept"
+                        type="button"
+                        class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors"
+                    >
+                        Hyväksy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+(function() {
+    const CONSENT_KEY = 'cookie_consent';
+    const banner = document.getElementById('cookie-consent');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const rejectBtn = document.getElementById('cookie-reject');
+
+    // Check if consent already given
+    const storedConsent = localStorage.getItem(CONSENT_KEY);
+
+    if (storedConsent === null) {
+        // Show banner after a short delay for smooth animation
+        setTimeout(function() {
+            banner.classList.remove('translate-y-full');
+        }, 500);
+    } else if (storedConsent === 'granted') {
+        // Apply stored consent
+        updateConsent('granted');
+    }
+
+    function updateConsent(status) {
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'ad_storage': status,
+                'ad_user_data': status,
+                'ad_personalization': status,
+                'analytics_storage': status
+            });
+        }
+    }
+
+    function hideBanner() {
+        banner.classList.add('translate-y-full');
+    }
+
+    acceptBtn.addEventListener('click', function() {
+        localStorage.setItem(CONSENT_KEY, 'granted');
+        updateConsent('granted');
+        hideBanner();
+    });
+
+    rejectBtn.addEventListener('click', function() {
+        localStorage.setItem(CONSENT_KEY, 'denied');
+        updateConsent('denied');
+        hideBanner();
+    });
+})();
+</script>
