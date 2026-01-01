@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vartijakoulutus – Koulutus, kesto ja hinta | Vartijakoulutus.fi</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "primary-hover": "#0f5bbd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                        "surface-dark": "#1e293b",
+                        "surface-dark-lighter": "#283446",
+                        "text-dim": "#9da8b9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101822; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #283446; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4b61; 
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide scrollbar for TOC but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display antialiased selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-[#111418]/95 backdrop-blur-md border-b border-[#282f39]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-white group" href="#">
+<div class="p-1.5 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">security</span>
+</div>
+<h2 class="text-white text-lg font-bold tracking-tight">Vartijakoulutus.fi</h2>
+</a>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Etusivu</a>
+<a class="text-primary text-sm font-bold" href="#">Koulutus</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Työpaikat</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Tietoa alasta</a>
+</nav>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-[#282f39] rounded-lg h-9 px-3 w-48 border border-transparent focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-text-dim text-[20px]">search</span>
+<input class="bg-transparent border-none text-sm text-white placeholder-text-dim focus:ring-0 w-full h-full" placeholder="Etsi..."/>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-2">
+<span>Hae töitä</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="layout-container flex flex-col min-h-screen">
+<!-- Breadcrumbs -->
+<div class="w-full bg-[#111418] border-b border-[#282f39]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+<div class="flex items-center gap-2 text-sm">
+<a class="text-text-dim hover:text-white transition-colors" href="#">Etusivu</a>
+<span class="text-text-dim">/</span>
+<a class="text-text-dim hover:text-white transition-colors" href="#">Tietoa alasta</a>
+<span class="text-text-dim">/</span>
+<span class="text-primary font-medium">Vartijakoulutus</span>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Sticky Sidebar (Table of Contents) -->
+<aside class="hidden lg:block w-64 flex-shrink-0">
+<div class="sticky top-24">
+<h3 class="text-white font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">toc</span>
+                            Sisällysluettelo
+                        </h3>
+<nav class="flex flex-col border-l border-[#282f39] pl-4 space-y-3">
+<a class="text-sm text-white font-medium hover:text-primary transition-colors border-l-2 border-primary -ml-[18px] pl-4" href="#intro">Johdanto</a>
+<a class="text-sm text-text-dim hover:text-white transition-colors" href="#mika-on">Mikä on vartijakoulutus?</a>
+<a class="text-sm text-text-dim hover:text-white transition-colors" href="#muodot">Koulutusmuodot</a>
+<a class="text-sm text-text-dim hover:text-white transition-colors" href="#kesto">Koulutuksen kesto</a>
+<a class="text-sm text-text-dim hover:text-white transition-colors" href="#hinta">Hinta ja kustannukset</a>
+<a class="text-sm text-text-dim hover:text-white transition-colors" href="#sisalto">Koulutuksen sisältö</a>
+<a class="text-sm text-text-dim hover:text-white transition-colors" href="#faq">Usein kysytyt kysymykset</a>
+</nav>
+<!-- Sidebar Ad/CTA -->
+<div class="mt-8 p-4 rounded-xl bg-gradient-to-br from-[#1e293b] to-[#111418] border border-[#282f39]">
+<p class="text-white font-bold text-sm mb-2">Etsitkö koulutusta?</p>
+<p class="text-text-dim text-xs mb-3">Selaa avoimia vartijakursseja alueellasi.</p>
+<button class="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-lg py-2 text-xs font-bold transition-colors">
+                                Selaa kursseja
+                            </button>
+</div>
+</div>
+</aside>
+<!-- Article Content -->
+<article class="flex-1 min-w-0">
+<!-- Hero Section -->
+<div class="mb-10 relative overflow-hidden rounded-2xl bg-surface-dark border border-[#282f39]" id="intro">
+<!-- Decorative bg -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent pointer-events-none"></div>
+<div class="relative z-10 p-6 md:p-10">
+<h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-6">
+                                Vartijakoulutus Suomessa <span class="text-primary block mt-1 text-2xl md:text-4xl">Mitä vartijaksi kouluttautuminen vaatii?</span>
+</h1>
+<p class="text-lg text-text-dim leading-relaxed max-w-2xl">
+                                Haaveiletko turvallisuusalan ammattilaisen urasta? Tässä oppaassa käymme läpi kaiken tarvittavan tiedon vartijakoulutuksesta: vaatimukset, kurssien sisällöt, hinnat ja kesto.
+                            </p>
+</div>
+</div>
+<!-- Mikä on vartijakoulutus? -->
+<section class="mb-12 scroll-mt-24" id="mika-on">
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center gap-3">
+<span class="w-2 h-8 bg-primary rounded-full"></span>
+                            Mikä on vartijakoulutus?
+                        </h2>
+<div class="prose prose-invert prose-lg text-text-dim">
+<p class="leading-relaxed mb-4">
+                                Vartijakoulutus on lakisääteinen vaatimus kaikille yksityisellä turvallisuusalalla vartiointitehtävissä työskenteleville Suomessa. Koulutuksen tavoitteena on varmistaa, että vartijalla on riittävät tiedot ja taidot tehtävien suorittamiseen turvallisesti, asiakaspalveluhenkisesti ja lainmukaisesti.
+                            </p>
+<p class="leading-relaxed">
+                                Koulutus antaa valmiudet toimia erilaisissa vartiointitehtävissä, kuten myymälävartioinnissa, paikallisvartioinnissa tai piirivartioinnissa. Ilman hyväksytysti suoritettua koulutusta ja poliisin myöntämää vartijakorttia ei vartijan tehtävissä voi toimia.
+                            </p>
+</div>
+</section>
+<!-- Vartijakoulutuksen eri muodot -->
+<section class="mb-16 scroll-mt-24" id="muodot">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+<h2 class="text-2xl md:text-3xl font-bold text-white">Vartijakoulutuksen eri muodot</h2>
+<span class="text-sm text-text-dim bg-surface-dark px-3 py-1 rounded-full border border-[#282f39]">4 yleisintä väylää</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-dark border border-[#282f39] rounded-xl p-6 hover:border-primary/50 transition-colors group">
+<div class="bg-[#111418] w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Väliaikainen vartija (40h)</h3>
+<p class="text-text-dim text-sm mb-4 leading-relaxed">
+                                    Nopein tapa päästä töihin. 40 tunnin kurssi, joka oikeuttaa toimimaan vartijana enintään 4 kuukauden ajan kalenterivuodessa.
+                                </p>
+<a class="inline-flex items-center text-primary font-bold text-sm hover:underline" href="#">
+                                    Lue lisää 40h koulutuksesta <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-dark border border-[#282f39] rounded-xl p-6 hover:border-primary/50 transition-colors group">
+<div class="bg-[#111418] w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Vartijan peruskoulutus (80h)</h3>
+<p class="text-text-dim text-sm mb-4 leading-relaxed">
+                                    Vaaditaan vakinaiseen työskentelyyn. Suoritetaan 40h kurssin jälkeen. Yhteensä 120h koulutusta oikeuttaa 5 vuoden vartijakorttiin.
+                                </p>
+<a class="inline-flex items-center text-primary font-bold text-sm hover:underline" href="#">
+                                    Lue lisää peruskoulutuksesta <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-dark border border-[#282f39] rounded-xl p-6 hover:border-primary/50 transition-colors group">
+<div class="bg-[#111418] w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">workspace_premium</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Turvallisuusalan perustutkinto</h3>
+<p class="text-text-dim text-sm mb-4 leading-relaxed">
+                                    Laajempi ammatillinen tutkinto. Kestää yleensä 1-3 vuotta ja sisältää vartijakoulutuksen lisäksi paljon muuta turvallisuusosaamista.
+                                </p>
+<a class="inline-flex items-center text-primary font-bold text-sm hover:underline" href="#">
+                                    Tutustu tutkintoon <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-dark border border-[#282f39] rounded-xl p-6 hover:border-primary/50 transition-colors group">
+<div class="bg-[#111418] w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">handshake</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Oppisopimuskoulutus</h3>
+<p class="text-text-dim text-sm mb-4 leading-relaxed">
+                                    Opiskele työn ohessa. Monet vartiointiliikkeet kouluttavat uusia työntekijöitä oppisopimuksella, jolloin saat palkkaa opiskeluajalta.
+                                </p>
+<a class="inline-flex items-center text-primary font-bold text-sm hover:underline" href="#">
+                                    Hae oppisopimuspaikkoja <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Kuinka kauan kestää + Table -->
+<section class="mb-12 scroll-mt-24" id="kesto">
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Kuinka kauan vartijakoulutus kestää?</h2>
+<div class="overflow-hidden rounded-xl border border-[#282f39]">
+<table class="w-full text-left text-sm">
+<thead class="bg-surface-dark text-white font-bold uppercase tracking-wider text-xs border-b border-[#282f39]">
+<tr>
+<th class="px-6 py-4">Koulutusmuoto</th>
+<th class="px-6 py-4">Kesto (tunnit/vuodet)</th>
+<th class="px-6 py-4 hidden sm:table-cell">Oikeudet</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#282f39] bg-[#111418]">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-medium text-white">Väliaikaisen vartijan koulutus</td>
+<td class="px-6 py-4 text-text-dim">40 tuntia (n. 1 viikko)</td>
+<td class="px-6 py-4 text-text-dim hidden sm:table-cell">Max 4kk työskentely</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-medium text-white">Vartijan peruskoulutus</td>
+<td class="px-6 py-4 text-text-dim">80 tuntia (n. 2 viikkoa)</td>
+<td class="px-6 py-4 text-text-dim hidden sm:table-cell">Vakinainen työ (5v kortti)</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 font-medium text-white">Turvallisuusalan perustutkinto</td>
+<td class="px-6 py-4 text-text-dim">1-3 vuotta</td>
+<td class="px-6 py-4 text-text-dim hidden sm:table-cell">Laajat oikeudet + jatko-opinnot</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Hinta & Missä -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+<section class="scroll-mt-24" id="hinta">
+<h2 class="text-2xl font-bold text-white mb-4">Paljonko koulutus maksaa?</h2>
+<p class="text-text-dim mb-6">
+                                Koulutuksen hinta vaihtelee järjestäjän mukaan. Usein suuret vartiointiliikkeet tarjoavat koulutuksen ilmaiseksi, jos sitoudut työskentelemään heille kesätöissä tai vakituisesti.
+                            </p>
+<div class="bg-primary/10 border border-primary/20 rounded-lg p-5">
+<h4 class="text-primary font-bold mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                                    Hinta-arviot (itse maksettuna):
+                                </h4>
+<ul class="space-y-2 text-sm text-text-dim">
+<li class="flex justify-between">
+<span>Väliaikainen (40h):</span>
+<span class="text-white font-medium">200€ - 400€</span>
+</li>
+<li class="flex justify-between">
+<span>Peruskurssi (80h):</span>
+<span class="text-white font-medium">300€ - 600€</span>
+</li>
+</ul>
+</div>
+</section>
+<section class="scroll-mt-24" id="missa">
+<h2 class="text-2xl font-bold text-white mb-4">Missä voi opiskella?</h2>
+<p class="text-text-dim mb-4">
+                                Vartijakoulutusta järjestävät useat eri tahot ympäri Suomea. Yleisimpiä järjestäjiä ovat:
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">location_on</span>
+<span class="text-text-dim"><strong class="text-white">Ammattiopistot:</strong> Tarjoavat usein perustutkintoja.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">location_on</span>
+<span class="text-text-dim"><strong class="text-white">Aikuiskoulutuskeskukset:</strong> Lyhytkurssit ja näyttötutkinnot.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">location_on</span>
+<span class="text-text-dim"><strong class="text-white">Yksityiset turvallisuusalan yritykset:</strong> Kouluttavat usein suoraan työsuhteeseen.</span>
+</li>
+</ul>
+</section>
+</div>
+<!-- Koulutuksen sisältö -->
+<section class="mb-16 scroll-mt-24 bg-surface-dark rounded-xl p-8 border border-[#282f39]" id="sisalto">
+<h2 class="text-2xl font-bold text-white mb-6">Vartijakoulutuksen sisältö</h2>
+<p class="text-text-dim mb-6">
+                            Koulutuksessa käydään läpi monipuolisesti turvallisuusalan lainsäädäntöä, oikeuksia ja velvollisuuksia sekä käytännön toimintaa.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 rounded-lg bg-[#111418] border border-[#282f39]">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-white font-medium">Vartijan oikeudet ja velvollisuudet</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-[#111418] border border-[#282f39]">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-white font-medium">Voimankäyttövälineet ja hätävarjelu</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-[#111418] border border-[#282f39]">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-white font-medium">Ensiapu ja paloturvallisuus</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-[#111418] border border-[#282f39]">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-white font-medium">Asiakaspalvelu ja vuorovaikutus</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-[#111418] border border-[#282f39]">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-white font-medium">Raportointi ja viestintä</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-[#111418] border border-[#282f39]">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-white font-medium">Kiinniotto-oikeus ja sen rajat</span>
+</div>
+</div>
+</section>
+<!-- Mitä vartijakoulutuksen jälkeen? -->
+<section class="mb-12">
+<h2 class="text-2xl font-bold text-white mb-4">Mitä vartijakoulutuksen jälkeen?</h2>
+<div class="prose prose-invert prose-lg text-text-dim">
+<p>
+                                Kun koulutus on suoritettu hyväksytysti, sinun tulee hakea vartijakorttia poliisilta. Vartijakortin saaminen edellyttää nuhteetonta taustaa.
+                            </p>
+<p>
+                                Työllistymisnäkymät alalla ovat erinomaiset. Vartijoita tarvitaan jatkuvasti lisää erilaisiin kohteisiin kauppakeskuksista teollisuusalueisiin ja tapahtumiin. Monille vartijan työ toimii myös ponnahduslautana poliisikouluun tai muihin turvallisuusalan tehtäviin.
+                            </p>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="mb-16 scroll-mt-24" id="faq">
+<h2 class="text-2xl font-bold text-white mb-6">Usein kysytyt kysymykset (FAQ)</h2>
+<div class="space-y-4">
+<!-- Question 1 -->
+<details class="group bg-surface-dark rounded-lg border border-[#282f39] open:border-primary/50 transition-colors">
+<summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-white">
+<span>Voinko päästä vartijaksi, jos minulla on rikosrekisteri?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined">expand_more</span>
+</span>
+</summary>
+<div class="text-text-dim p-5 pt-0 text-sm leading-relaxed border-t border-[#282f39]/50 mt-2">
+                                    Poliisi tekee jokaiselle vartijaksi hakevalle turvallisuusselvityksen. Vakavat rikokset, väkivaltarikokset tai toistuvat rikkeet voivat estää vartijakortin saamisen. Vähäiset liikennerikkomukset eivät yleensä ole este.
+                                </div>
+</details>
+<!-- Question 2 -->
+<details class="group bg-surface-dark rounded-lg border border-[#282f39] open:border-primary/50 transition-colors">
+<summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-white">
+<span>Mikä on vartijakoulutuksen ikäraja?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined">expand_more</span>
+</span>
+</summary>
+<div class="text-text-dim p-5 pt-0 text-sm leading-relaxed border-t border-[#282f39]/50 mt-2">
+                                    Vartijaksi voi kouluttautua ja hyväksyä 18 vuotta täyttänyt henkilö. Yläikärajaa ei ole, kunhan fyysinen ja henkinen kunto riittää tehtävien hoitamiseen.
+                                </div>
+</details>
+<!-- Question 3 -->
+<details class="group bg-surface-dark rounded-lg border border-[#282f39] open:border-primary/50 transition-colors">
+<summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-white">
+<span>Onko koulutuksessa kuntotestiä?</span>
+<span class="transition group-open:rotate-180">
+<span class="material-symbols-outlined">expand_more</span>
+</span>
+</summary>
+<div class="text-text-dim p-5 pt-0 text-sm leading-relaxed border-t border-[#282f39]/50 mt-2">
+                                    Perusvartijakoulutukseen ei yleensä sisälly virallista kuntotestiä, mutta työ itsessään voi olla fyysistä. Tietyissä erikoistehtävissä (esim. voimankäyttöpainotteiset tehtävät) hyvä kunto on välttämättömyys.
+                                </div>
+</details>
+</div>
+</section>
+<div class="text-xs text-text-dim/50 mb-12 italic border-t border-[#282f39] pt-4">
+                        Lähteet: Laki yksityisistä turvallisuuspalveluista, Poliisihallitus. Tiedot päivitetty 10/2023. Tarkista aina ajantasaiset tiedot viranomaislähteistä.
+                    </div>
+<!-- Next Step Cards -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                            Seuraava askel vartijaksi?
+                        </h2>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<a class="block p-5 bg-[#111418] rounded-xl border border-[#282f39] hover:bg-surface-dark hover:border-primary/50 transition-all group" href="#">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary text-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<h3 class="text-white font-bold mb-1">Selaa koulutuksia</h3>
+<p class="text-xs text-text-dim">Etsi lähin alkava kurssi</p>
+</a>
+<!-- Card 2 -->
+<a class="block p-5 bg-[#111418] rounded-xl border border-[#282f39] hover:bg-surface-dark hover:border-primary/50 transition-all group" href="#">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary text-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</div>
+<h3 class="text-white font-bold mb-1">Katso työpaikat</h3>
+<p class="text-xs text-text-dim">Avoimet paikat vartijoille</p>
+</a>
+<!-- Card 3 -->
+<a class="block p-5 bg-[#111418] rounded-xl border border-[#282f39] hover:bg-surface-dark hover:border-primary/50 transition-all group" href="#">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary text-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<h3 class="text-white font-bold mb-1">Ota yhteyttä</h3>
+<p class="text-xs text-text-dim">Kysy lisää kouluttajilta</p>
+</a>
+</div>
+</section>
+</article>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="bg-[#0b1016] border-t border-[#282f39] py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-dim text-sm">
+<p>© 2023 Vartijakoulutus.fi. Kaikki oikeudet pidätetään.</p>
+</div>
+</footer>
+</div>
+</body></html>

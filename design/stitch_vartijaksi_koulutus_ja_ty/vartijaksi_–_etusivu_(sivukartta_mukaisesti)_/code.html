@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vartijaksi - Etusivu</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111418",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden text-slate-900 dark:text-white">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#282f39] bg-background-light dark:bg-[#111418]/95 backdrop-blur px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center rounded bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-2xl">security</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Vartijaksi</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Etusivu</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Koulutus</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Työ &amp; Palkka</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Työpaikat</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Blogi</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 sm:gap-8">
+<div class="hidden sm:flex w-full max-w-xs items-center rounded-lg bg-slate-100 dark:bg-[#282f39] px-3 h-10">
+<span class="material-symbols-outlined text-slate-400">search</span>
+<input class="w-full bg-transparent px-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none" placeholder="Etsi sivustolta..."/>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Ota yhteyttä</span>
+</button>
+</div>
+</header>
+<main class="flex-1">
+<!-- Hero Section -->
+<div class="relative w-full">
+<div class="flex min-h-[560px] flex-col items-center justify-center bg-cover bg-center bg-no-repeat px-4 py-20 text-center" data-alt="Security guard on duty in modern building night" style='background-image: linear-gradient(rgba(17, 20, 24, 0.8) 0%, rgba(17, 20, 24, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9yWuUO04Xei90aDtuYVP0N_YgfEjGWD_sOhjl2M43R7uPPX8GhYpTAJ4PnZqqjzVc_D9f1mDqO37uV6jLVLDiQY0fhW5xdEHftV8Trel7kDjho_evaTp_-CPf37hmfh-r39H69pKh9OjO-09I52OO_kwd19-3eI3aQd3yvnZ7eNdDjtoQGbj5rWyet6C7JZrIBQ-dzvssKNkpz5FNRcUy74NnTfQ8MqxDGzFcrk444Ebq2HC_tZybWiboZHP1FaL4RstZIbuQVzw");'>
+<div class="max-w-3xl space-y-6 animate-fade-in-up">
+<span class="inline-block rounded-full bg-primary/20 px-4 py-1.5 text-sm font-semibold text-primary backdrop-blur-sm border border-primary/30">
+                            Päivitetty vuodelle 2024
+                        </span>
+<h1 class="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+                            Haluatko vartijaksi?<br/> <span class="text-primary">Kaikki mitä sinun tulee tietää.</span>
+</h1>
+<p class="mx-auto max-w-2xl text-lg text-slate-300 sm:text-xl">
+                            Kattava ja luotettava opas turvallisuusalan koulutukseen, palkkaukseen, työehtoihin ja työllistymiseen Suomessa.
+                        </p>
+<div class="flex flex-col items-center justify-center gap-4 sm:flex-row pt-4">
+<button class="flex h-12 min-w-[160px] items-center justify-center rounded-lg bg-primary px-6 text-base font-bold text-white transition-transform hover:scale-105 hover:bg-primary/90">
+                                Aloita tästä
+                            </button>
+<button class="flex h-12 min-w-[160px] items-center justify-center rounded-lg border border-slate-600 bg-transparent px-6 text-base font-bold text-white transition-colors hover:bg-white/10">
+                                Selaa työpaikkoja
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pillars Section -->
+<div class="px-4 py-16 sm:px-6 lg:px-8 bg-background-light dark:bg-[#111418]">
+<div class="mx-auto max-w-7xl">
+<div class="mb-12 text-center">
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Tutustu aihealueisiin</h2>
+<p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Valitse polkusi ja löydä tarvitsemasi tieto helposti.</p>
+</div>
+<div class="grid gap-8 md:grid-cols-3">
+<!-- Card 1: Koulutus -->
+<div class="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1c2027] shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl dark:shadow-none dark:border dark:border-slate-800">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Security training classroom session" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGazYsZcfDVpA3VvMe9nj4zZxhZenbZkLJd1rrAP6G9t7WdeXWfsknVLzT4fJ6ox5Hs5Ujg308k7m5VSFCLIbkLwSmY8XLUfJFCERA7JRxM5ndqAeutiXUUzpADK9L5FAwuyzGF80JuTgYZT38ZoLEPUrJrCHm8Ggf_3dy863lxqL9qUgPig7sFEGTyHvhjfM4El4VYhjMerb1NwiaGrT8G44orXSRVyU4xebhQMoawIE_vIHYZVoMpbGWGVYzCPWiDFfVbGNP5Qk");'>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1c2027] to-transparent opacity-60"></div>
+</div>
+<div class="flex flex-1 flex-col p-6">
+<div class="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">Vaatimukset &amp; Koulutus</h3>
+<p class="mb-6 flex-1 text-slate-600 dark:text-slate-400">
+                                    Ikärajat, nuhteettomuus ja vaadittavat vartijakorttikoulutukset (40h/80h). Näin haet kursseille.
+                                </p>
+<a class="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80" href="#">
+                                    Lue lisää vaatimuksista <span class="material-symbols-outlined ml-1 text-base">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Työ & Palkka -->
+<div class="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1c2027] shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl dark:shadow-none dark:border dark:border-slate-800">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Security guard checking surveillance monitors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLibzM7CBOTczU3x__qsH9RXguLKWkpo2gEi3UogV3SP55jI7SBhBhA_tnTE8wHPq7dc4jb0XFbqciqVoRLgFsXB39rT2E_uAmAy70kf4QpZ6wYr7bmS3lYMcXXCC2mQi-jXvHdGB2rBpnt8cnLfrTh63nDAZGWRXmL5HiXa0raqDmQJPFrwqcg9cM07R04gd9R99IZp2zdQxw4PZnWiraGsLT7-CJ99PkGRF1bKDqCGUD1JArZGLINnC40U0W7WbxNIRpFXdcfVA");'>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1c2027] to-transparent opacity-60"></div>
+</div>
+<div class="flex flex-1 flex-col p-6">
+<div class="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">Vartijan Työ &amp; Palkka</h3>
+<p class="mb-6 flex-1 text-slate-600 dark:text-slate-400">
+                                    Paljonko vartija tienaa? Tietoa työehtosopimuksista (TES), lisistä ja vuorotyöstä.
+                                </p>
+<a class="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80" href="#">
+                                    Katso palkkataulukot <span class="material-symbols-outlined ml-1 text-base">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Työpaikat -->
+<div class="group relative flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1c2027] shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl dark:shadow-none dark:border dark:border-slate-800">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Modern office building entrance security" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZKQL15sViewsoX8T8ISwl1NloyLIksiCUTtqjesJpvNFq1h4-Gr1JeH9TmP2RRRR1_FD2rxLlIHD8T-uANZhOc92PgA7RWe7U3mdIbBHUIVtjlfIcQvdxitTIeS__1tJm1uevv9tT7XBDXz2SzjDCJIs7JsjxqL03HYw8xyvQ8D9jVaUJmlYiYCR0IWYWwNseULQCoGqGeq9bhis3giBXPKkqJcYVv9YF6LwLCKLm4QQ0j39dQwxrCt7fpBu2nqJWp5SGYz1sIxw");'>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1c2027] to-transparent opacity-60"></div>
+</div>
+<div class="flex flex-1 flex-col p-6">
+<div class="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">work</span>
+</div>
+<h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">Avoimet Työpaikat</h3>
+<p class="mb-6 flex-1 text-slate-600 dark:text-slate-400">
+                                    Selaa avoimia työpaikkoja suurimmilta turvallisuusalan yrityksiltä ja löydä seuraava urasi.
+                                </p>
+<a class="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80" href="#">
+                                    Selaa ilmoituksia <span class="material-symbols-outlined ml-1 text-base">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Articles Section -->
+<div class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#161b22] py-16">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between mb-10">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Viimeksi päivitetyt artikkelit</h2>
+<a class="hidden sm:inline-flex items-center text-sm font-medium text-primary hover:text-primary/80" href="#">
+                            Näytä kaikki <span class="material-symbols-outlined ml-1 text-base">arrow_forward</span>
+</a>
+</div>
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<!-- Article 1 -->
+<a class="group flex flex-col gap-3" href="#">
+<div class="aspect-video w-full overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Close up of security uniform badge" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc0InJ_ENv1yZWVps5Gqp8acXgpiQgw68LLZQ3thCpinTfFNDT2fHF6aWrhu_dVnyuSftBIeASJ9e6xbsVowOgH6IIZHbtG3Ub6pYU4-9Yvgv-keQKPsKi1GLxrc4lUer0m82fTGKmb7dWvxWsFwg8Neoo59OKs9Yy3yl5DueEJ36RAOpddKDFn17-mcsT-y9K8uht7PuuGSbq55jC-DSJffY8RDfqTB6wSVtadykAnFrIzycw4nmgm77klGenn39UEXffzb96VXU");'></div>
+</div>
+<div>
+<span class="text-xs font-semibold uppercase tracking-wider text-primary">Opas</span>
+<h3 class="mt-1 text-lg font-bold leading-tight text-slate-900 group-hover:text-primary dark:text-white">Miten hakea väliaikaiseksi vartijaksi?</h3>
+<p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Ohjeet nopeaan työllistymiseen ja 40h koulutukseen.</p>
+</div>
+</a>
+<!-- Article 2 -->
+<a class="group flex flex-col gap-3" href="#">
+<div class="aspect-video w-full overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Security guard looking at camera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCIivSjW-xTbGHdFC6lRTNRzR8mmfC3vb7-tNWhiwBalo_UTsHhJvFFmB9lb-xjBhffLFCAJwe-6BD0VL3XDOBm-AM47O5pSrtWQwcs8bfVvNppo2opZsB07wg4RDEGwpM2rohmJGXCw0m0EPKSMVBZF613b-tfTupNI81s8Xz1WCuYmTtl5VPwyAHvzXKfE7Q1jFe7keCql1GyDxR6XG3XpwqH682JZpPdbGM0l8iCH2cH4DWfljCt_ZPawMlFzSY2QBeui0jWj6Q");'></div>
+</div>
+<div>
+<span class="text-xs font-semibold uppercase tracking-wider text-primary">Haastattelu</span>
+<h3 class="mt-1 text-lg font-bold leading-tight text-slate-900 group-hover:text-primary dark:text-white">Vartijan arkea: Haastattelussa Matti Meikäläinen</h3>
+<p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Millaista on työskennellä kauppakeskusvartijana Helsingissä?</p>
+</div>
+</a>
+<!-- Article 3 -->
+<a class="group flex flex-col gap-3" href="#">
+<div class="aspect-video w-full overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Calculator and euros on desk" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaDdW97QrJ6_GppNj_bqa4-xUm5xG7Wt3cfGjNGjGE4RMzLyVnxojEtsBOXXaCf0X5ib_foDWlk9DvFfTAp0B0LfIhRT9qmmhHsWs40LLIAbPQIi0cqSs_ISIhmTmIH7OMl3Fjv1Y4UgcC8cyAE2aeNHWx6LM8m3eVbfjvXkx4bS5LLDuyD0A4TnZZonPu-j7qAYCQJZtdMZ70G_u3BrtqIMYJOtD_nM617v8q1bskFyZbZ5kqOlwO090F9LmtS5QWfY9eSV0IHm8");'></div>
+</div>
+<div>
+<span class="text-xs font-semibold uppercase tracking-wider text-primary">Palkkaus</span>
+<h3 class="mt-1 text-lg font-bold leading-tight text-slate-900 group-hover:text-primary dark:text-white">Uusi TES 2024: Mitä muutoksia tulossa?</h3>
+<p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Käymme läpi turvallisuusalan työehtosopimuksen tärkeimmät muutokset.</p>
+</div>
+</a>
+<!-- Article 4 -->
+<a class="group flex flex-col gap-3" href="#">
+<div class="aspect-video w-full overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Fitness training outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnZfK6r3TYcmOAgyS7CV-iQKehWK6tmZ-k3ywZqfQMi1UnJIdoI-gDE86sgn9zFWvfJgXTaq-eyRE99uGDes4yfWyHohAZ2EeEprdp_rbcvH2KW1VhaXS3UrGC2PycHL2slQc4IdzkjcWyXGm0Ohq-GE393j_qiz44qkCxl2w1cbOPualiv8Hz1nat_cr87OxEx8VdQ19b5K7K5S075sqTcCcvYqOof2m71s8Kf_SL8Hs_LSbdTHEA2UxKrQOrzdr0sYelOiUKhg8");'></div>
+</div>
+<div>
+<span class="text-xs font-semibold uppercase tracking-wider text-primary">Kunto</span>
+<h3 class="mt-1 text-lg font-bold leading-tight text-slate-900 group-hover:text-primary dark:text-white">Fyysisen kunnon vaatimukset voimankäytössä</h3>
+<p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Mitä voimankäyttökoulutus vaatii fyysisesti?</p>
+</div>
+</a>
+</div>
+<div class="mt-6 sm:hidden">
+<a class="flex w-full items-center justify-center rounded-lg border border-slate-300 dark:border-slate-700 py-3 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800" href="#">
+                            Näytä kaikki artikkelit
+                        </a>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<div class="bg-background-light dark:bg-[#111418] py-16">
+<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Usein kysytyt kysymykset</h2>
+<p class="mt-4 text-slate-600 dark:text-slate-400">Nopeat vastaukset yleisimpiin turvallisuusalaa koskeviin kysymyksiin.</p>
+</div>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<details class="group rounded-xl bg-white dark:bg-[#1c2027] p-6 shadow-sm dark:shadow-none dark:border dark:border-slate-800 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900 dark:text-white">
+<h3 class="text-lg font-bold">Kuinka kauan vartijakoulutus kestää?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">
+                                Väliaikaisen vartijan koulutus kestää 40 tuntia (n. 1 viikko). Varsinainen vartijan peruskoulutus vaatii lisäksi 80 tuntia, eli yhteensä 120 tuntia koulutusta.
+                            </p>
+</details>
+<!-- FAQ Item 2 -->
+<details class="group rounded-xl bg-white dark:bg-[#1c2027] p-6 shadow-sm dark:shadow-none dark:border dark:border-slate-800 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900 dark:text-white">
+<h3 class="text-lg font-bold">Mitkä ovat vartijan ikärajat?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">
+                                Väliaikaiseksi vartijaksi (40h koulutus) voi hakea 18 vuotta täyttänyt henkilö. Varsinaiseksi vartijaksi hyväksyminen edellyttää myös 18 vuoden ikää. Järjestyksenvalvojaksi ikäraja on myös 18 vuotta.
+                            </p>
+</details>
+<!-- FAQ Item 3 -->
+<details class="group rounded-xl bg-white dark:bg-[#1c2027] p-6 shadow-sm dark:shadow-none dark:border dark:border-slate-800 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900 dark:text-white">
+<h3 class="text-lg font-bold">Saako vartija kantaa voimankäyttövälineitä?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">
+                                Kyllä, mutta se vaatii erillisen voimankäyttökoulutuksen ja luvan. Yleisimpiä välineitä ovat käsiraudat, patukka ja kaasusumutin. Ampuma-aseen kantaminen on harvinaista ja vaatii erityisen perustelun sekä koulutuksen.
+                            </p>
+</details>
+<!-- FAQ Item 4 -->
+<details class="group rounded-xl bg-white dark:bg-[#1c2027] p-6 shadow-sm dark:shadow-none dark:border dark:border-slate-800 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900 dark:text-white">
+<h3 class="text-lg font-bold">Minkälainen on vartijan palkka?</h3>
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">
+                                Vartijan palkka määräytyy Vartiointialan työehtosopimuksen (TES) mukaan. Palkkaus perustuu tasopalkkaan (taso 1-3) sekä erilaisiin lisiin (esim. ilta-, yö- ja viikonloppulisät), jotka muodostavat merkittävän osan kokonaisansiosta.
+                            </p>
+</details>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="px-4 py-12">
+<div class="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-primary px-6 py-12 text-center shadow-2xl sm:px-12">
+<h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                        Oletko valmis aloittamaan urasi?
+                    </h2>
+<p class="mx-auto mt-4 max-w-xl text-lg text-blue-100">
+                        Tutustu avoimiin työpaikkoihin ja löydä itsellesi sopiva työnantaja jo tänään.
+                    </p>
+<div class="mt-8 flex justify-center gap-4">
+<button class="flex items-center rounded-lg bg-white px-8 py-3 text-base font-bold text-primary transition-colors hover:bg-slate-100">
+                            Selaa työpaikkoja
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-[#282f39] bg-white dark:bg-[#111418] px-10 py-12">
+<div class="mx-auto max-w-7xl grid grid-cols-1 gap-8 md:grid-cols-4">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white mb-4">
+<span class="material-symbols-outlined text-primary">security</span>
+<span class="font-bold text-lg">Vartijaksi</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">
+                        Riippumaton tietolähde turvallisuusalan koulutuksesta ja työelämästä Suomessa.
+                    </p>
+</div>
+<div>
+<h4 class="mb-4 font-bold text-slate-900 dark:text-white">Sivukartta</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Etusivu</a></li>
+<li><a class="hover:text-primary" href="#">Koulutus</a></li>
+<li><a class="hover:text-primary" href="#">Työ &amp; Palkka</a></li>
+<li><a class="hover:text-primary" href="#">Työpaikat</a></li>
+<li><a class="hover:text-primary" href="#">Blogi</a></li>
+</ul>
+</div>
+<div>
+<h4 class="mb-4 font-bold text-slate-900 dark:text-white">Suosittuja aiheita</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Vartijakortti</a></li>
+<li><a class="hover:text-primary" href="#">Järjestyksenvalvoja</a></li>
+<li><a class="hover:text-primary" href="#">Palkkataulukot</a></li>
+<li><a class="hover:text-primary" href="#">Turvatarkastaja</a></li>
+</ul>
+</div>
+<div>
+<h4 class="mb-4 font-bold text-slate-900 dark:text-white">Ota yhteyttä</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-2">info@vartijaksi.fi</p>
+<div class="flex gap-4 mt-4">
+<a class="text-slate-400 hover:text-white" href="#"><span class="sr-only">Facebook</span>FB</a>
+<a class="text-slate-400 hover:text-white" href="#"><span class="sr-only">Instagram</span>IG</a>
+<a class="text-slate-400 hover:text-white" href="#"><span class="sr-only">LinkedIn</span>LI</a>
+</div>
+</div>
+</div>
+<div class="mt-12 border-t border-slate-200 dark:border-[#282f39] pt-8 text-center text-sm text-slate-500">
+<p>© 2024 Vartijaksi. Kaikki oikeudet pidätetään.</p>
+</div>
+</footer>
+</div>
+</body></html>
