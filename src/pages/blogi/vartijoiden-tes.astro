@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Blogi', href: '/blogi' },
+    { label: 'Vartijoiden TES' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blogi", "item": "https://vartijaksi.com/blogi" },
+            { "@type": "ListItem", "position": 3, "name": "Vartijoiden TES", "item": "https://vartijaksi.com/blogi/vartijoiden-tes" }
+        ]
+    },
+    {
+        "@type": "Article",
+        "@id": "https://vartijaksi.com/blogi/vartijoiden-tes#article",
+        "headline": "Vartijoiden TES – mitä vartiointialan työehtosopimus tarkoittaa työntekijälle?",
+        "description": "Kattava opas vartiointialan työehtosopimukseen. Lue, mitä TES määrittelee palkasta, työajoista, lisistä ja työntekijän oikeuksista.",
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-01-01",
+        "author": {"@id": "https://vartijaksi.com/#organization"},
+        "publisher": {"@id": "https://vartijaksi.com/#organization"},
+        "inLanguage": "fi"
+    }
+];
+---
+
+<BaseLayout
+    title="Vartijoiden TES – mitä työehtosopimus tarkoittaa työntekijälle? | Vartijaksi.com"
+    description="Kattava opas vartiointialan työehtosopimukseen. Lue, mitä TES määrittelee palkasta, työajoista, lisistä ja työntekijän oikeuksista."
+    canonical="https://vartijaksi.com/blogi/vartijoiden-tes"
+    type="article"
+    publishedTime="2026-01-01"
+    modifiedTime="2026-01-01"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <article class="prose prose-slate dark:prose-invert prose-lg max-w-none">
+            <header class="mb-8 md:mb-12 not-prose">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                        TES & Palkkaus
+                    </span>
+                    <time datetime="2026-01-01" class="text-sm text-slate-500 dark:text-text-dim">
+                        1.1.2026
+                    </time>
+                </div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent leading-tight">
+                    Vartijoiden TES – mitä vartiointialan työehtosopimus tarkoittaa työntekijälle?
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
+                    Vartijan työehdoista sovitaan vartiointialan työehtosopimuksessa (TES), joka määrittelee muun muassa palkan, työajat, lisät ja työntekijän oikeudet.
+                </p>
+            </header>
+
+            <p>
+                TES on yksi tärkeimmistä tekijöistä, kun harkitsee vartijan ammattia tai vertailee alan työpaikkoja. Tässä artikkelissa käymme läpi, mitä vartijoiden TES sisältää, miksi se on tärkeä ja millaisia muutoksia työehtosopimuksiin on viime aikoina tehty.
+            </p>
+
+            <h2>Mikä on vartiointialan työehtosopimus?</h2>
+
+            <p>
+                Vartiointialan työehtosopimus on työnantaja- ja työntekijäliittojen välinen sopimus, joka koskee yksityisellä sektorilla työskenteleviä vartijoita. Sopimus määrittelee vähimmäisehdot, joita työnantajan on noudatettava.
+            </p>
+
+            <p>Työehtosopimus koskee esimerkiksi:</p>
+
+            <ul>
+                <li>paikallisvartijoita</li>
+                <li>piirivartijoita</li>
+                <li>aulapalvelu- ja valvomotyötä tekeviä vartijoita</li>
+                <li>liikkuvaa vartiointia</li>
+            </ul>
+
+            <p>
+                TES:n noudattaminen on pakollista alan työnantajille, vaikka työntekijä ei kuuluisi ammattiliittoon.
+            </p>
+
+            <h2>Mitä vartijoiden TES määrittelee?</h2>
+
+            <h3>Palkka ja palkkaryhmät</h3>
+
+            <p>
+                Vartijoiden palkka määräytyy TES:ssä määriteltyjen palkkaryhmien mukaan. Palkkaan vaikuttavat muun muassa:
+            </p>
+
+            <ul>
+                <li>työtehtävän vaativuus</li>
+                <li>kohteen luonne</li>
+                <li>työntekijän kokemus</li>
+            </ul>
+
+            <p>TES määrittelee vähimmäispalkan, mutta työnantaja voi maksaa enemmän.</p>
+
+            <h3>Työajat ja vuorotyö</h3>
+
+            <p>
+                Vartijan työ on usein vuorotyötä, ja TES ottaa tämän huomioon. Sopimuksessa säädellään esimerkiksi:
+            </p>
+
+            <ul>
+                <li>säännöllinen työaika</li>
+                <li>ylityö</li>
+                <li>lepoajat</li>
+                <li>työvuorosuunnittelu</li>
+            </ul>
+
+            <p>Työaikojen ennakoitavuus ja riittävät lepoajat ovat viime vuosina korostuneet entistä enemmän.</p>
+
+            <h3>Lisät ja korvaukset</h3>
+
+            <p>TES:ssa määritellään erilaiset lisät, kuten:</p>
+
+            <ul>
+                <li>ilta- ja yötyölisät</li>
+                <li>sunnuntai- ja pyhäkorvaukset</li>
+                <li>ylityökorvaukset</li>
+            </ul>
+
+            <p>Lisät voivat muodostaa merkittävän osan vartijan kokonaisansiosta.</p>
+
+            <h3>Sairauspoissaolot ja vuosilomat</h3>
+
+            <p>Työehtosopimus turvaa työntekijän asemaa myös sairauden aikana. TES määrittelee:</p>
+
+            <ul>
+                <li>palkanmaksun sairausajalta</li>
+                <li>lomapäivien kertymisen</li>
+                <li>lomakorvaukset</li>
+            </ul>
+
+            <h2>Mitä muutoksia vartijoiden TES:iin on tullut viime vuosina?</h2>
+
+            <p>
+                Viimeisimmissä työehtosopimuskausissa painopiste on ollut erityisesti työntekijöiden jaksamisessa ja työelämän ennakoitavuudessa. Muutokset eivät ole koskeneet vain palkkaa, vaan koko työn rakennetta.
+            </p>
+
+            <p>Keskeisiä kehityssuuntia ovat olleet:</p>
+
+            <ul>
+                <li>palkkojen asteittainen tarkistaminen</li>
+                <li>työvuorosuunnittelun selkeyttäminen</li>
+                <li>lisien ja korvausten täsmennykset</li>
+                <li>parempi huomio vuorotyön kuormittavuuteen</li>
+            </ul>
+
+            <p>Tavoitteena on ollut tehdä vartijan työstä pitkäjänteisempi ja houkuttelevampi ammatti.</p>
+
+            <h2>Miksi TES on tärkeä vartijaksi aikovalle?</h2>
+
+            <p>
+                Vartiointialalla työehtosopimus tuo turvaa erityisesti alalle tuleville. TES varmistaa, että:
+            </p>
+
+            <ul>
+                <li>palkka ei jää kohtuuttoman alhaiseksi</li>
+                <li>työajat pysyvät lain ja sopimuksen rajoissa</li>
+                <li>lisät maksetaan oikein</li>
+                <li>työntekijällä on selkeät oikeudet</li>
+            </ul>
+
+            <p>
+                Kun harkitset vartijan uraa, työehtosopimuksen ymmärtäminen auttaa arvioimaan, millaisia työpaikkoja ja työvuoroja haluat hakea.
+            </p>
+
+            <h2>Yhteenveto</h2>
+
+            <p>
+                Vartijoiden TES on keskeinen osa vartiointialaa ja vaikuttaa suoraan työn arkeen, ansioihin ja jaksamiseen. Viime vuosien muutokset osoittavat, että alaa kehitetään jatkuvasti ammattimaisempaan ja työntekijäystävällisempään suuntaan.
+            </p>
+
+            <p>
+                Jos suunnittelet vartijan uraa tai olet jo alalla, työehtosopimuksen perusasiat kannattaa tuntea.
+            </p>
+
+            <div class="not-prose my-8 p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl">
+                <p class="text-slate-700 dark:text-slate-300 font-medium mb-2">Lue myös:</p>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="/tyo-ja-palkka" class="text-primary font-semibold hover:underline">Millainen on vartijan työ ja palkka?</a>
+                    </li>
+                    <li>
+                        <a href="/vartijakoulutus" class="text-primary font-semibold hover:underline">Vartijakoulutus – vaatimukset ja eteneminen alalle</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+            <h2 class="text-lg font-bold mb-4">Lue myös</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="/blogi/turvallisuusala-muutoksessa" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                    <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Turvallisuusala muutoksessa</h3>
+                    <p class="text-sm text-slate-600 dark:text-text-dim">Miten vartijan työ on muuttunut?</p>
+                </a>
+                <a href="/tyo-ja-palkka" class="group block bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-surface-dark-lighter hover:border-primary dark:hover:border-primary transition-colors">
+                    <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Työ & Palkka</h3>
+                    <p class="text-sm text-slate-600 dark:text-text-dim">Palkkataulukot ja työehdot</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</BaseLayout>

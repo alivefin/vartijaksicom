@@ -34,155 +34,357 @@ const jsonLd = [
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <Breadcrumbs items={breadcrumbs} />
 
-        <article class="prose prose-slate dark:prose-invert max-w-none">
-            <header class="mb-8 md:mb-12 not-prose">
-                <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary mb-4">
-                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 6v6l4 2"/>
-                    </svg>
-                    Päivitetty 1.1.2026
+        <article>
+            <!-- Header -->
+            <header class="mb-10 relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent border border-slate-200 dark:border-surface-dark-lighter">
+                <div class="p-6 md:p-10">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-white/80 dark:bg-surface-dark px-3 py-1 text-xs font-semibold text-slate-600 dark:text-text-dim mb-4 border border-slate-200 dark:border-surface-dark-lighter">
+                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        Päivitetty 1.1.2026
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4">
+                        Tietosuojaseloste
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim leading-relaxed max-w-2xl">
+                        Tämä tietosuojaseloste kuvaa, miten Vartijaksi.com kerää, käyttää ja suojaa sivuston kävijöiden tietoja.
+                    </p>
                 </div>
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-slate-900 via-primary to-slate-700 dark:from-white dark:via-primary dark:to-slate-300 bg-clip-text text-transparent">
-                    Tietosuojaseloste
-                </h1>
-                <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim max-w-3xl">
-                    Tämä tietosuojaseloste kuvaa, miten Vartijaksi.com kerää, käyttää ja suojaa sivuston kävijöiden tietoja.
-                </p>
             </header>
 
-            <section class="mb-8">
-                <h2>Rekisterinpitäjä</h2>
-                <p>
-                    Vartijaksi.com<br>
-                    Sähköposti: info@vartijaksi.com
+            <!-- Rekisterinpitäjä -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Rekisterinpitäjä
+                </h2>
+                <div class="text-slate-600 dark:text-text-dim">
+                    <p class="font-medium text-slate-900 dark:text-white">Vartijaksi.com</p>
+                    <p class="flex items-center gap-2 mt-2">
+                        <svg class="w-4 h-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect width="20" height="16" x="2" y="4" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        info@vartijaksi.com
+                    </p>
+                </div>
+            </section>
+
+            <!-- Mitä tietoja keräämme -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Mitä tietoja keräämme?
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-6">
+                    Vartijaksi.com on informatiivinen sivusto, joka ei vaadi käyttäjiltä rekisteröitymistä. Keräämme ainoastaan:
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Analytiikkatiedot -->
+                    <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-4">
+                        <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 3v18h18"/>
+                                <path d="m19 9-5 5-4-4-3 3"/>
+                            </svg>
+                            Analytiikkatiedot
+                        </h3>
+                        <p class="text-slate-600 dark:text-text-dim text-sm mb-3">
+                            Käytämme Google Analytics -palvelua sivuston käytön analysointiin. Tämä sisältää:
+                        </p>
+                        <ul class="text-sm text-slate-600 dark:text-text-dim space-y-1.5 ml-5 list-disc">
+                            <li>Sivujen katselukerrat ja vierailujen kesto</li>
+                            <li>Käytetty laite ja selain</li>
+                            <li>Maantieteellinen sijainti (maa/kaupunki)</li>
+                            <li>Liikenteen lähteet (mistä kävijä saapui)</li>
+                        </ul>
+                        <p class="text-sm text-slate-500 dark:text-text-dim mt-3 italic">
+                            Nämä tiedot kerätään anonyymisti, eikä niitä yhdistetä yksittäisiin henkilöihin.
+                        </p>
+                    </div>
+
+                    <!-- Tekniset tiedot -->
+                    <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-4">
+                        <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect width="20" height="14" x="2" y="3" rx="2"/>
+                                <line x1="8" x2="16" y1="21" y2="21"/>
+                                <line x1="12" x2="12" y1="17" y2="21"/>
+                            </svg>
+                            Tekniset tiedot
+                        </h3>
+                        <p class="text-slate-600 dark:text-text-dim text-sm mb-3">
+                            Palvelimemme tallentaa automaattisesti:
+                        </p>
+                        <ul class="text-sm text-slate-600 dark:text-text-dim space-y-1.5 ml-5 list-disc">
+                            <li>IP-osoitteen (anonymisoitu)</li>
+                            <li>Selaimen tyypin ja version</li>
+                            <li>Käyttöjärjestelmän</li>
+                            <li>Vierailun ajankohdan</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Evästeet -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Evästeet
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-6">
+                    Sivusto käyttää evästeitä (cookies) toiminnan ja analytiikan mahdollistamiseksi.
+                </p>
+
+                <!-- Evästetaulukko -->
+                <div class="overflow-hidden rounded-lg border border-slate-200 dark:border-surface-dark-lighter mb-4">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-50 dark:bg-background-dark font-bold uppercase tracking-wider text-xs border-b border-slate-200 dark:border-surface-dark-lighter">
+                            <tr>
+                                <th scope="col" class="px-4 py-3">Eväste</th>
+                                <th scope="col" class="px-4 py-3">Tarkoitus</th>
+                                <th scope="col" class="px-4 py-3 hidden sm:table-cell">Tyyppi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 dark:divide-surface-dark-lighter bg-white dark:bg-surface-dark">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                <td class="px-4 py-3 font-mono text-xs text-primary">cookie_consent</td>
+                                <td class="px-4 py-3 text-slate-600 dark:text-text-dim">Tallentaa evästeasetuksesi</td>
+                                <td class="px-4 py-3 hidden sm:table-cell">
+                                    <span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">Välttämätön</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                <td class="px-4 py-3 font-mono text-xs text-primary">theme</td>
+                                <td class="px-4 py-3 text-slate-600 dark:text-text-dim">Tallentaa teemavalintasi</td>
+                                <td class="px-4 py-3 hidden sm:table-cell">
+                                    <span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">Välttämätön</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                <td class="px-4 py-3 font-mono text-xs text-primary">_ga, _ga_*</td>
+                                <td class="px-4 py-3 text-slate-600 dark:text-text-dim">Google Analytics -seuranta</td>
+                                <td class="px-4 py-3 hidden sm:table-cell">
+                                    <span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/30 px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-400">Analytiikka</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="text-sm text-slate-500 dark:text-text-dim">
+                    Voit hallita evästeasetuksiasi selaimen asetuksista tai klikkaamalla sivun vasemmassa alakulmassa olevaa evästekuvaketta.
                 </p>
             </section>
 
-            <section class="mb-8">
-                <h2>Mitä tietoja keräämme?</h2>
-                <p>Vartijaksi.com on informatiivinen sivusto, joka ei vaadi käyttäjiltä rekisteröitymistä. Keräämme ainoastaan:</p>
-
-                <h3>Analytiikkatiedot</h3>
-                <p>Käytämme Google Analytics -palvelua sivuston käytön analysointiin. Tämä sisältää:</p>
-                <ul>
-                    <li>Sivujen katselukerrat ja vierailujen kesto</li>
-                    <li>Käytetty laite ja selain</li>
-                    <li>Maantieteellinen sijainti (maa/kaupunki)</li>
-                    <li>Liikenteen lähteet (mistä kävijä saapui)</li>
-                </ul>
-                <p>Nämä tiedot kerätään anonyymisti, eikä niitä yhdistetä yksittäisiin henkilöihin.</p>
-
-                <h3>Tekniset tiedot</h3>
-                <p>Palvelimemme tallentaa automaattisesti:</p>
-                <ul>
-                    <li>IP-osoitteen (anonymisoitu)</li>
-                    <li>Selaimen tyypin ja version</li>
-                    <li>Käyttöjärjestelmän</li>
-                    <li>Vierailun ajankohdan</li>
-                </ul>
-            </section>
-
-            <section class="mb-8">
-                <h2>Evästeet</h2>
-                <p>Sivusto käyttää evästeitä (cookies) toiminnan ja analytiikan mahdollistamiseksi.</p>
-
-                <h3>Välttämättömät evästeet</h3>
-                <ul>
-                    <li><strong>cookie_consent</strong> – Tallentaa evästeasetuksesi (hyväksytty/hylätty)</li>
-                    <li><strong>theme</strong> – Tallentaa valitsemasi teeman (tumma/vaalea)</li>
-                </ul>
-
-                <h3>Analytiikkaevästeet (vaativat suostumuksen)</h3>
-                <ul>
-                    <li><strong>_ga, _ga_*</strong> – Google Analytics -evästeet sivuston käytön analysointiin</li>
-                </ul>
-
-                <p>Voit hallita evästeasetuksiasi selaimen asetuksista tai hylkäämällä evästeet sivuston evästebannerin kautta.</p>
-            </section>
-
-            <section class="mb-8">
-                <h2>Google Consent Mode</h2>
-                <p>
+            <!-- Google Consent Mode -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Google Consent Mode
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
                     Käytämme Google Consent Mode v2 -tekniikkaa, joka noudattaa valitsemiasi evästeasetuksia.
-                    Jos hylkäät evästeet:
                 </p>
-                <ul>
-                    <li>Google Analytics ei tallenna evästeitä laitteeseesi</li>
-                    <li>Tietoja ei käytetä mainontaan tai personointiin</li>
-                    <li>Keräämme vain anonymisoitua, aggregoitua dataa</li>
-                </ul>
+
+                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-lg p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                        </svg>
+                        <div class="text-sm text-blue-800 dark:text-blue-200">
+                            <p class="font-medium mb-2">Jos hylkäät evästeet:</p>
+                            <ul class="space-y-1 ml-4 list-disc">
+                                <li>Google Analytics ei tallenna evästeitä laitteeseesi</li>
+                                <li>Tietoja ei käytetä mainontaan tai personointiin</li>
+                                <li>Keräämme vain anonymisoitua, aggregoitua dataa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section class="mb-8">
-                <h2>Tietojen käyttötarkoitus</h2>
-                <p>Kerättyjä tietoja käytetään ainoastaan:</p>
-                <ul>
-                    <li>Sivuston toiminnan ja käyttökokemuksen parantamiseen</li>
-                    <li>Kävijämäärien ja suositun sisällön analysointiin</li>
-                    <li>Teknisten ongelmien tunnistamiseen ja korjaamiseen</li>
+            <!-- Tietojen käyttötarkoitus -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Tietojen käyttötarkoitus
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">Kerättyjä tietoja käytetään ainoastaan:</p>
+                <ul class="space-y-2 text-slate-600 dark:text-text-dim">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Sivuston toiminnan ja käyttökokemuksen parantamiseen
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Kävijämäärien ja suositun sisällön analysointiin
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Teknisten ongelmien tunnistamiseen ja korjaamiseen
+                    </li>
                 </ul>
-                <p>Emme myy, vuokraa tai luovuta tietoja kolmansille osapuolille markkinointitarkoituksiin.</p>
+                <div class="mt-4 p-3 bg-slate-50 dark:bg-background-dark rounded-lg">
+                    <p class="text-sm text-slate-600 dark:text-text-dim">
+                        <strong>Emme koskaan</strong> myy, vuokraa tai luovuta tietoja kolmansille osapuolille markkinointitarkoituksiin.
+                    </p>
+                </div>
             </section>
 
-            <section class="mb-8">
-                <h2>Tietojen säilytys</h2>
-                <ul>
-                    <li>Analytiikkatiedot: 14 kuukautta (Googlen oletusasetus)</li>
-                    <li>Palvelimen lokitiedot: 30 päivää</li>
-                    <li>Evästeasetukset: kunnes poistat ne selaimestasi</li>
-                </ul>
+            <!-- Tietojen säilytys -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Tietojen säilytys
+                </h2>
+                <div class="grid gap-3 sm:grid-cols-3">
+                    <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-primary mb-1">14 kk</p>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">Analytiikkatiedot</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-primary mb-1">30 pv</p>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">Palvelimen lokit</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-primary mb-1">Pysyvä</p>
+                        <p class="text-sm text-slate-600 dark:text-text-dim">Evästeasetukset*</p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-text-dim mt-3">* Kunnes poistat ne selaimestasi</p>
             </section>
 
-            <section class="mb-8">
-                <h2>Tietojen siirto EU:n ulkopuolelle</h2>
-                <p>
+            <!-- Tietojen siirto EU:n ulkopuolelle -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Tietojen siirto EU:n ulkopuolelle
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim">
                     Google Analytics saattaa siirtää tietoja EU:n ulkopuolelle. Google noudattaa EU:n ja
-                    Yhdysvaltojen välistä Data Privacy Framework -sopimusta, joka takaa riittävän tietosuojan tason.
+                    Yhdysvaltojen välistä <strong>Data Privacy Framework</strong> -sopimusta, joka takaa riittävän tietosuojan tason.
                 </p>
             </section>
 
-            <section class="mb-8">
-                <h2>Oikeutesi</h2>
-                <p>EU:n yleisen tietosuoja-asetuksen (GDPR) mukaan sinulla on oikeus:</p>
-                <ul>
-                    <li><strong>Pääsy tietoihisi</strong> – Voit pyytää tietoa sinusta kerätyistä tiedoista</li>
-                    <li><strong>Tietojen oikaisu</strong> – Voit pyytää virheellisten tietojen korjaamista</li>
-                    <li><strong>Tietojen poisto</strong> – Voit pyytää tietojesi poistamista</li>
-                    <li><strong>Käsittelyn rajoittaminen</strong> – Voit rajoittaa tietojesi käsittelyä</li>
-                    <li><strong>Vastustamisoikeus</strong> – Voit vastustaa tietojesi käsittelyä</li>
-                </ul>
-                <p>Voit käyttää oikeuksiasi ottamalla yhteyttä osoitteeseen info@vartijaksi.com.</p>
+            <!-- Oikeutesi -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Oikeutesi (GDPR)
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    EU:n yleisen tietosuoja-asetuksen mukaan sinulla on oikeus:
+                </p>
+                <div class="grid gap-3 sm:grid-cols-2">
+                    <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-background-dark rounded-lg">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" x2="8" y1="13" y2="13"/>
+                            <line x1="16" x2="8" y1="17" y2="17"/>
+                        </svg>
+                        <div>
+                            <p class="font-medium text-slate-900 dark:text-white text-sm">Pääsy tietoihisi</p>
+                            <p class="text-xs text-slate-500 dark:text-text-dim">Pyydä tietoa sinusta kerätyistä tiedoista</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-background-dark rounded-lg">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        </svg>
+                        <div>
+                            <p class="font-medium text-slate-900 dark:text-white text-sm">Tietojen oikaisu</p>
+                            <p class="text-xs text-slate-500 dark:text-text-dim">Pyydä virheellisten tietojen korjaamista</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-background-dark rounded-lg">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 6h18"/>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                        </svg>
+                        <div>
+                            <p class="font-medium text-slate-900 dark:text-white text-sm">Tietojen poisto</p>
+                            <p class="text-xs text-slate-500 dark:text-text-dim">Pyydä tietojesi poistamista</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-background-dark rounded-lg">
+                        <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="4.93" x2="19.07" y1="4.93" y2="19.07"/>
+                        </svg>
+                        <div>
+                            <p class="font-medium text-slate-900 dark:text-white text-sm">Vastustamisoikeus</p>
+                            <p class="text-xs text-slate-500 dark:text-text-dim">Vastusta tietojesi käsittelyä</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-text-dim mt-4">
+                    Voit käyttää oikeuksiasi ottamalla yhteyttä osoitteeseen <a href="mailto:info@vartijaksi.com" class="text-primary hover:underline">info@vartijaksi.com</a>.
+                </p>
             </section>
 
-            <section class="mb-8">
-                <h2>Valitusoikeus</h2>
-                <p>
+            <!-- Valitusoikeus -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Valitusoikeus
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
                     Jos katsot, että henkilötietojesi käsittelyssä rikotaan tietosuojasäännöksiä, sinulla on oikeus
                     tehdä valitus valvontaviranomaiselle:
                 </p>
-                <p>
-                    <strong>Tietosuojavaltuutetun toimisto</strong><br>
-                    Lintulahdenkuja 4, 00530 Helsinki<br>
-                    tietosuoja.fi
-                </p>
+                <div class="bg-slate-50 dark:bg-background-dark rounded-lg p-4">
+                    <p class="font-medium text-slate-900 dark:text-white">Tietosuojavaltuutetun toimisto</p>
+                    <p class="text-sm text-slate-600 dark:text-text-dim mt-1">Lintulahdenkuja 4, 00530 Helsinki</p>
+                    <p class="text-sm text-primary mt-1">tietosuoja.fi</p>
+                </div>
             </section>
 
-            <section class="mb-8">
-                <h2>Muutokset tietosuojaselosteeseen</h2>
-                <p>
+            <!-- Muutokset -->
+            <section class="mb-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Muutokset tietosuojaselosteeseen
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
                     Pidätämme oikeuden päivittää tätä tietosuojaselostetta. Merkittävistä muutoksista
                     ilmoitetaan sivustolla. Suosittelemme tarkistamaan tämän sivun säännöllisesti.
                 </p>
-                <p><strong>Viimeisin päivitys:</strong> 1.1.2026</p>
+                <p class="text-sm text-slate-500 dark:text-text-dim">
+                    <strong>Viimeisin päivitys:</strong> 1.1.2026
+                </p>
             </section>
 
-            <section>
-                <h2>Yhteystiedot</h2>
-                <p>
-                    Jos sinulla on kysyttävää tietosuojasta tai tietojesi käsittelystä, ota yhteyttä:<br>
-                    Sähköposti: info@vartijaksi.com
+            <!-- Yhteystiedot -->
+            <section class="bg-gradient-to-r from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6">
+                <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-1 h-6 bg-primary rounded-full" aria-hidden="true"></span>
+                    Yhteystiedot
+                </h2>
+                <p class="text-slate-600 dark:text-text-dim mb-4">
+                    Jos sinulla on kysyttävää tietosuojasta tai tietojesi käsittelystä, ota yhteyttä:
                 </p>
+                <a href="mailto:info@vartijaksi.com" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-colors">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect width="20" height="16" x="2" y="4" rx="2"/>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                    info@vartijaksi.com
+                </a>
             </section>
         </article>
     </div>
