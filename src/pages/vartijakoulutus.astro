@@ -1,0 +1,366 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TOC from '../components/TOC.astro';
+import FAQ from '../components/FAQ.astro';
+
+const breadcrumbs = [
+    { label: 'Etusivu', href: '/' },
+    { label: 'Tietoa alasta', href: '#' },
+    { label: 'Vartijakoulutus' }
+];
+
+const tocItems = [
+    { id: 'intro', label: 'Johdanto' },
+    { id: 'mika-on', label: 'Mikä on vartijakoulutus?' },
+    { id: 'muodot', label: 'Koulutusmuodot' },
+    { id: 'kesto', label: 'Koulutuksen kesto' },
+    { id: 'hinta', label: 'Hinta ja kustannukset' },
+    { id: 'sisalto', label: 'Koulutuksen sisältö' },
+    { id: 'faq', label: 'Usein kysytyt kysymykset' }
+];
+
+const jsonLd = [
+    {
+        "@type": "Organization",
+        "@id": "https://vartijaksi.com/#organization",
+        "name": "Vartijaksi.com",
+        "url": "https://vartijaksi.com"
+    },
+    {
+        "@type": "WebSite",
+        "@id": "https://vartijaksi.com/#website",
+        "url": "https://vartijaksi.com",
+        "name": "Vartijaksi.com",
+        "publisher": {"@id": "https://vartijaksi.com/#organization"}
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://vartijaksi.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Tietoa alasta", "item": "https://vartijaksi.com/tietoa-alasta" },
+            { "@type": "ListItem", "position": 3, "name": "Vartijakoulutus", "item": "https://vartijaksi.com/vartijakoulutus" }
+        ]
+    },
+    {
+        "@type": "Article",
+        "@id": "https://vartijaksi.com/vartijakoulutus#article",
+        "isPartOf": {"@id": "https://vartijaksi.com/vartijakoulutus"},
+        "headline": "Vartijakoulutus Suomessa - Mitä vartijaksi kouluttautuminen vaatii?",
+        "description": "Kattava opas vartijakoulutukseen Suomessa. Tutustu koulutuksen kestoon, hintoihin ja sisältöön.",
+        "datePublished": "2024-01-15",
+        "dateModified": "2026-01-01",
+        "author": {"@id": "https://vartijaksi.com/#organization"},
+        "publisher": {"@id": "https://vartijaksi.com/#organization"},
+        "inLanguage": "fi"
+    },
+    {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Voinko päästä vartijaksi, jos minulla on rikosrekisteri?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Poliisi tekee jokaiselle vartijaksi hakevalle turvallisuusselvityksen. Vakavat rikokset, väkivaltarikokset tai toistuvat rikkeet voivat estää vartijakortin saamisen. Vähäiset liikennerikkomukset eivät yleensä ole este."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Mikä on vartijakoulutuksen ikäraja?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Vartijaksi voi kouluttautua ja hyväksyä 18 vuotta täyttänyt henkilö. Yläikärajaa ei ole, kunhan fyysinen ja henkinen kunto riittää tehtävien hoitamiseen."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Onko koulutuksessa kuntotestiä?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Perusvartijakoulutukseen ei yleensä sisälly virallista kuntotestiä, mutta työ itsessään voi olla fyysistä. Tietyissä erikoistehtävissä hyvä kunto on välttämättömyys."
+                }
+            }
+        ]
+    }
+];
+
+const faqItems = [
+    {
+        question: "Voinko päästä vartijaksi, jos minulla on rikosrekisteri?",
+        answer: "Poliisi tekee jokaiselle vartijaksi hakevalle turvallisuusselvityksen. Vakavat rikokset, väkivaltarikokset tai toistuvat rikkeet voivat estää vartijakortin saamisen. Vähäiset liikennerikkomukset eivät yleensä ole este."
+    },
+    {
+        question: "Mikä on vartijakoulutuksen ikäraja?",
+        answer: "Vartijaksi voi kouluttautua ja hyväksyä 18 vuotta täyttänyt henkilö. Yläikärajaa ei ole, kunhan fyysinen ja henkinen kunto riittää tehtävien hoitamiseen."
+    },
+    {
+        question: "Onko koulutuksessa kuntotestiä?",
+        answer: "Perusvartijakoulutukseen ei yleensä sisälly virallista kuntotestiä, mutta työ itsessään voi olla fyysistä. Tietyissä erikoistehtävissä (esim. voimankäyttöpainotteiset tehtävät) hyvä kunto on välttämättömyys."
+    }
+];
+
+const trainingTypes = [
+    {
+        icon: "graduation",
+        title: "Väliaikainen vartija (40h)",
+        description: "Nopein tapa päästä töihin. 40 tunnin kurssi, joka oikeuttaa toimimaan vartijana enintään 4 kuukauden ajan kalenterivuodessa.",
+        link: "#"
+    },
+    {
+        icon: "shield",
+        title: "Vartijan peruskoulutus (80h)",
+        description: "Vaaditaan vakinaiseen työskentelyyn. Suoritetaan 40h kurssin jälkeen. Yhteensä 120h koulutusta oikeuttaa 5 vuoden vartijakorttiin.",
+        link: "#"
+    },
+    {
+        icon: "medal",
+        title: "Turvallisuusalan perustutkinto",
+        description: "Laajempi ammatillinen tutkinto. Kestää yleensä 1-3 vuotta ja sisältää vartijakoulutuksen lisäksi paljon muuta turvallisuusosaamista.",
+        link: "#"
+    },
+    {
+        icon: "users",
+        title: "Oppisopimuskoulutus",
+        description: "Opiskele työn ohessa. Monet vartiointiliikkeet kouluttavat uusia työntekijöitä oppisopimuksella, jolloin saat palkkaa opiskeluajalta.",
+        link: "#"
+    }
+];
+
+const courseContent = [
+    "Lainsäädäntö ja turvallisuusalan perusteet",
+    "Vartijan oikeudet ja velvollisuudet",
+    "Voimankäyttövälineet ja hätävarjelu",
+    "Ensiapu ja paloturvallisuus",
+    "Asiakaspalvelu ja viestintä",
+    "Raportointitaidot"
+];
+---
+
+<BaseLayout
+    title="Vartijakoulutus Suomessa 2026 - Kesto, hinta ja sisältö | Vartijaksi.com"
+    description="Kattava opas vartijakoulutukseen Suomessa. Tutustu koulutuksen kestoon (40h/80h), hintoihin (200-600€) ja sisältöön. Opi mitä vaaditaan vartijaksi pääsyyn."
+    canonical="https://vartijaksi.com/vartijakoulutus"
+    type="article"
+    publishedTime="2024-01-15"
+    modifiedTime="2026-01-01"
+    jsonLd={jsonLd}
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <Breadcrumbs items={breadcrumbs} />
+
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <!-- Sticky Sidebar (TOC) -->
+            <TOC items={tocItems} />
+
+            <!-- Article Content -->
+            <article class="flex-1 min-w-0">
+                <!-- Hero Section -->
+                <header class="mb-10 relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent border border-slate-200 dark:border-surface-dark-lighter" id="intro">
+                    <div class="p-6 md:p-10">
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-6">
+                            Vartijakoulutus Suomessa
+                            <span class="text-primary block mt-1 text-xl sm:text-2xl md:text-3xl lg:text-4xl">Mitä vartijaksi kouluttautuminen vaatii?</span>
+                        </h1>
+                        <p class="text-base sm:text-lg text-slate-600 dark:text-text-dim leading-relaxed max-w-2xl">
+                            Haaveiletko turvallisuusalan ammattilaisen urasta? Tässä oppaassa käymme läpi kaiken tarvittavan tiedon vartijakoulutuksesta: vaatimukset, kurssien sisällöt, hinnat ja kesto.
+                        </p>
+                        <p class="mt-4 text-sm text-slate-500 dark:text-text-dim">
+                            <time datetime="2026-01-01">Päivitetty: 1.1.2026</time>
+                        </p>
+                    </div>
+                </header>
+
+                <!-- Mikä on vartijakoulutus? -->
+                <section class="mb-12 scroll-mt-24" id="mika-on">
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4 flex items-center gap-3">
+                        <span class="w-1.5 h-8 bg-primary rounded-full" aria-hidden="true"></span>
+                        Mikä on vartijakoulutus?
+                    </h2>
+                    <div class="prose prose-slate dark:prose-invert prose-lg max-w-none">
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed mb-4">
+                            Vartijakoulutus on lakisääteinen vaatimus kaikille yksityisellä turvallisuusalalla vartiointitehtävissä työskenteleville Suomessa. Koulutuksen tavoitteena on varmistaa, että vartijalla on riittävät tiedot ja taidot tehtävien suorittamiseen turvallisesti, asiakaspalveluhenkisesti ja lainmukaisesti.
+                        </p>
+                        <p class="text-slate-600 dark:text-text-dim leading-relaxed">
+                            Koulutus antaa valmiudet toimia erilaisissa vartiointitehtävissä, kuten myymälävartioinnissa, paikallisvartioinnissa tai piirivartioinnissa. Ilman hyväksytysti suoritettua koulutusta ja poliisin myöntämää vartijakorttia ei vartijan tehtävissä voi toimia.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Koulutusmuodot -->
+                <section class="mb-16 scroll-mt-24" id="muodot">
+                    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4">
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold">Vartijakoulutuksen eri muodot</h2>
+                        <span class="text-sm text-slate-500 dark:text-text-dim bg-slate-100 dark:bg-surface-dark px-3 py-1 rounded-full border border-slate-200 dark:border-surface-dark-lighter self-start">4 yleisintä väylää</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {trainingTypes.map(type => (
+                            <div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-dark-lighter rounded-xl p-6 hover:border-primary/50 transition-colors group">
+                                <div class="bg-slate-100 dark:bg-background-dark w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg sm:text-xl font-bold mb-2">{type.title}</h3>
+                                <p class="text-slate-600 dark:text-text-dim text-sm mb-4 leading-relaxed">{type.description}</p>
+                                <a href={type.link} class="inline-flex items-center text-primary font-bold text-sm hover:underline">
+                                    Lue lisää
+                                    <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M5 12h14"/>
+                                        <path d="m12 5 7 7-7 7"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Kesto -->
+                <section class="mb-12 scroll-mt-24" id="kesto">
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-6">Kuinka kauan vartijakoulutus kestää?</h2>
+                    <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-surface-dark-lighter table-responsive">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 dark:bg-surface-dark font-bold uppercase tracking-wider text-xs border-b border-slate-200 dark:border-surface-dark-lighter">
+                                <tr>
+                                    <th scope="col" class="px-4 sm:px-6 py-4">Koulutusmuoto</th>
+                                    <th scope="col" class="px-4 sm:px-6 py-4">Kesto</th>
+                                    <th scope="col" class="px-4 sm:px-6 py-4 hidden sm:table-cell">Oikeudet</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-surface-dark-lighter bg-white dark:bg-background-dark">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                    <td class="px-4 sm:px-6 py-4 font-medium">Väliaikaisen vartijan koulutus</td>
+                                    <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim">40 tuntia (n. 1 viikko)</td>
+                                    <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim hidden sm:table-cell">Max 4kk työskentely</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                    <td class="px-4 sm:px-6 py-4 font-medium">Vartijan peruskoulutus</td>
+                                    <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim">80 tuntia (n. 2 viikkoa)</td>
+                                    <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim hidden sm:table-cell">Vakinainen työ (5v kortti)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                    <td class="px-4 sm:px-6 py-4 font-medium">Turvallisuusalan perustutkinto</td>
+                                    <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim">1-3 vuotta</td>
+                                    <td class="px-4 sm:px-6 py-4 text-slate-600 dark:text-text-dim hidden sm:table-cell">Laajat oikeudet + jatko-opinnot</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Hinta & Missä -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <section class="scroll-mt-24" id="hinta">
+                        <h2 class="text-xl sm:text-2xl font-bold mb-4">Paljonko koulutus maksaa?</h2>
+                        <p class="text-slate-600 dark:text-text-dim mb-6">
+                            Koulutuksen hinta vaihtelee järjestäjän mukaan. Usein suuret vartiointiliikkeet tarjoavat koulutuksen ilmaiseksi, jos sitoudut työskentelemään heille.
+                        </p>
+                        <div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg p-5">
+                            <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                                    <path d="M12 18V6"/>
+                                </svg>
+                                Hinta-arviot (itse maksettuna):
+                            </h3>
+                            <ul class="space-y-2 text-sm text-slate-600 dark:text-text-dim">
+                                <li class="flex justify-between">
+                                    <span>Väliaikainen (40h):</span>
+                                    <span class="font-medium text-slate-900 dark:text-white">200€ - 400€</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Peruskurssi (80h):</span>
+                                    <span class="font-medium text-slate-900 dark:text-white">300€ - 600€</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="scroll-mt-24">
+                        <h2 class="text-xl sm:text-2xl font-bold mb-4">Missä voi opiskella?</h2>
+                        <p class="text-slate-600 dark:text-text-dim mb-4">
+                            Vartijakoulutusta järjestävät useat eri tahot ympäri Suomea:
+                        </p>
+                        <ul class="space-y-3 text-slate-600 dark:text-text-dim">
+                            <li><strong class="text-slate-900 dark:text-white">Ammattiopistot:</strong> Tarjoavat usein perustutkintoja.</li>
+                            <li><strong class="text-slate-900 dark:text-white">Aikuiskoulutuskeskukset:</strong> Lyhytkurssit ja näyttötutkinnot.</li>
+                            <li><strong class="text-slate-900 dark:text-white">Turva-alan yritykset:</strong> Omia koulutuksiaan.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- Koulutuksen sisältö -->
+                <section class="mb-12 scroll-mt-24" id="sisalto">
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-6">Mitä koulutus sisältää?</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {courseContent.map(item => (
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-background-dark border border-slate-200 dark:border-surface-dark-lighter">
+                                <svg class="w-5 h-5 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                <span class="font-medium text-sm sm:text-base">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <!-- FAQ -->
+                <section class="mb-12 scroll-mt-24" id="faq">
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-6">Usein kysytyt kysymykset</h2>
+                    <div class="space-y-4">
+                        {faqItems.map(item => (
+                            <FAQ question={item.question} answer={item.answer} />
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Sources -->
+                <div class="text-xs text-slate-500 dark:text-text-dim/50 mb-12 italic border-t border-slate-200 dark:border-surface-dark-lighter pt-4">
+                    Lähteet: <a href="https://www.finlex.fi/fi/laki/ajantasa/2015/20151085" target="_blank" rel="noopener" class="underline hover:text-primary">Laki yksityisistä turvallisuuspalveluista (1085/2015)</a>, <a href="https://poliisi.fi/vartijaksi" target="_blank" rel="noopener" class="underline hover:text-primary">Poliisihallitus</a>. Tiedot päivitetty 1/2026. Tarkista aina ajantasaiset tiedot viranomaislähteistä.
+                </div>
+
+                <!-- Next Step Cards -->
+                <section class="mb-8">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-6">Seuraava askel vartijaksi?</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="#" class="block p-5 bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-surface-dark-lighter hover:bg-slate-50 dark:hover:bg-surface-dark hover:border-primary/50 transition-all group">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary text-primary group-hover:text-white transition-colors">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="m21 21-4.3-4.3"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold mb-1">Selaa koulutuksia</h3>
+                            <p class="text-xs text-slate-600 dark:text-text-dim">Etsi lähin alkava kurssi</p>
+                        </a>
+
+                        <a href="#" class="block p-5 bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-surface-dark-lighter hover:bg-slate-50 dark:hover:bg-surface-dark hover:border-primary/50 transition-all group">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary text-primary group-hover:text-white transition-colors">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 12h.01"/>
+                                    <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                                    <rect width="20" height="14" x="2" y="6" rx="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold mb-1">Katso työpaikat</h3>
+                            <p class="text-xs text-slate-600 dark:text-text-dim">Avoimet paikat vartijoille</p>
+                        </a>
+
+                        <a href="#" class="block p-5 bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-surface-dark-lighter hover:bg-slate-50 dark:hover:bg-surface-dark hover:border-primary/50 transition-all group">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary text-primary group-hover:text-white transition-colors">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold mb-1">Ota yhteyttä</h3>
+                            <p class="text-xs text-slate-600 dark:text-text-dim">Kysy lisää kouluttajilta</p>
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </div>
+</BaseLayout>

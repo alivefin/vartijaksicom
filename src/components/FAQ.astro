@@ -1,0 +1,33 @@
+---
+interface Props {
+    question: string;
+    answer: string;
+}
+
+const { question, answer } = Astro.props;
+---
+
+<details class="group rounded-xl bg-white dark:bg-surface-dark p-5 sm:p-6 shadow-sm dark:shadow-none dark:border dark:border-slate-800">
+    <summary class="flex cursor-pointer items-center justify-between gap-4 font-bold">
+        <span>{question}</span>
+        <svg class="expand-icon w-5 h-5 flex-shrink-0 text-slate-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+        </svg>
+    </summary>
+    <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400" set:html={answer} />
+</details>
+
+<script>
+    // FAQ Accessibility Enhancement
+    document.querySelectorAll('details').forEach(details => {
+        const summary = details.querySelector('summary');
+        if (summary) {
+            summary.setAttribute('role', 'button');
+            summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+
+            details.addEventListener('toggle', () => {
+                summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+            });
+        }
+    });
+</script>
